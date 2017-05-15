@@ -76,15 +76,6 @@ Function Authentication(url, user, password : PAnsiChar): PAnsiChar; stdcall; ex
 Function Stamp(url, user, password, xml : PAnsiChar): PAnsiChar; stdcall; external 'sw-sdk-cpp.dll' name 'StampB64';
 Function StampByToken(url, token, xml : PAnsiChar): PAnsiChar; stdcall; external 'sw-sdk-cpp.dll' name 'StampByTokenB64';
 
-Function StampV2(url, user, password, xml : PAnsiChar): PAnsiChar; stdcall; external 'sw-sdk-cpp.dll' name 'StampV2B64';
-Function StampByTokenV2(url, token, xml : PAnsiChar): PAnsiChar; stdcall; external 'sw-sdk-cpp.dll' name 'StampByTokenV2B64';
-
-Function StampV3(url, user, password, xml : PAnsiChar): PAnsiChar; stdcall; external 'sw-sdk-cpp.dll' name 'StampV3B64';
-Function StampByTokenV3(url, token, xml : PAnsiChar): PAnsiChar; stdcall; external 'sw-sdk-cpp.dll' name 'StampByTokenV3B64';
-
-Function StampV4(url, user, password, xml : PAnsiChar): PAnsiChar; stdcall; external 'sw-sdk-cpp.dll' name 'StampV4B64';
-Function StampByTokenV4(url, token, xml : PAnsiChar): PAnsiChar; stdcall; external 'sw-sdk-cpp.dll' name 'StampByTokenV4B64';
-
 procedure TForm1.BtnAuthenticationClick(Sender: TObject);
   var
       result : string;
@@ -112,8 +103,6 @@ procedure TForm1.BtnStampTokenClick(Sender: TObject);
     _url : PAnsiChar;
     _token : PAnsiChar;
     _Xml : PAnsiChar;
-    x : string;
-    _xmlB64 : PAnsiChar;
   begin
     with TbControl do
       _url := PAnsiChar(AnsiString(TxtUrlStamp.Text));
@@ -123,25 +112,9 @@ procedure TForm1.BtnStampTokenClick(Sender: TObject);
     if (_url <> '') And (_token <> '' ) And (_Xml <> '')
       then
         begin
+          result := StampByToken(_url,_token, _Xml);
 
-          x := TNetEncoding.Base64.Encode(_Xml);
-          _xmlB64 := PAnsiChar(AnsiString(x));
-
-          //Timbrar V1
-          result := StampByToken(_url,_token, _xmlB64);
-          MemoResultStamp.Lines.Text := 'Version 1-> ' + result +  #13#10;
-
-          //Timbrar V2
-          result := StampByTokenV2(_url,_token, _xmlB64);
-          MemoResultStamp.Lines.Text := MemoResultStamp.Lines.Text + 'Version 2-> ' + result +  #13#10;
-
-          //Timbrar V3
-          result := StampByTokenV3(_url,_token, _xmlB64);
-          MemoResultStamp.Lines.Text := MemoResultStamp.Lines.Text + 'Version 3-> ' + result +  #13#10;
-
-          //Timbrar V4
-          result := StampByTokenV4(_url,_token, _xmlB64);
-          MemoResultStamp.Lines.Text := MemoResultStamp.Lines.Text + 'Version 4-> ' + result +  #13#10;
+          MemoResultStamp.Lines.Text := result;
         end
     else
         ShowMessage('Los campos Url, Token y la Ruta del XML deben estar llenos antes de timbrar');
@@ -168,23 +141,9 @@ procedure TForm1.BtnStampOutTokenClick(Sender: TObject);
         begin
           x := TNetEncoding.Base64.Encode(_Xml);
           _xmlB64 := PAnsiChar(AnsiString(x));
-
-          //Timbrar V1
           result := Stamp(_url,_user, _password, _xmlB64);
-          MemoResultStamp.Lines.Text := 'Version 1-> '+ result +  #13#10;
 
-          //Timbrar V2
-          result := StampV2(_url,_user, _password, _xmlB64);
-          MemoResultStamp.Lines.Text := MemoResultStamp.Lines.Text + 'Version 2-> ' + result +  #13#10;
-
-          //Timbrar V3
-          result := StampV3(_url,_user, _password, _xmlB64);
-          MemoResultStamp.Lines.Text := MemoResultStamp.Lines.Text + 'Version 3-> ' + result +  #13#10;
-
-          //Timbrar V4
-          result := StampV4(_url,_user, _password, _xmlB64);
-          MemoResultStamp.Lines.Text := MemoResultStamp.Lines.Text + 'Version 4-> ' + result +  #13#10;
-
+          MemoResultStamp.Lines.Text := result;
         end
     else
       ShowMessage('Los campos Url, Usuario, Contraseña y la Ruta del XML deben estar llenos antes de timbrar');

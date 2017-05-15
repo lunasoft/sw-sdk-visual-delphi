@@ -112,8 +112,6 @@ procedure TForm1.BtnStampTokenClick(Sender: TObject);
     _url : PAnsiChar;
     _token : PAnsiChar;
     _Xml : PAnsiChar;
-    x : string;
-    _xmlB64 : PAnsiChar;
   begin
     with TbControl do
       _url := PAnsiChar(AnsiString(TxtUrlStamp.Text));
@@ -124,23 +122,20 @@ procedure TForm1.BtnStampTokenClick(Sender: TObject);
       then
         begin
 
-          x := TNetEncoding.Base64.Encode(_Xml);
-          _xmlB64 := PAnsiChar(AnsiString(x));
-
           //Timbrar V1
-          result := StampByToken(_url,_token, _xmlB64);
+          result := StampByToken(_url,_token, _Xml);
           MemoResultStamp.Lines.Text := 'Version 1-> ' + result +  #13#10;
 
           //Timbrar V2
-          result := StampByTokenV2(_url,_token, _xmlB64);
+          result := StampByTokenV2(_url,_token, _Xml);
           MemoResultStamp.Lines.Text := MemoResultStamp.Lines.Text + 'Version 2-> ' + result +  #13#10;
 
           //Timbrar V3
-          result := StampByTokenV3(_url,_token, _xmlB64);
+          result := StampByTokenV3(_url,_token, _Xml);
           MemoResultStamp.Lines.Text := MemoResultStamp.Lines.Text + 'Version 3-> ' + result +  #13#10;
 
           //Timbrar V4
-          result := StampByTokenV4(_url,_token, _xmlB64);
+          result := StampByTokenV4(_url,_token, _Xml);
           MemoResultStamp.Lines.Text := MemoResultStamp.Lines.Text + 'Version 4-> ' + result +  #13#10;
         end
     else
