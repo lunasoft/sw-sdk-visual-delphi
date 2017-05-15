@@ -8,6 +8,10 @@
 
 Para utilizar los servicios de SW con Delphi se debe tener primeramente el fichero DLL correspondiente a **sw-sdk-cpp.dll** y su dependencia **cpprest140d_2_9.dll**.
 
+IDE Compatible
+------------
+* Para poder correr el ejemplo necesitas tener instalado Embarcadero® Delphi 10.2
+
 Dependencias
 ------------
 * [SW-SDK-CPP](https://github.com/lunasoft/sw-sdk-cpp)
