@@ -22,6 +22,8 @@ object Form1: TForm1
       649s
       479s
       649s
+      479s
+      649s
       479s)
     object TbItemAuthenticatio: TTabItem
       CustomIcon = <
@@ -297,6 +299,175 @@ object Form1: TForm1
         TabOrder = 13
         Viewport.Width = 645.000000000000000000
         Viewport.Height = 131.000000000000000000
+      end
+    end
+    object TbItemUnitTest: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 112.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Pruebas Unitarias'
+      ExplicitSize.cx = 112.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object BtnRunTests: TButton
+        Position.X = 16.000000000000000000
+        Position.Y = 438.000000000000000000
+        Size.Width = 129.000000000000000000
+        Size.Height = 35.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Ejecutar Pruebas'
+        OnClick = BtnRunTestsClick
+      end
+      object chGetToken: TCheckBox
+        Position.X = 16.000000000000000000
+        Size.Width = 153.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 5
+        Text = 'Obtener Token'
+      end
+      object chStampOutToken: TCheckBox
+        Position.X = 16.000000000000000000
+        Position.Y = 72.000000000000000000
+        Size.Width = 193.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        Text = 'Timbrar con User y Password'
+      end
+      object chStampWithToken: TCheckBox
+        Position.X = 16.000000000000000000
+        Position.Y = 144.000000000000000000
+        Size.Width = 153.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = 'Timbrar con Token'
+      end
+      object memoGetToken: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 16.000000000000000000
+        Position.Y = 30.000000000000000000
+        Size.Width = 601.000000000000000000
+        Size.Height = 43.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 9
+        Viewport.Width = 597.000000000000000000
+        Viewport.Height = 39.000000000000000000
+      end
+      object memoStampOutToken: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 16.000000000000000000
+        Position.Y = 102.000000000000000000
+        Size.Width = 601.000000000000000000
+        Size.Height = 43.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 8
+        Viewport.Width = 597.000000000000000000
+        Viewport.Height = 39.000000000000000000
+      end
+      object MemoStampWithToken: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 16.000000000000000000
+        Position.Y = 174.000000000000000000
+        Size.Width = 601.000000000000000000
+        Size.Height = 43.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 6
+        Viewport.Width = 597.000000000000000000
+        Viewport.Height = 39.000000000000000000
+      end
+      object chError401: TCheckBox
+        Position.X = 16.000000000000000000
+        Position.Y = 288.000000000000000000
+        Size.Width = 153.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Error 401'
+      end
+      object MemoError401: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 16.000000000000000000
+        Position.Y = 318.000000000000000000
+        Size.Width = 601.000000000000000000
+        Size.Height = 43.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        Viewport.Width = 597.000000000000000000
+        Viewport.Height = 39.000000000000000000
+      end
+      object chError404: TCheckBox
+        Position.X = 16.000000000000000000
+        Position.Y = 360.000000000000000000
+        Size.Width = 153.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 10
+        Text = 'Error 404'
+      end
+      object chStampMany: TCheckBox
+        Position.X = 16.000000000000000000
+        Position.Y = 216.000000000000000000
+        Size.Width = 177.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 11
+        Text = 'Timbrar Varios Conceptos'
+      end
+      object MemoError404: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 16.000000000000000000
+        Position.Y = 390.000000000000000000
+        Size.Width = 601.000000000000000000
+        Size.Height = 43.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 12
+        Viewport.Width = 597.000000000000000000
+        Viewport.Height = 39.000000000000000000
+      end
+      object MemoStampMany: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 16.000000000000000000
+        Position.Y = 246.000000000000000000
+        Size.Width = 601.000000000000000000
+        Size.Height = 43.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 13
+        Viewport.Width = 597.000000000000000000
+        Viewport.Height = 39.000000000000000000
+      end
+      object TxtUrlUnitTest: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        TabOrder = 7
+        Text = 'http://services.test.sw.com.mx'
+        Position.X = 288.000000000000000000
+        Size.Width = 185.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Text8: TText
+        Position.X = 184.000000000000000000
+        Position.Y = -1.000000000000000000
+        Scale.X = 1.500000000000000000
+        Scale.Y = 1.500000000000000000
+        Size.Width = 65.000000000000000000
+        Size.Height = 18.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Url:'
+        TextSettings.HorzAlign = Trailing
       end
     end
   end
