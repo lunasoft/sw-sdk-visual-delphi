@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/04/06 10:39:05.000.472,=C:\Users\ARAMOS\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/04/06 10:48:59.000.135,C:\Users\ARAMOS\Documents\Delphi\Unit1.fmx=C:\Users\ARAMOS\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>2017/04/06 10:48:59.000.135,C:\Users\ARAMOS\Documents\Delphi\Unit1.pas=C:\Users\ARAMOS\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/04/06 10:49:05.000.086,C:\Users\ARAMOS\Documents\Delphi\Project1.dproj=C:\Users\ARAMOS\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2017/04/07 14:28:33.000.586,C:\Users\ARAMOS\Documents\Delphi\EjemploDeUsoSDK.dproj=C:\Users\ARAMOS\Documents\Delphi\Project1.dproj</Transaction>
+    <Transaction>2017/04/07 14:28:57.000.818,C:\Users\ARAMOS\Documents\Delphi\Form.fmx=C:\Users\ARAMOS\Documents\Delphi\Unit1.fmx</Transaction>
+    <Transaction>2017/04/07 14:28:57.000.818,C:\Users\ARAMOS\Documents\Delphi\Form.pas=C:\Users\ARAMOS\Documents\Delphi\Unit1.pas</Transaction>
+    <Transaction>2017/04/11 00:29:38.000.274,=C:\Users\ARAMOS\Documents\Delphi\Resources\Lupa.png</Transaction>
+  </Transactions>
+</BorlandProject>
