@@ -40,7 +40,7 @@ var
 begin
 
      URL := URL+'/security/authenticate';
-      xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.6.0');
+      xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
 
       try
           xmlHttp.Open('POST', URL, False);
@@ -73,7 +73,7 @@ begin
   	_bound := 'AaB03x';
     sUrl := URL + cService;
     body := '--' + _bound + sp + 'Content-Disposition: form-data; name=xml; filename=xml' + sp + 'Content-Transfer-Encoding: binary'+ sp+sp+XML+sp +'--'+ _bound + '--' + sp;
-    xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.6.0');
+    xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
 
   	TRY
           xmlHttp.open('POST', sUrl, False);
@@ -103,7 +103,7 @@ begin
   	_bound := 'AaB03x';
     sUrl := URL + cService;
     body := '--' + _bound + sp + 'Content-Disposition: form-data; name=xml; filename=xml' + sp + 'Content-Transfer-Encoding: binary'+ sp+sp+XML+sp +'--'+ _bound + '--' + sp;
-    xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.6.0');
+    xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
 
 
   	TRY
@@ -134,7 +134,7 @@ begin
   	_bound := 'AaB03x';
     sUrl := URL + cService;
     body := '--' + _bound + sp + 'Content-Disposition: form-data; name=xml; filename=xml' + sp + 'Content-Transfer-Encoding: binary'+ sp+sp+XML+sp +'--'+ _bound + '--' + sp;
-    xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.6.0');
+    xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
 
   	TRY
           xmlHttp.open('POST', sUrl, False);
@@ -164,7 +164,7 @@ begin
   	_bound := 'AaB03x';
     sUrl := URL + cService;
     body := '--' + _bound + sp + 'Content-Disposition: form-data; name=xml; filename=xml' + sp + 'Content-Transfer-Encoding: binary'+ sp+sp+XML+sp +'--'+ _bound + '--' + sp;
-    xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.6.0');
+    xmlHttp := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
 
   	TRY
           xmlHttp.open('POST', sUrl, False);
@@ -181,7 +181,7 @@ begin
 
 end;
 
-function CancelXML(Token, URL, XML: String): String; stdcall;
+function CancelByXML(Token, URL, XML: String): String; stdcall;
 const
   Version = '/cfdi33/cancel/xml';
 var
@@ -198,7 +198,7 @@ begin
   body := '--' + boundary + sp + 'Content-Disposition: form-data; name=xml; filename=xml' + sp + 'Content-Transfer-Encoding: binary'+ sp+sp+XML+sp +'--'+ boundary + '--' + sp;
 
 	TRY
-    oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.6.0');
+    oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
 		oHTTP.open('POST', sUrl, False);
 		oHTTP.setRequestHeader('Authorization', 'bearer '+ cToken);
 		oHTTP.setRequestHeader('Content-Type',  ' multipart/form-data; boundary='+boundary);
@@ -210,7 +210,7 @@ begin
   END;
 end;
 
-function CancelPFX(Token, URL, PFX, UUID, Password, RFC: String): String; stdcall;
+function CancelByPFX(Token, URL, PFX, UUID, Password, RFC: String): String; stdcall;
 const
   Version = '/cfdi33/cancel/pfx';
 var
@@ -225,7 +225,7 @@ begin
   body := sp+'{"uuid": "'+ UUID +'","password": "'+ Password +'","rfc": "'+ RFC +'","b64Pfx": "' + PFX+'"}';
 
 	TRY
-    oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.6.0');
+    oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
 		oHTTP.open('POST', sUrl, False);
 		oHTTP.setRequestHeader('Authorization', 'bearer '+ cToken);
 		oHTTP.setRequestHeader('Content-Type',  'application/json');
@@ -238,7 +238,7 @@ begin
 end;
 
 
-function CancelCSD(Token, URL, UUID, Password, RFC, Cer, Key: String): String; stdcall;
+function CancelByCSD(Token, URL, UUID, Password, RFC, Cer, Key: String): String; stdcall;
 const
   s_Version = '/cfdi33/cancel/csd';
 var
@@ -254,7 +254,7 @@ begin
   body := sp+'{"uuid": "'+ UUID +'","password": "'+ Password +'","rfc": "'+ RFC +'","b64Cer": "' + Cer+'","b64Key": "' + Key+'"}';
 
 	TRY
-    oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.6.0');
+    oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
 		oHTTP.open('POST', sUrl, False);
 		oHTTP.setRequestHeader('Authorization', 'bearer '+ cToken);
 		oHTTP.setRequestHeader('Content-Type',  'application/json');
@@ -281,7 +281,7 @@ begin
 	sp := (#13+#10);
 
 	TRY
-	 	  oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.6.0');
+	 	  oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
 		 	oHTTP.open ('GET', sUrl, False);
 		  oHTTP.setRequestHeader ('Authorization', 'bearer '+ cToken);
 			oHTTP.setRequestHeader ('Content-Type',  'application/json');
@@ -301,9 +301,9 @@ end;
   StampV2,
   StampV3,
   StampV4,
-  CancelCSD,
-  CancelXML,
-  CancelPFX,
+  CancelByCSD,
+  CancelByXML,
+  CancelByPFX,
   AccountBalance;
 
 begin
