@@ -222,7 +222,7 @@ begin
 	sp := (#13+#10);
   cToken := Token;
 
-  body := sp+'{"uuid": "'+ UUID +'","password": "'+ Password +'","rfc": "'+ RFC +'","b64Pfx": "' + PFX+'"}';
+  body := '{"uuid": "'+ UUID +'","password": "'+ Password +'","rfc": "'+ RFC +'","b64Pfx": "' + PFX+'"}';
 
 	TRY
     oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
@@ -251,7 +251,7 @@ begin
 	sp := (#13+#10);
   cToken := Token;
 
-  body := sp+'{"uuid": "'+ UUID +'","password": "'+ Password +'","rfc": "'+ RFC +'","b64Cer": "' + Cer+'","b64Key": "' + Key+'"}';
+  body := '{"uuid": "'+ UUID +'","password": "'+ Password +'","rfc": "'+ RFC +'","b64Cer": "' + Cer+'","b64Key": "' + Key+'"}';
 
 	TRY
     oHTTP := CreateOleObject('MSXML2.ServerXMLHTTP.3.0');
