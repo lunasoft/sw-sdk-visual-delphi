@@ -4,8 +4,13 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, SWSDK,  StrUtils, EncdDecd, System.JSON,
-  System.JSON.Builders, System.JSON.Writers, System.JSON.Readers, System.JSON.BSON;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, SWSDK,  StrUtils,
+  EncdDecd,
+  System.JSON,
+  System.JSON.Builders,
+  System.JSON.Writers,
+  System.JSON.Readers,
+  System.JSON.BSON;
 
 type
   TSW_Test = class(TForm)
@@ -214,7 +219,6 @@ end;
 procedure TSW_Test.Generar_TokenClick(Sender: TObject);
 var
 resultado, usuario, contrasena, sToken, direccion: String;
- jsonRequestStamp, Obj, ObjCons, ObjIpp, JSONdata: TJSONValue;
  jRespuesta: TJSONValue;
  JSonObject : TJSonObject;
  JSonValue : TJSonValue;
@@ -253,3 +257,4 @@ begin
 end;
 
 end.
+
