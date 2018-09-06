@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/09/04 11:39:38.000.380,=C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/09/04 11:40:27.000.313,C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\UnitTest.pas=C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/09/04 11:40:27.000.314,C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\UnitTest.dfm=C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2018/09/04 11:40:53.000.563,C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Pruebas.dproj=C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2018/09/04 11:41:34.000.133,C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Prueba\UnitTest.pas=C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\UnitTest.pas</Transaction>
+    <Transaction>2018/09/04 11:41:34.000.133,C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Prueba\UnitTest.dfm=C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\UnitTest.dfm</Transaction>
+    <Transaction>2018/09/04 11:42:19.000.187,C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Prueba\Pruebas.dproj=C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Pruebas.dproj</Transaction>
+    <Transaction>2018/09/04 14:36:10.000.706,=C:\Users\SoporteDes\Desktop\REST_Test_Martin\SWSDK.pas</Transaction>
+    <Transaction>2018/09/04 14:36:33.000.023,C:\Users\SoporteDes\Desktop\REST_Test_Martin\SWSDK.pas=</Transaction>
+    <Transaction>2018/09/04 14:36:56.000.216,=C:\Users\SoporteDes\Documents\Embarcadero\Studio\Projects\Prueba\SWSDK.pas</Transaction>
+  </Transactions>
+</BorlandProject>
