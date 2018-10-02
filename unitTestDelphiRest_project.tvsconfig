@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<TgConfig Version="3" SubLevelDisabled="False">
+  <Option Name="namespaceFolder.SWServices" Type="System.String" Value="" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Stamp" Type="System.String" Value="" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.AuthenticationResponse" Type="System.String" Value="AuthenticationResponse" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.unitTestDelphiRest" Type="System.String" Value="unitTestDelphiRest" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Helper" Type="System.String" Value="Helper" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Issue" Type="System.String" Value="Issue" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.Authentication" Type="System.String" Value="Authentication" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.JsonIssue" Type="System.String" Value="JsonIssue" Category="General" IsBrowsable="False" />
+  <Option Name="namespaceFolder.AuthenticationRequest" Type="System.String" Value="AuthenticationRequest" Category="General" IsBrowsable="False" />
+</TgConfig>

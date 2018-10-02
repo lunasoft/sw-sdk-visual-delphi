@@ -1,0 +1,27 @@
+unit Response;
+
+interface
+uses
+  System.JSON,
+  System.JSON.Builders,
+  System.JSON.Writers,
+  System.JSON.Readers,
+  System.JSON.BSON,
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes;
+
+type
+  TResponse = class(TObject)
+public
+  
+  function setResponse(): TObject;
+  function getResponse(): TObject;
+  end;
+
+
+implementation
+
+end.
