@@ -28,10 +28,12 @@ uses
   JsonIssue,
   Cancelation,
   CancelationResponse,
-  CancelationRelationsResponse,
+  CancelationPendings,
   CancelationPendingsResponse,
-  CancelationAcceptRejectResponse
-  ;
+  CancelationAcceptReject,
+  CancelationAcceptRejectResponse,
+  CancelationRelations,
+  CancelationRelationsResponse;
 
 function fechaDeVencimiento(expiresIn: String): String;
 
@@ -369,7 +371,6 @@ type
     procedure Button27Click(Sender: TObject);
     procedure Button26Click(Sender: TObject);
     procedure Button33Click(Sender: TObject);
-    procedure Button37Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -637,7 +638,6 @@ procedure TForm1.Button25Click(Sender: TObject);
 var
   relationsCsd: TCancelationRelationsResponse;
 begin
-
   relationsCsd := CancelationRelationsByCsd(txtURL.Text, txtToken.Text,
     txtRelationsRfcEmisor.Text, txtRelationsUuid.Text, txtRelationsB64Cer.Text,
     txtRelationsB64Key.Text, txtRelationsPassword.Text);
@@ -796,7 +796,7 @@ var
   i: Integer;
   cancelacionPendings: TCancelationPendingsResponse;
 begin
-  cancelacionPendings := CancelationPendings(txtURL.Text, txtToken.Text,
+  cancelacionPendings := CancelationPendingsService(txtURL.Text, txtToken.Text,
     txtPendingsRFC.Text);
 
   txtPendingsUuids.Clear;
@@ -814,13 +814,6 @@ begin
     txtPendingsMessageDetail.Text := cancelacionPendings.messageDetail;
     txtPendingsStatus.Text := cancelacionPendings.status;
   end;
-
-end;
-
-procedure TForm1.Button37Click(Sender: TObject);
-var
-cancelacionAceptarRechazarCsd : CancelationAcceptRejectResponse;
-begin
 
 end;
 

@@ -24,9 +24,12 @@ uses
   ValidateRequest in 'Validate\ValidateRequest.pas',
   JsonIssue in 'Issue\JsonIssue\JsonIssue.pas',
   IssueJsonRequest in 'Issue\JsonIssue\IssueJsonRequest.pas',
-  CancelationRelationsResponse in 'Cancelation\CancelationRelationsResponse.pas',
-  CancelationPendingsResponse in 'Cancelation\CancelationPendingsResponse.pas',
-  CancelationAcceptRejectResponse in 'Cancelation\CancelationAcceptRejectResponse.pas';
+  CancelationAcceptReject in 'Cancelation\AcceptReject\CancelationAcceptReject.pas',
+  CancelationPendingsResponse in 'Cancelation\Pendings\CancelationPendingsResponse.pas',
+  CancelationRelationsResponse in 'Cancelation\Relations\CancelationRelationsResponse.pas',
+  CancelationAcceptRejectResponse in 'Cancelation\AcceptReject\CancelationAcceptRejectResponse.pas',
+  CancelationPendings in 'Cancelation\Pendings\CancelationPendings.pas',
+  CancelationRelations in 'Cancelation\Relations\CancelationRelations.pas';
 
 {$R *.res}
 

@@ -124,9 +124,12 @@
         <DCCReference Include="Validate\ValidateRequest.pas"/>
         <DCCReference Include="Issue\JsonIssue\JsonIssue.pas"/>
         <DCCReference Include="Issue\JsonIssue\IssueJsonRequest.pas"/>
-        <DCCReference Include="Cancelation\CancelationRelationsResponse.pas"/>
-        <DCCReference Include="Cancelation\CancelationPendingsResponse.pas"/>
-        <DCCReference Include="Cancelation\CancelationAcceptRejectResponse.pas"/>
+        <DCCReference Include="Cancelation\AcceptReject\CancelationAcceptReject.pas"/>
+        <DCCReference Include="Cancelation\Pendings\CancelationPendingsResponse.pas"/>
+        <DCCReference Include="Cancelation\Relations\CancelationRelationsResponse.pas"/>
+        <DCCReference Include="Cancelation\AcceptReject\CancelationAcceptRejectResponse.pas"/>
+        <DCCReference Include="Cancelation\Pendings\CancelationPendings.pas"/>
+        <DCCReference Include="Cancelation\Relations\CancelationRelations.pas"/>
         <None Include="ModelSupport_unitTestDelphiRest\default.txaPackage"/>
         <None Include="ModelSupport_unitTestDelphiRest\default.txvpck"/>
         <None Include="ModelSupport_unitTestDelphiRest\Authentication\default.txvpck"/>

@@ -22,6 +22,10 @@
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Autenticaci'#243'n'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label6: TLabel
         Left = 3
         Top = 3
@@ -164,6 +168,10 @@
     object TabSheet2: TTabSheet
       Caption = 'Timbrado'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label3: TLabel
         Left = 477
         Top = 298
@@ -390,6 +398,10 @@
     object TabSheet3: TTabSheet
       Caption = 'Emisi'#243'n-Timbrado'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object TFD: TLabel
         Left = 111
         Top = 287
@@ -609,6 +621,10 @@
     object TabSheet4: TTabSheet
       Caption = 'Emisi'#243'n Timbrado JSON'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label52: TLabel
         Left = 95
         Top = 263
@@ -943,6 +959,10 @@
         TabOrder = 0
         object TabSheet10: TTabSheet
           Caption = 'Cancelaci'#243'n'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Cancelación: TPageControl
             Left = 0
             Top = 3
@@ -952,6 +972,10 @@
             TabOrder = 0
             object TabSheet14: TTabSheet
               Caption = 'Cancelaci'#243'n por CSD'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label64: TLabel
                 Left = 24
                 Top = 218
@@ -1076,6 +1100,10 @@
             object TabSheet15: TTabSheet
               Caption = 'Cancelaci'#243'n por PFX'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label68: TLabel
                 Left = 192
                 Top = 16
@@ -1174,6 +1202,10 @@
             object TabSheet16: TTabSheet
               Caption = 'Cancelaci'#243'n por XML'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object txtXmlXml: TMemo
                 Left = 240
                 Top = 24
@@ -1230,6 +1262,10 @@
             object TabSheet17: TTabSheet
               Caption = 'Cancelaci'#243'n por UUID'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Button24: TButton
                 Left = 8
                 Top = 32
@@ -1287,7 +1323,10 @@
         object TabSheet11: TTabSheet
           Caption = 'Consultar Relacionados'
           ImageIndex = 1
-          ExplicitLeft = 28
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label72: TLabel
             Left = 45
             Top = 245
@@ -1456,7 +1495,7 @@
             Left = 104
             Top = 376
             Width = 225
-            Height = 25
+            Height = 21
             TabOrder = 5
           end
           object txtRelationsPadreRfcEmisor: TEdit
@@ -1622,6 +1661,10 @@
         object TabSheet12: TTabSheet
           Caption = 'Pendientes Aceptaci'#243'n  Rechazo'
           ImageIndex = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label90: TLabel
             Left = 83
             Top = 203
@@ -1720,8 +1763,6 @@
         object TabSheet13: TTabSheet
           Caption = 'Aceptar o Rechazar Cancelaci'#243'n'
           ImageIndex = 3
-          ExplicitLeft = 8
-          ExplicitTop = 40
           object Label96: TLabel
             Left = 151
             Top = 16
@@ -2004,7 +2045,6 @@
             Height = 41
             Caption = 'Cancelaci'#243'n por CSD'
             TabOrder = 6
-            OnClick = Button37Click
           end
           object Button38: TButton
             Left = 3
@@ -2210,6 +2250,10 @@
     object TabSheet6: TTabSheet
       Caption = 'Validaci'#243'n de XML'
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label11: TLabel
         Left = 129
         Top = 312
@@ -2350,6 +2394,10 @@
     object TabSheet7: TTabSheet
       Caption = 'Validaci'#243'n de LCO'
       ImageIndex = 6
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label23: TLabel
         Left = 162
         Top = 163
@@ -2483,6 +2531,10 @@
     object TabSheet8: TTabSheet
       Caption = 'Validaci'#243'n de LRFC'
       ImageIndex = 7
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label39: TLabel
         Left = 90
         Top = 197
@@ -2588,6 +2640,10 @@
     object TabSheet9: TTabSheet
       Caption = 'Generaci'#243'n de PDF'
       ImageIndex = 8
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object OpenDialog1: TOpenDialog
