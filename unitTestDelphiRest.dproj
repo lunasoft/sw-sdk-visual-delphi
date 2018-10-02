@@ -103,7 +103,6 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="SWSDK.pas"/>
         <DCCReference Include="Cancelation\Cancelation.pas"/>
         <DCCReference Include="Helpers\Helper.pas"/>
         <DCCReference Include="Stamp\Stamp.pas"/>

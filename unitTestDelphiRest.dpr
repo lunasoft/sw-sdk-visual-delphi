@@ -3,7 +3,6 @@ program unitTestDelphiRest;
 uses
   Vcl.Forms,
   TestServices in 'TestServices.pas' {Form1},
-  SWSDK in 'SWSDK.pas',
   Cancelation in 'Cancelation\Cancelation.pas',
   Helper in 'Helpers\Helper.pas',
   Stamp in 'Stamp\Stamp.pas',
