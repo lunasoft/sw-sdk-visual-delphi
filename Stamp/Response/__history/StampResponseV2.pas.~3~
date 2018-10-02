@@ -1,0 +1,87 @@
+unit StampResponseV2;
+
+interface
+
+uses Generics.Collections, Rest.Json;
+
+type
+
+TDataClass = class
+private
+  FCadenaOriginalSAT: String;
+  FCfdi: String;
+  FFechaTimbrado: TDateTime;
+  FNoCertificadoCFDI: String;
+  FNoCertificadoSAT: String;
+  FQrCode: String;
+  FSelloCFDI: String;
+  FSelloSAT: String;
+  FUuid: String;
+public
+  property cadenaOriginalSAT: String read FCadenaOriginalSAT write FCadenaOriginalSAT;
+  property cfdi: String read FCfdi write FCfdi;
+  property fechaTimbrado: TDateTime read FFechaTimbrado write FFechaTimbrado;
+  property noCertificadoCFDI: String read FNoCertificadoCFDI write FNoCertificadoCFDI;
+  property noCertificadoSAT: String read FNoCertificadoSAT write FNoCertificadoSAT;
+  property qrCode: String read FQrCode write FQrCode;
+  property selloCFDI: String read FSelloCFDI write FSelloCFDI;
+  property selloSAT: String read FSelloSAT write FSelloSAT;
+  property uuid: String read FUuid write FUuid;
+  function ToJsonString: string;
+  class function FromJsonString(AJsonString: string): TDataClass;
+end;
+
+TRootClass = class
+private
+  FData: TDataClass;
+  FStatus: String;
+public
+  property data: TDataClass read FData write FData;
+  property status: String read FStatus write FStatus;
+  constructor Create;
+  destructor Destroy; override;
+  function ToJsonString: string;
+  class function FromJsonString(AJsonString: string): TRootClass;
+end;
+
+implementation
+
+{TDataClass}
+
+
+function TDataClass.ToJsonString: string;
+begin
+  result := TJson.ObjectToJsonString(self);
+end;
+
+class function TDataClass.FromJsonString(AJsonString: string): TDataClass;
+begin
+  result := TJson.JsonToObject<TDataClass>(AJsonString)
+end;
+
+{TRootClass}
+
+constructor TRootClass.Create;
+begin
+  inherited;
+  FData := TDataClass.Create();
+end;
+
+destructor TRootClass.Destroy;
+begin
+  FData.free;
+  inherited;
+end;
+
+function TRootClass.ToJsonString: string;
+begin
+  result := TJson.ObjectToJsonString(self);
+end;
+
+class function TRootClass.FromJsonString(AJsonString: string): TRootClass;
+begin
+  result := TJson.JsonToObject<TRootClass>(AJsonString)
+end;
+
+end.
+

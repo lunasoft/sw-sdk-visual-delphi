@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="cf1g7oppenp_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="design:view:::x3pbeexe3eh_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="100,540,100,134" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Helper.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::34jvoc8nr9l_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="520,80,134,151" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Authentication.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Authentication.TAuthentication" />
+    </reference>
+    <reference referencedUin="design:view:::ut4q4n2js9p_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="129,154,100,134" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:SWSDK.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::m7nwskez8ek_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="280,560,122,151" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:SWServices.TSWServices">
+        <reference referencedUin="design:link:::c40t4a059le_l">
+          <property name="sourceAnchor" value="694,581" />
+          <property name="targetAnchor" value="205,617" />
+          <property name="bendpoints" value="" />
+        </reference>
+      </reference>
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:SWServices.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::wmrrrnfqqzs_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="20,60,100,134" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Issue.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::s0as3t1im4k_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="520,260,180,151" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:AuthenticationRequest.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:AuthenticationRequest.TAuthenticationRequest" />
+    </reference>
+    <reference referencedUin="design:view:::479wnw8ajgs_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="244,307,127,151" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:TestServices.TForm1" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:TestServices.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::io3l363xadl_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="135,335,100,134" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Stamp.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::qtgo3ul0x1m_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="16,335,111,151" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Response.@unitclass" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Response.TResponse" />
+    </reference>
+    <reference referencedUin="design:view:::608t5jmf3d7ha0gt_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="160,20,111,134" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:JsonIssue.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::b42d44x3slk_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="520,440,189,151" />
+      <property name="location_set_by_user" value="True" />
+    </reference>
+    <reference referencedUin="design:view:::pkfsvk05r3p_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="980,40,160,134" />
+      <property name="location_set_by_user" value="True" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:unitTestDelphiRest.@unitclass" />
+    </reference>
+    <reference referencedUin="design:view:::uvfcrilgtkr_v">
+      <property name="$shortcutReference" value="true" />
+      <property name="bounds" value="708,1,121,134" />
+      <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Cancelation.@unitclass" />
+    </reference>
+  </view>
+</nodeSet>
