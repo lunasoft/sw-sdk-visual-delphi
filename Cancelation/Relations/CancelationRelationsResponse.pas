@@ -23,12 +23,14 @@ TUuidsRelacionadosPadresClass = class
 private
   FRfcEmisor: String;
   FRfcReceptor: String;
-  FUuid: String;
+	FUuid: String;
+	FStatus: String;
 public
-  property rfcEmisor: String read FRfcEmisor write FRfcEmisor;
-  property rfcReceptor: String read FRfcReceptor write FRfcReceptor;
-  property uuid: String read FUuid write FUuid;
-  function ToJsonString: string;
+	property rfcEmisor: String read FRfcEmisor write FRfcEmisor;
+	property rfcReceptor: String read FRfcReceptor write FRfcReceptor;
+	property uuid: String read FUuid write FUuid;
+	property status: String read FStatus write FStatus;
+	function ToJsonString: string;
   class function FromJsonString(AJsonString: string): TUuidsRelacionadosPadresClass;
 end;
 

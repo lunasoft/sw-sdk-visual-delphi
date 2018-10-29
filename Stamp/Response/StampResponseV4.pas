@@ -16,7 +16,8 @@ private
   FQrCode: String;
   FSelloCFDI: String;
   FSelloSAT: String;
-  FUuid: String;
+	FUuid: String;
+	FStatus: String;
 public
   property cadenaOriginalSAT: String read FCadenaOriginalSAT write FCadenaOriginalSAT;
   property cfdi: String read FCfdi write FCfdi;
@@ -26,7 +27,8 @@ public
   property qrCode: String read FQrCode write FQrCode;
   property selloCFDI: String read FSelloCFDI write FSelloCFDI;
   property selloSAT: String read FSelloSAT write FSelloSAT;
-  property uuid: String read FUuid write FUuid;
+	property uuid: String read FUuid write FUuid;
+	property status: String read FStatus write FStatus;
   function ToJsonString: string;
   class function FromJsonString(AJsonString: string): TDataClass;
 end;

@@ -11,21 +11,32 @@
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesigned
   PixelsPerInch = 96
   TextHeight = 13
+  object Label105: TLabel
+    Left = 880
+    Top = 480
+    Width = 43
+    Height = 13
+    Caption = 'Label105'
+  end
+  object Label106: TLabel
+    Left = 856
+    Top = 472
+    Width = 42
+    Height = 13
+    Caption = 'Message'
+  end
   object Autenticación: TPageControl
     Left = -6
     Top = 0
     Width = 1121
     Height = 569
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Autenticaci'#243'n'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label6: TLabel
         Left = 3
         Top = 3
@@ -168,10 +179,6 @@
     object TabSheet2: TTabSheet
       Caption = 'Timbrado'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label3: TLabel
         Left = 477
         Top = 298
@@ -398,10 +405,6 @@
     object TabSheet3: TTabSheet
       Caption = 'Emisi'#243'n-Timbrado'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object TFD: TLabel
         Left = 111
         Top = 287
@@ -486,7 +489,7 @@
         Height = 13
         Caption = 'C'#243'digo QR'
       end
-      object Memo3: TMemo
+      object txtIssue: TMemo
         Left = 16
         Top = 120
         Width = 1097
@@ -500,6 +503,7 @@
         Height = 33
         Caption = 'Cargar XML'
         TabOrder = 1
+        OnClick = Button2Click
       end
       object Button4: TButton
         Left = 32
@@ -508,6 +512,7 @@
         Height = 33
         Caption = 'Issue V1'
         TabOrder = 2
+        OnClick = Button4Click
       end
       object Button5: TButton
         Left = 176
@@ -516,6 +521,7 @@
         Height = 33
         Caption = 'Issue V2'
         TabOrder = 3
+        OnClick = Button5Click
       end
       object Button6: TButton
         Left = 319
@@ -524,6 +530,7 @@
         Height = 33
         Caption = 'Issue V3'
         TabOrder = 4
+        OnClick = Button6Click
       end
       object Button7: TButton
         Left = 470
@@ -532,85 +539,86 @@
         Height = 33
         Caption = 'Issue V4'
         TabOrder = 5
+        OnClick = Button7Click
       end
-      object Edit2: TEdit
+      object txtIssueTFD: TEdit
         Left = 136
         Top = 279
         Width = 313
         Height = 21
         TabOrder = 6
       end
-      object Edit3: TEdit
+      object txtIssueCFDI: TEdit
         Left = 136
         Top = 306
         Width = 313
         Height = 21
         TabOrder = 7
       end
-      object Edit4: TEdit
+      object txtIssueCadOriSAT: TEdit
         Left = 136
         Top = 333
         Width = 313
         Height = 21
         TabOrder = 8
       end
-      object Edit5: TEdit
+      object txtIssueNoCertSAT: TEdit
         Left = 136
         Top = 360
         Width = 313
         Height = 21
         TabOrder = 9
       end
-      object Edit6: TEdit
+      object txtIssueNoCertCFDI: TEdit
         Left = 136
         Top = 387
         Width = 313
         Height = 21
         TabOrder = 10
       end
-      object Edit7: TEdit
+      object txtIssueUUID: TEdit
         Left = 136
         Top = 414
         Width = 313
         Height = 21
         TabOrder = 11
       end
-      object Edit8: TEdit
+      object txtIssueSelloSAT: TEdit
         Left = 136
         Top = 441
         Width = 313
         Height = 21
         TabOrder = 12
       end
-      object Edit9: TEdit
+      object txtIssueSelloCFDI: TEdit
         Left = 136
         Top = 468
         Width = 313
         Height = 21
         TabOrder = 13
       end
-      object Edit10: TEdit
+      object txtIssueFechaTimbrado: TEdit
         Left = 136
         Top = 493
         Width = 313
         Height = 21
         TabOrder = 14
       end
-      object Edit11: TEdit
+      object txtIssueMessage: TEdit
         Left = 568
         Top = 279
         Width = 233
         Height = 21
         TabOrder = 15
       end
-      object Edit12: TEdit
+      object txtIssueMessageDetail: TEdit
         Left = 568
         Top = 306
         Width = 233
         Height = 21
         TabOrder = 16
       end
-      object Edit13: TEdit
+      object txtIssueQr: TEdit
         Left = 136
         Top = 520
         Width = 313
@@ -621,10 +629,6 @@
     object TabSheet4: TTabSheet
       Caption = 'Emisi'#243'n Timbrado JSON'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label52: TLabel
         Left = 95
         Top = 263
@@ -854,6 +858,7 @@
         Height = 33
         Caption = 'Cargar JSON'
         TabOrder = 5
+        OnClick = Button16Click
       end
       object txtJsonTfd: TEdit
         Left = 120
@@ -959,23 +964,22 @@
         TabOrder = 0
         object TabSheet10: TTabSheet
           Caption = 'Cancelaci'#243'n'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
+          object Label104: TLabel
+            Left = 792
+            Top = 387
+            Width = 42
+            Height = 13
+            Caption = 'Message'
+          end
           object Cancelación: TPageControl
             Left = 0
             Top = 3
             Width = 1105
             Height = 510
-            ActivePage = TabSheet17
+            ActivePage = TabSheet14
             TabOrder = 0
             object TabSheet14: TTabSheet
               Caption = 'Cancelaci'#243'n por CSD'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label64: TLabel
                 Left = 24
                 Top = 218
@@ -1006,6 +1010,27 @@
                 Height = 13
                 Caption = 'RFC'
               end
+              object Label130: TLabel
+                Left = 64
+                Top = 370
+                Width = 31
+                Height = 13
+                Caption = 'Status'
+              end
+              object Label131: TLabel
+                Left = 53
+                Top = 413
+                Width = 42
+                Height = 13
+                Caption = 'message'
+              end
+              object Label132: TLabel
+                Left = 26
+                Top = 448
+                Width = 69
+                Height = 13
+                Caption = 'messageDetail'
+              end
               object Button17: TButton
                 Left = 0
                 Top = 3
@@ -1022,6 +1047,7 @@
                 Height = 33
                 Caption = 'Buscar .Cer'
                 TabOrder = 1
+                OnClick = Button20Click
               end
               object Button18: TButton
                 Left = 991
@@ -1030,9 +1056,10 @@
                 Height = 33
                 Caption = 'Buscar .Key'
                 TabOrder = 2
+                OnClick = Button18Click
               end
               object txtCsdCer: TMemo
-                Left = 470
+                Left = 480
                 Top = 114
                 Width = 505
                 Height = 105
@@ -1100,10 +1127,6 @@
             object TabSheet15: TTabSheet
               Caption = 'Cancelaci'#243'n por PFX'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label68: TLabel
                 Left = 192
                 Top = 16
@@ -1125,6 +1148,27 @@
                 Height = 13
                 Caption = 'Password'
               end
+              object Label127: TLabel
+                Left = 96
+                Top = 362
+                Width = 31
+                Height = 13
+                Caption = 'Status'
+              end
+              object Label128: TLabel
+                Left = 85
+                Top = 405
+                Width = 42
+                Height = 13
+                Caption = 'message'
+              end
+              object Label129: TLabel
+                Left = 58
+                Top = 440
+                Width = 69
+                Height = 13
+                Caption = 'messageDetail'
+              end
               object txtPfxAcuse: TMemo
                 Left = 16
                 Top = 224
@@ -1134,7 +1178,7 @@
               end
               object txtPfxPfx: TMemo
                 Left = 456
-                Top = 16
+                Top = 13
                 Width = 521
                 Height = 109
                 TabOrder = 1
@@ -1197,75 +1241,47 @@
                 Height = 41
                 Caption = 'Abrir PFX'
                 TabOrder = 9
-              end
-            end
-            object TabSheet16: TTabSheet
-              Caption = 'Cancelaci'#243'n por XML'
-              ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
-              object txtXmlXml: TMemo
-                Left = 240
-                Top = 24
-                Width = 713
-                Height = 129
-                TabOrder = 0
-              end
-              object txtXmlAcuse: TMemo
-                Left = 48
-                Top = 224
-                Width = 905
-                Height = 121
-                TabOrder = 1
-              end
-              object txtXmlStatus: TEdit
-                Left = 200
-                Top = 368
-                Width = 297
-                Height = 21
-                TabOrder = 2
-              end
-              object txtXmlMessage: TEdit
-                Left = 200
-                Top = 408
-                Width = 297
-                Height = 21
-                TabOrder = 3
-              end
-              object txtXmlMessageDetail: TEdit
-                Left = 200
-                Top = 448
-                Width = 297
-                Height = 21
-                TabOrder = 4
-              end
-              object Button22: TButton
-                Left = 48
-                Top = 24
-                Width = 137
-                Height = 57
-                Caption = 'Cancelar por XML'
-                TabOrder = 5
-                OnClick = Button22Click
-              end
-              object Button23: TButton
-                Left = 976
-                Top = 24
-                Width = 105
-                Height = 49
-                Caption = 'Abrir PFX'
-                TabOrder = 6
+                OnClick = Button21Click
               end
             end
             object TabSheet17: TTabSheet
               Caption = 'Cancelaci'#243'n por UUID'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
+              object Label119: TLabel
+                Left = 216
+                Top = 43
+                Width = 20
+                Height = 13
+                Caption = 'RFC'
+              end
+              object Label120: TLabel
+                Left = 211
+                Top = 83
+                Width = 25
+                Height = 13
+                Caption = 'UUID'
+              end
+              object Label121: TLabel
+                Left = 216
+                Top = 331
+                Width = 31
+                Height = 13
+                Caption = 'Status'
+              end
+              object Label122: TLabel
+                Left = 204
+                Top = 371
+                Width = 42
+                Height = 13
+                Caption = 'message'
+              end
+              object Label123: TLabel
+                Left = 178
+                Top = 416
+                Width = 69
+                Height = 13
+                Caption = 'messageDetail'
+              end
               object Button24: TButton
                 Left = 8
                 Top = 32
@@ -1318,15 +1334,81 @@
                 TabOrder = 6
               end
             end
+            object TabSheet16: TTabSheet
+              Caption = 'Cancelaci'#243'n por XML'
+              ImageIndex = 2
+              ExplicitLeft = 0
+              object Label124: TLabel
+                Left = 154
+                Top = 371
+                Width = 31
+                Height = 13
+                Caption = 'Status'
+              end
+              object Label125: TLabel
+                Left = 143
+                Top = 416
+                Width = 42
+                Height = 13
+                Caption = 'message'
+              end
+              object Label126: TLabel
+                Left = 116
+                Top = 456
+                Width = 69
+                Height = 13
+                Caption = 'messageDetail'
+              end
+              object txtXmlXml: TMemo
+                Left = 240
+                Top = 24
+                Width = 713
+                Height = 129
+                TabOrder = 0
+              end
+              object txtXmlAcuse: TMemo
+                Left = 48
+                Top = 224
+                Width = 905
+                Height = 121
+                TabOrder = 1
+              end
+              object txtXmlStatus: TEdit
+                Left = 200
+                Top = 368
+                Width = 297
+                Height = 21
+                TabOrder = 2
+              end
+              object txtXmlMessage: TEdit
+                Left = 200
+                Top = 408
+                Width = 297
+                Height = 21
+                TabOrder = 3
+              end
+              object txtXmlMessageDetail: TEdit
+                Left = 200
+                Top = 448
+                Width = 297
+                Height = 21
+                TabOrder = 4
+              end
+              object Button22: TButton
+                Left = 48
+                Top = 24
+                Width = 137
+                Height = 57
+                Caption = 'Cancelar por XML'
+                TabOrder = 5
+                OnClick = Button22Click
+              end
+            end
           end
         end
         object TabSheet11: TTabSheet
           Caption = 'Consultar Relacionados'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label72: TLabel
             Left = 45
             Top = 245
@@ -1617,12 +1699,13 @@
             TabOrder = 21
           end
           object Button28: TButton
-            Left = 321
+            Left = 329
             Top = 131
             Width = 65
             Height = 41
             Caption = 'Cargar XML'
             TabOrder = 22
+            OnClick = Button28Click
           end
           object Button29: TButton
             Left = 16
@@ -1640,6 +1723,7 @@
             Height = 23
             Caption = 'Cargar CSD en base64'
             TabOrder = 24
+            OnClick = Button30Click
           end
           object Button31: TButton
             Left = 757
@@ -1648,6 +1732,7 @@
             Height = 23
             Caption = 'Cargar KEY en base64'
             TabOrder = 25
+            OnClick = Button31Click
           end
           object Button32: TButton
             Left = 757
@@ -1656,15 +1741,12 @@
             Height = 23
             Caption = 'Cargar PFX en base64'
             TabOrder = 26
+            OnClick = Button32Click
           end
         end
         object TabSheet12: TTabSheet
           Caption = 'Pendientes Aceptaci'#243'n  Rechazo'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label90: TLabel
             Left = 83
             Top = 203
@@ -1708,8 +1790,8 @@
             Caption = 'RFC a Consultar'
           end
           object Button33: TButton
-            Left = 32
-            Top = 56
+            Left = 36
+            Top = 65
             Width = 113
             Height = 33
             Caption = 'Consultar Pendientes'
@@ -1758,11 +1840,14 @@
             Width = 153
             Height = 21
             TabOrder = 6
+            Text = 'LAN7008173R5'
           end
         end
         object TabSheet13: TTabSheet
           Caption = 'Aceptar o Rechazar Cancelaci'#243'n'
           ImageIndex = 3
+          ExplicitLeft = -100
+          ExplicitTop = -64
           object Label96: TLabel
             Left = 151
             Top = 16
@@ -1819,7 +1904,28 @@
             Height = 13
             Caption = 'Status UUID'#39's'
           end
-          object Memo1: TMemo
+          object Label107: TLabel
+            Left = 779
+            Top = 396
+            Width = 42
+            Height = 13
+            Caption = 'message'
+          end
+          object Label108: TLabel
+            Left = 779
+            Top = 424
+            Width = 69
+            Height = 13
+            Caption = 'messageDetail'
+          end
+          object Status: TLabel
+            Left = 779
+            Top = 453
+            Width = 31
+            Height = 13
+            Caption = 'Status'
+          end
+          object txtAcceptRejectCer: TMemo
             Left = 765
             Top = 57
             Width = 337
@@ -1870,7 +1976,7 @@
               '+UgWMhi5Cs4pcXx1eic5r7uxPoBwcCTt3YI1jKVVnV7/w=')
             TabOrder = 0
           end
-          object Memo2: TMemo
+          object txtAcceptRejectKey: TMemo
             Left = 765
             Top = 183
             Width = 337
@@ -1917,7 +2023,7 @@
               'R2g8B3+Fh49QhKYrd8N6LvvI80cwbEoqYWn5DWA=')
             TabOrder = 1
           end
-          object Memo4: TMemo
+          object txtAcceptRejectPfx: TMemo
             Left = 765
             Top = 309
             Width = 337
@@ -2021,6 +2127,7 @@
             Height = 33
             Caption = 'Importar Key a base64'
             TabOrder = 3
+            OnClick = Button34Click
           end
           object Button35: TButton
             Left = 765
@@ -2029,6 +2136,7 @@
             Height = 33
             Caption = 'Importar CSD a base64'
             TabOrder = 4
+            OnClick = Button35Click
           end
           object Button36: TButton
             Left = 765
@@ -2037,6 +2145,7 @@
             Height = 33
             Caption = 'Importar PFX a base64'
             TabOrder = 5
+            OnClick = Button36Click
           end
           object Button37: TButton
             Left = 3
@@ -2045,6 +2154,7 @@
             Height = 41
             Caption = 'Cancelaci'#243'n por CSD'
             TabOrder = 6
+            OnClick = Button37Click
           end
           object Button38: TButton
             Left = 3
@@ -2053,6 +2163,7 @@
             Height = 41
             Caption = 'Cancelaci'#243'n por PFX'
             TabOrder = 7
+            OnClick = Button38Click
           end
           object Button39: TButton
             Left = 3
@@ -2061,6 +2172,7 @@
             Height = 41
             Caption = 'Cancelaci'#243'n por XML'
             TabOrder = 8
+            OnClick = Button39Click
           end
           object Button40: TButton
             Left = 3
@@ -2069,6 +2181,7 @@
             Height = 41
             Caption = 'Cancelaci'#243'n por UUID'
             TabOrder = 9
+            OnClick = Button40Click
           end
           object Memo5: TMemo
             Left = 422
@@ -2189,6 +2302,7 @@
             Height = 33
             Caption = 'Importar XML de tipo SolicitudAceptacionRechazo'
             TabOrder = 11
+            OnClick = Button41Click
           end
           object txtAcceptRejectRFC: TEdit
             Left = 208
@@ -2244,16 +2358,33 @@
             ItemHeight = 13
             TabOrder = 18
           end
+          object txtAcceptRejectMessage: TEdit
+            Left = 878
+            Top = 396
+            Width = 224
+            Height = 21
+            TabOrder = 19
+          end
+          object txtAcceptRejectMessageDetail: TEdit
+            Left = 878
+            Top = 423
+            Width = 224
+            Height = 21
+            TabOrder = 20
+          end
+          object txtAcceptRejectStatus: TEdit
+            Left = 878
+            Top = 450
+            Width = 224
+            Height = 21
+            TabOrder = 21
+          end
         end
       end
     end
     object TabSheet6: TTabSheet
       Caption = 'Validaci'#243'n de XML'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label11: TLabel
         Left = 129
         Top = 312
@@ -2380,6 +2511,7 @@
         Height = 41
         Caption = 'Abrir CFDI'
         TabOrder = 9
+        OnClick = Button10Click
       end
       object Button11: TButton
         Left = 8
@@ -2394,10 +2526,6 @@
     object TabSheet7: TTabSheet
       Caption = 'Validaci'#243'n de LCO'
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label23: TLabel
         Left = 162
         Top = 163
@@ -2531,10 +2659,6 @@
     object TabSheet8: TTabSheet
       Caption = 'Validaci'#243'n de LRFC'
       ImageIndex = 7
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label39: TLabel
         Left = 90
         Top = 197
@@ -2640,10 +2764,159 @@
     object TabSheet9: TTabSheet
       Caption = 'Generaci'#243'n de PDF'
       ImageIndex = 8
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
+    end
+    object TabSheet18: TTabSheet
+      Caption = 'AccountBalance'
+      ImageIndex = 9
+      object Label109: TLabel
+        Left = 280
+        Top = 40
+        Width = 67
+        Height = 13
+        Caption = 'idSaldoCliente'
+      end
+      object Label110: TLabel
+        Left = 280
+        Top = 72
+        Width = 77
+        Height = 13
+        Caption = 'idClienteUsuario'
+      end
+      object Label111: TLabel
+        Left = 280
+        Top = 109
+        Width = 62
+        Height = 13
+        Caption = 'saldoTimbres'
+      end
+      object Label112: TLabel
+        Left = 280
+        Top = 144
+        Width = 80
+        Height = 13
+        Caption = 'timbresUtilizados'
+      end
+      object Label113: TLabel
+        Left = 280
+        Top = 183
+        Width = 76
+        Height = 13
+        Caption = 'fechaExpiracion'
+      end
+      object Label114: TLabel
+        Left = 280
+        Top = 224
+        Width = 42
+        Height = 13
+        Caption = 'unlimited'
+      end
+      object Label115: TLabel
+        Left = 280
+        Top = 264
+        Width = 84
+        Height = 13
+        Caption = 'timbresAsignados'
+      end
+      object Label116: TLabel
+        Left = 280
+        Top = 304
+        Width = 30
+        Height = 13
+        Caption = 'status'
+      end
+      object Label117: TLabel
+        Left = 280
+        Top = 344
+        Width = 42
+        Height = 13
+        Caption = 'message'
+      end
+      object Label118: TLabel
+        Left = 280
+        Top = 384
+        Width = 69
+        Height = 13
+        Caption = 'messageDetail'
+      end
+      object btnBalance: TButton
+        Left = 40
+        Top = 155
+        Width = 145
+        Height = 41
+        Caption = 'Obtener Estado Cuenta'
+        TabOrder = 0
+        OnClick = btnBalanceClick
+      end
+      object txtIdSaldoCliente: TEdit
+        Left = 424
+        Top = 37
+        Width = 273
+        Height = 21
+        TabOrder = 1
+      end
+      object txtIdClienteUsuario: TEdit
+        Left = 424
+        Top = 69
+        Width = 273
+        Height = 21
+        TabOrder = 2
+      end
+      object txtSaldoTimbres: TEdit
+        Left = 424
+        Top = 106
+        Width = 273
+        Height = 21
+        TabOrder = 3
+      end
+      object txtTimbresUtilizados: TEdit
+        Left = 424
+        Top = 141
+        Width = 273
+        Height = 21
+        TabOrder = 4
+      end
+      object txtFechaExpiracion: TEdit
+        Left = 424
+        Top = 180
+        Width = 273
+        Height = 21
+        TabOrder = 5
+      end
+      object txtUnlimited: TEdit
+        Left = 424
+        Top = 221
+        Width = 273
+        Height = 21
+        TabOrder = 6
+      end
+      object txtTimbresAsignados: TEdit
+        Left = 424
+        Top = 261
+        Width = 273
+        Height = 21
+        TabOrder = 7
+      end
+      object txtStatusBalance: TEdit
+        Left = 424
+        Top = 301
+        Width = 273
+        Height = 21
+        TabOrder = 8
+      end
+      object txtMessageBalance: TEdit
+        Left = 424
+        Top = 341
+        Width = 273
+        Height = 21
+        TabOrder = 9
+      end
+      object txtMessageDetailBalance: TEdit
+        Left = 424
+        Top = 381
+        Width = 273
+        Height = 21
+        TabOrder = 10
+      end
     end
   end
   object OpenDialog1: TOpenDialog

@@ -36,12 +36,14 @@ private
   FCodStatus: String;
   FData: TDataClass;
   FMessage: String;
-  FMessageDetail: String;
+	FMessageDetail: String;
+	FStatus : String;
 public
-  property codStatus: String read FCodStatus write FCodStatus;
-  property data: TDataClass read FData write FData;
-  property message: String read FMessage write FMessage;
-  property messageDetail: String read FMessageDetail write FMessageDetail;
+	property codStatus: String read FCodStatus write FCodStatus;
+	property data: TDataClass read FData write FData;
+	property message: String read FMessage write FMessage;
+	property messageDetail: String read FMessageDetail write FMessageDetail;
+	property status: String read FStatus write FStatus;
   constructor Create;
   destructor Destroy; override;
   function ToJsonString: string;

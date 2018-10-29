@@ -33,7 +33,10 @@ uses
   CancelationAcceptReject,
   CancelationAcceptRejectResponse,
   CancelationRelations,
-  CancelationRelationsResponse;
+	CancelationRelationsResponse,
+	BalanceResponse,
+	Balance,
+	BalanceRequest;
 
 function fechaDeVencimiento(expiresIn: String): String;
 
@@ -101,24 +104,24 @@ type
     Label21: TLabel;
     memoJson: TMemo;
     validateCfdiMemo: TMemo;
-    Memo3: TMemo;
+    txtIssue: TMemo;
     Button2: TButton;
     Button4: TButton;
     Button5: TButton;
     Button6: TButton;
     Button7: TButton;
-    Edit2: TEdit;
-    Edit3: TEdit;
-    Edit4: TEdit;
-    Edit5: TEdit;
-    Edit6: TEdit;
-    Edit7: TEdit;
-    Edit8: TEdit;
-    Edit9: TEdit;
-    Edit10: TEdit;
-    Edit11: TEdit;
-    Edit12: TEdit;
-    Edit13: TEdit;
+    txtIssueTFD: TEdit;
+    txtIssueCFDI: TEdit;
+    txtIssueCadOriSAT: TEdit;
+    txtIssueNoCertSAT: TEdit;
+    txtIssueNoCertCFDI: TEdit;
+    txtIssueUUID: TEdit;
+    txtIssueSelloSAT: TEdit;
+    txtIssueSelloCFDI: TEdit;
+    txtIssueFechaTimbrado: TEdit;
+    txtIssueMessage: TEdit;
+    txtIssueMessageDetail: TEdit;
+    txtIssueQr: TEdit;
     TFD: TLabel;
     adadsad: TLabel;
     Label24: TLabel;
@@ -218,7 +221,6 @@ type
     Cancelación: TPageControl;
     TabSheet14: TTabSheet;
     TabSheet15: TTabSheet;
-    TabSheet16: TTabSheet;
     TabSheet17: TTabSheet;
     Button17: TButton;
     Button20: TButton;
@@ -249,13 +251,6 @@ type
     Label69: TLabel;
     Label70: TLabel;
     Button21: TButton;
-    txtXmlXml: TMemo;
-    txtXmlAcuse: TMemo;
-    txtXmlStatus: TEdit;
-    txtXmlMessage: TEdit;
-    txtXmlMessageDetail: TEdit;
-    Button22: TButton;
-    Button23: TButton;
     Button24: TButton;
     txtUuidRfc: TEdit;
     txtUuidUuid: TEdit;
@@ -322,9 +317,9 @@ type
     Label94: TLabel;
     txtPendingsRFC: TEdit;
     Label95: TLabel;
-    Memo1: TMemo;
-    Memo2: TMemo;
-    Memo4: TMemo;
+    txtAcceptRejectCer: TMemo;
+    txtAcceptRejectKey: TMemo;
+    txtAcceptRejectPfx: TMemo;
     Button34: TButton;
     Button35: TButton;
     Button36: TButton;
@@ -349,6 +344,58 @@ type
     Label102: TLabel;
     txtAcceptRejectFolios: TListBox;
     Label103: TLabel;
+    Label104: TLabel;
+    TabSheet16: TTabSheet;
+    txtXmlXml: TMemo;
+    txtXmlAcuse: TMemo;
+    txtXmlStatus: TEdit;
+    txtXmlMessage: TEdit;
+    txtXmlMessageDetail: TEdit;
+    Button22: TButton;
+    Label105: TLabel;
+    Label106: TLabel;
+    txtAcceptRejectMessage: TEdit;
+    Label107: TLabel;
+    Label108: TLabel;
+    Status: TLabel;
+    txtAcceptRejectMessageDetail: TEdit;
+    txtAcceptRejectStatus: TEdit;
+    TabSheet18: TTabSheet;
+    Label109: TLabel;
+    Label110: TLabel;
+    Label111: TLabel;
+    Label112: TLabel;
+    Label113: TLabel;
+    Label114: TLabel;
+    Label115: TLabel;
+    Label116: TLabel;
+    btnBalance: TButton;
+    txtIdSaldoCliente: TEdit;
+    txtIdClienteUsuario: TEdit;
+    txtSaldoTimbres: TEdit;
+    txtTimbresUtilizados: TEdit;
+    txtFechaExpiracion: TEdit;
+    txtUnlimited: TEdit;
+    txtTimbresAsignados: TEdit;
+    txtStatusBalance: TEdit;
+    Label117: TLabel;
+    Label118: TLabel;
+    txtMessageBalance: TEdit;
+    txtMessageDetailBalance: TEdit;
+    Label119: TLabel;
+    Label120: TLabel;
+    Label121: TLabel;
+    Label122: TLabel;
+    Label123: TLabel;
+    Label124: TLabel;
+    Label125: TLabel;
+    Label126: TLabel;
+    Label127: TLabel;
+    Label128: TLabel;
+    Label129: TLabel;
+    Label130: TLabel;
+    Label131: TLabel;
+    Label132: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure btnTimbrarV1Click(Sender: TObject);
@@ -371,11 +418,36 @@ type
     procedure Button27Click(Sender: TObject);
     procedure Button26Click(Sender: TObject);
     procedure Button33Click(Sender: TObject);
+    procedure Button37Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button16Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
+    procedure Button7Click(Sender: TObject);
+    procedure Button38Click(Sender: TObject);
+    procedure Button39Click(Sender: TObject);
+    procedure Button40Click(Sender: TObject);
+    procedure btnBalanceClick(Sender: TObject);
+    procedure Button41Click(Sender: TObject);
+    procedure Button35Click(Sender: TObject);
+    procedure Button34Click(Sender: TObject);
+    procedure Button36Click(Sender: TObject);
+    procedure Button32Click(Sender: TObject);
+    procedure Button31Click(Sender: TObject);
+    procedure Button30Click(Sender: TObject);
+    procedure Button28Click(Sender: TObject);
+    procedure Button18Click(Sender: TObject);
+    procedure Button20Click(Sender: TObject);
+    procedure Button21Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
-    procedure cleanStamp();
+		procedure cleanStamp();
+		procedure cleanIssueStamp();
+		procedure cleanJsonStamp();
   end;
 
 var
@@ -421,7 +493,7 @@ begin
   except
     txtMessageStamp.Text := UTF8ToWideString(StampResponse.message);
     txtMessageDetailStamp.Text := UTF8ToWideString(StampResponse.messageDetail);
-  end;
+	end;
 end;
 
 procedure TForm1.btnTimbrarV4Click(Sender: TObject);
@@ -449,7 +521,23 @@ begin
   except
     txtMessageStamp.Text := UTF8ToWideString(StampResponse.message);
     txtMessageDetailStamp.Text := UTF8ToWideString(StampResponse.messageDetail);
-  end;
+	end;
+end;
+
+procedure TForm1.Button10Click(Sender: TObject);
+var
+  stream: TMemoryStream;
+begin
+	validateCfdiMemo.Text := '';
+  OpenDialog1.Filter := 'Archivos XML (*.xml)|*.xml|';
+  stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+    if FileExists(OpenDialog1.FileName) then
+      stream.LoadFromFile(OpenDialog1.FileName)
+		else
+      raise Exception.Create('File does not exist.');
+  validateCfdiMemo.Lines.LoadFromFile(OpenDialog1.FileName);
 end;
 
 procedure TForm1.Button11Click(Sender: TObject);
@@ -545,6 +633,22 @@ begin
   end;
 end;
 
+procedure TForm1.Button16Click(Sender: TObject);
+var
+  stream: TMemoryStream;
+begin
+	memoJson.Text := '';
+	OpenDialog1.Filter := 'Archivos JSON (*.json)|*.json|';
+  stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+    if FileExists(OpenDialog1.FileName) then
+      stream.LoadFromFile(OpenDialog1.FileName)
+		else
+      raise Exception.Create('File does not exist.');
+  memoJson.Lines.LoadFromFile(OpenDialog1.FileName);
+end;
+
 procedure TForm1.Button17Click(Sender: TObject);
 var
   cancelationCsd: TCancelationResponse;
@@ -561,6 +665,24 @@ begin
     txtCsdMessage.Text := cancelationCsd.message;
   end;
 
+end;
+
+procedure TForm1.Button18Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+	encode: String;
+begin
+	txtCsdKey.Text := '';
+	OpenDialog1.Filter := 'Archivos Key (*.key)|*.key|';
+	stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+		if FileExists(OpenDialog1.FileName) then
+			stream.LoadFromFile(OpenDialog1.FileName)
+		else
+			raise Exception.Create('File does not exist.');
+	encode:= EncodeBase64(stream.Memory, stream.Size);
+	txtCsdKey.Text := encode;
 end;
 
 procedure TForm1.Button19Click(Sender: TObject);
@@ -603,6 +725,42 @@ begin
   end;
 end;
 
+procedure TForm1.Button20Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+	encode: String;
+begin
+	txtCsdCer.Text := '';
+	OpenDialog1.Filter := 'Archivos Cer (*.cer)|*.cer|';
+	stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+		if FileExists(OpenDialog1.FileName) then
+			stream.LoadFromFile(OpenDialog1.FileName)
+		else
+			raise Exception.Create('File does not exist.');
+	encode:= EncodeBase64(stream.Memory, stream.Size);
+	txtCsdCer.Text := encode;
+end;
+
+procedure TForm1.Button21Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+	encode: String;
+begin
+	txtPfxPfx.Text := '';
+	OpenDialog1.Filter := 'Archivos Pfx (*.pfx)|*.pfx|';
+	stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+		if FileExists(OpenDialog1.FileName) then
+			stream.LoadFromFile(OpenDialog1.FileName)
+		else
+			raise Exception.Create('File does not exist.');
+	encode:= EncodeBase64(stream.Memory, stream.Size);
+	txtPfxPfx.Text := encode;
+end;
+
 procedure TForm1.Button22Click(Sender: TObject);
 var
   cancelacionXML: TCancelationResponse;
@@ -628,9 +786,9 @@ begin
     txtUuidAcuse.Text := cancelacionUuid.data.acuse;
     txtUuidStatus.Text := cancelacionUuid.status;
   except
-    txtUuidMessage.Text := cancelacionUuid.message;
+		txtUuidMessage.Text := cancelacionUuid.message;
     txtUuidMessageDetail.Text := cancelacionUuid.messageDetail
-  end;
+	end;
 
 end;
 
@@ -725,6 +883,22 @@ begin
 
 end;
 
+procedure TForm1.Button28Click(Sender: TObject);
+var
+  stream: TMemoryStream;
+begin
+	txtRelationsXml.Text := '';
+  OpenDialog1.Filter := 'Archivos XML (*.xml)|*.xml|';
+  stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+    if FileExists(OpenDialog1.FileName) then
+      stream.LoadFromFile(OpenDialog1.FileName)
+		else
+      raise Exception.Create('File does not exist.');
+  txtRelationsXml.Lines.LoadFromFile(OpenDialog1.FileName);
+end;
+
 procedure TForm1.Button29Click(Sender: TObject);
 var
   relationsUuid: TCancelationRelationsResponse;
@@ -752,7 +926,23 @@ begin
   except
     txtRelationsMessage.Text := relationsUuid.message;
     txtRelationsMessageDetail.Text := relationsUuid.messageDetail;
-  end;
+	end;
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+begin
+	txtIssue.Text := '';
+	OpenDialog1.Filter := 'Archivos XML (*.xml)|*.xml|';
+  stream := TMemoryStream.Create;
+
+  if OpenDialog1.Execute then
+    if FileExists(OpenDialog1.FileName) then
+      stream.LoadFromFile(OpenDialog1.FileName)
+    else
+			raise Exception.Create('File does not exist.');
+	txtIssue.Lines.LoadFromFile(OpenDialog1.FileName);
 end;
 
 function fechaDeVencimiento(expiresIn: String): String;
@@ -766,29 +956,106 @@ begin
   case GetTimeZoneInformation(TimeZoneInformation) of
     TIME_ZONE_ID_DAYLIGHT:
       utime := utime - (TimeZoneInformation.DaylightBias / (24 * 60));
-  else
+	else
     utime := utime - (TimeZoneInformation.Bias / (24 * 60));
   end;
   Result := DateTimeToStr(utime);
 end;
 
+procedure TForm1.btnBalanceClick(Sender: TObject);
+var
+	url, token: String;
+	BalanceResponse: TBalanceResponse;
+begin
+	url := txtURL.Text;
+	token := txtToken.Text;
+	BalanceResponse := Balance.AccountBalance(url,token);
+  try
+		txtIdSaldoCliente.Text := BalanceResponse.data.idSaldoCliente;
+		txtIdClienteUsuario.Text := BalanceResponse.data.idClienteUsuario;
+		txtSaldoTimbres.Text := inttostr(BalanceResponse.data.saldoTimbres);
+		txtTimbresUtilizados.Text := inttostr(BalanceResponse.data.timbresUtilizados);
+		txtFechaExpiracion.Text := BalanceResponse.data.fechaExpiracion;
+		txtUnlimited.Text := BoolToStr(BalanceResponse.data.unlimited);
+		txtTimbresAsignados.Text := inttostr(BalanceResponse.data.timbresAsignados);
+		txtStatusBalance.Text := BalanceResponse.status;
+	except
+		txtMessageBalance.Text := UTF8ToWideString(BalanceResponse.message);
+		txtMessageDetailBalance.Text := UTF8ToWideString(BalanceResponse.messageDetail);
+  end;
+end;
+
 procedure TForm1.btnTimbrarV1Click(Sender: TObject);
 var
-  url, token, xml: String;
+	url, token, xml: String;
   StampResponse: TStampResponseV1;
 begin
-  cleanStamp();
+	cleanStamp();
   url := txtURL.Text;
   token := txtToken.Text;
   xml := stampXmlIn.Text;
 
   StampResponse := Stamp.StampV1(url, token, xml);
   try
-    txtTfd.Text := StampResponse.data.TFD;
+		txtTfd.Text := StampResponse.data.TFD;
   except
     txtMessageStamp.Text := UTF8ToWideString(StampResponse.message);
     txtMessageDetailStamp.Text := UTF8ToWideString(StampResponse.messageDetail);
   end;
+end;
+
+procedure TForm1.Button30Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+	encode: String;
+begin
+	txtRelationsB64Cer.Text := '';
+	OpenDialog1.Filter := 'Archivos Cer (*.cer)|*.cer|';
+	stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+		if FileExists(OpenDialog1.FileName) then
+			stream.LoadFromFile(OpenDialog1.FileName)
+		else
+			raise Exception.Create('File does not exist.');
+	encode:= EncodeBase64(stream.Memory, stream.Size);
+	txtRelationsB64Cer.Text := encode;
+end;
+
+procedure TForm1.Button31Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+	encode: String;
+begin
+	txtRelationsB64Key.Text := '';
+	OpenDialog1.Filter := 'Archivos Key (*.key)|*.key|';
+	stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+		if FileExists(OpenDialog1.FileName) then
+			stream.LoadFromFile(OpenDialog1.FileName)
+		else
+			raise Exception.Create('File does not exist.');
+	encode:= EncodeBase64(stream.Memory, stream.Size);
+	txtRelationsB64Key.Text := encode;
+end;
+
+procedure TForm1.Button32Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+	encode: String;
+begin
+	txtRelationsB64Pfx.Text := '';
+	OpenDialog1.Filter := 'Archivos Pfx (*.pfx)|*.pfx|';
+	stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+		if FileExists(OpenDialog1.FileName) then
+			stream.LoadFromFile(OpenDialog1.FileName)
+		else
+			raise Exception.Create('File does not exist.');
+	encode:= EncodeBase64(stream.Memory, stream.Size);
+	txtRelationsB64Pfx.Text := encode;
 end;
 
 procedure TForm1.Button33Click(Sender: TObject);
@@ -796,7 +1063,7 @@ var
   i: Integer;
   cancelacionPendings: TCancelationPendingsResponse;
 begin
-  cancelacionPendings := CancelationPendingsService(txtURL.Text, txtToken.Text,
+	cancelacionPendings := CancelationPendingsService(txtURL.Text, txtToken.Text,
     txtPendingsRFC.Text);
 
   txtPendingsUuids.Clear;
@@ -817,20 +1084,259 @@ begin
 
 end;
 
+procedure TForm1.Button34Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+	encode: String;
+begin
+	txtAcceptRejectKey.Text := '';
+	OpenDialog1.Filter := 'Archivos Key (*.key)|*.key|';
+	stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+		if FileExists(OpenDialog1.FileName) then
+			stream.LoadFromFile(OpenDialog1.FileName)
+		else
+			raise Exception.Create('File does not exist.');
+	encode:= EncodeBase64(stream.Memory, stream.Size);
+	txtAcceptRejectKey.Text := encode;
+end;
+
+procedure TForm1.Button35Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+	encode: String;
+begin
+	txtAcceptRejectCer.Text := '';
+	OpenDialog1.Filter := 'Archivos Cer (*.cer)|*.cer|';
+	stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+		if FileExists(OpenDialog1.FileName) then
+			stream.LoadFromFile(OpenDialog1.FileName)
+		else
+			raise Exception.Create('File does not exist.');
+	encode:= EncodeBase64(stream.Memory, stream.Size);
+	txtAcceptRejectCer.Text := encode;
+end;
+
+procedure TForm1.Button36Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+	encode: String;
+begin
+	txtAcceptRejectPfx.Text := '';
+	OpenDialog1.Filter := 'Archivos Pfx (*.pfx)|*.pfx|';
+	stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+		if FileExists(OpenDialog1.FileName) then
+			stream.LoadFromFile(OpenDialog1.FileName)
+		else
+			raise Exception.Create('File does not exist.');
+	encode:= EncodeBase64(stream.Memory, stream.Size);
+	txtAcceptRejectPfx.Text := encode;
+end;
+
+procedure TForm1.Button37Click(Sender: TObject);
+ var
+ i:Integer;
+	acceptRejectResponse: TCancelationAcceptRejectResponse;
+begin
+	acceptRejectResponse := CancelationAcceptRejectByCsd(txtURL.Text, txtToken.Text, txtAcceptRejectRFC.Text, txtAcceptRejectUUID.Text,
+	 txtAcceptRejectAccion.Text,txtAcceptRejectKey.Text, txtAcceptRejectCer.Text, txtAcceptRejectPassword.Text);
+	try
+		txtAcceptRejectStatus.Text := acceptRejectResponse.status;
+		txtAcceptRejectCodStatus.Text := acceptRejectResponse.codStatus;
+		for i := Low(acceptRejectResponse.data.folios)
+		to High(acceptRejectResponse.data.folios) do
+		txtAcceptRejectFolios.Items.Add(acceptRejectResponse.data.folios[i].uuid);
+		txtAcceptRejectAcuse.Text := acceptRejectResponse.data.acuse;
+		txtAcceptRejectMessage.Text := acceptRejectResponse.message;
+	except
+		txtAcceptRejectMessage.Text := acceptRejectResponse.message;
+		txtAcceptRejectMessageDetail.Text := acceptRejectResponse.messageDetail;
+	end;
+end;
+
+procedure TForm1.Button38Click(Sender: TObject);
+ var
+ i:Integer;
+	acceptRejectResponse: TCancelationAcceptRejectResponse;
+begin
+	acceptRejectResponse := CancelationAcceptRejectByPfx(txtURL.Text, txtToken.Text, txtAcceptRejectRFC.Text, txtAcceptRejectUUID.Text,
+	 txtAcceptRejectAccion.Text,txtAcceptRejectPfx.Text, txtAcceptRejectPassword.Text);
+	try
+		txtAcceptRejectStatus.Text := acceptRejectResponse.status;
+		txtAcceptRejectCodStatus.Text := acceptRejectResponse.codStatus;
+		for i := Low(acceptRejectResponse.data.folios)
+		to High(acceptRejectResponse.data.folios) do
+		txtAcceptRejectFolios.Items.Add(acceptRejectResponse.data.folios[i].uuid);
+		txtAcceptRejectAcuse.Text := acceptRejectResponse.data.acuse;
+		txtAcceptRejectMessage.Text := acceptRejectResponse.message;
+	except
+		txtAcceptRejectMessage.Text := acceptRejectResponse.message;
+		txtAcceptRejectMessageDetail.Text := acceptRejectResponse.messageDetail;
+	end;
+end;
+
+procedure TForm1.Button39Click(Sender: TObject);
+var
+ i:Integer;
+	acceptRejectResponse: TCancelationAcceptRejectResponse;
+begin
+	acceptRejectResponse := CancelationAcceptRejectByXml(txtURL.Text, txtToken.Text, Memo5.Text);
+	try
+		txtAcceptRejectStatus.Text := acceptRejectResponse.status;
+		txtAcceptRejectCodStatus.Text := acceptRejectResponse.codStatus;
+		for i := Low(acceptRejectResponse.data.folios)
+		to High(acceptRejectResponse.data.folios) do
+		txtAcceptRejectFolios.Items.Add(acceptRejectResponse.data.folios[i].uuid);
+		txtAcceptRejectAcuse.Text := acceptRejectResponse.data.acuse;
+		txtAcceptRejectMessage.Text := acceptRejectResponse.message;
+	except
+		txtAcceptRejectMessage.Text := acceptRejectResponse.message;
+		txtAcceptRejectMessageDetail.Text := acceptRejectResponse.messageDetail;
+	end;
+end;
+
 procedure TForm1.Button3Click(Sender: TObject);
 var
   stream: TMemoryStream;
 begin
-  stampXmlIn.Text := '';
+	stampXmlIn.Text := '';
   OpenDialog1.Filter := 'Archivos XML (*.xml)|*.xml|';
+  stream := TMemoryStream.Create;
+
+	if OpenDialog1.Execute then
+    if FileExists(OpenDialog1.FileName) then
+      stream.LoadFromFile(OpenDialog1.FileName)
+		else
+      raise Exception.Create('File does not exist.');
+  stampXmlIn.Lines.LoadFromFile(OpenDialog1.FileName);
+end;
+
+procedure TForm1.Button40Click(Sender: TObject);
+ var
+ i:Integer;
+	acceptRejectResponse: TCancelationAcceptRejectResponse;
+begin
+	acceptRejectResponse := CancelationAcceptRejectByUuid(txtURL.Text, txtToken.Text, txtAcceptRejectRFC.Text, txtAcceptRejectUUID.Text,
+	 txtAcceptRejectAccion.Text);
+	try
+		txtAcceptRejectStatus.Text := acceptRejectResponse.status;
+		txtAcceptRejectCodStatus.Text := acceptRejectResponse.codStatus;
+		for i := Low(acceptRejectResponse.data.folios)
+		to High(acceptRejectResponse.data.folios) do
+		txtAcceptRejectFolios.Items.Add(acceptRejectResponse.data.folios[i].uuid);
+		txtAcceptRejectAcuse.Text := acceptRejectResponse.data.acuse;
+		txtAcceptRejectMessage.Text := acceptRejectResponse.message;
+	except
+		txtAcceptRejectMessage.Text := acceptRejectResponse.message;
+		txtAcceptRejectMessageDetail.Text := acceptRejectResponse.messageDetail;
+	end;
+end;
+
+procedure TForm1.Button41Click(Sender: TObject);
+var
+	stream: TMemoryStream;
+begin
+	Memo5.Text := '';
+	OpenDialog1.Filter := 'Archivos XML (*.xml)|*.xml|';
   stream := TMemoryStream.Create;
 
   if OpenDialog1.Execute then
     if FileExists(OpenDialog1.FileName) then
-      stream.LoadFromFile(OpenDialog1.FileName)
+			stream.LoadFromFile(OpenDialog1.FileName)
     else
-      raise Exception.Create('File does not exist.');
-  stampXmlIn.Lines.LoadFromFile(OpenDialog1.FileName);
+			raise Exception.Create('File does not exist.');
+	Memo5.Lines.LoadFromFile(OpenDialog1.FileName);
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+var
+	url, token, xml: String;
+  StampResponse: TStampResponseV1;
+begin
+	cleanIssueStamp();
+	url := txtURL.Text;
+  token := txtToken.Text;
+	xml := txtIssue.Text;
+
+	StampResponse := Issue.IssueV1(url, token, xml);
+	try
+		txtIssueTFD.Text := StampResponse.data.TFD;
+	except
+		txtIssueMessage.Text := UTF8ToWideString(StampResponse.message);
+		txtIssueMessageDetail.Text := UTF8ToWideString(StampResponse.messageDetail);
+	end;
+end;
+
+procedure TForm1.Button5Click(Sender: TObject);
+var
+  url, token, xml: String;
+	StampResponse: TStampResponseV2;
+begin
+	cleanIssueStamp();
+  url := txtURL.Text;
+  token := txtToken.Text;
+	xml := txtIssue.Text;
+
+	StampResponse := Issue.IssueV2(url, token, xml);
+	try
+		txtIssueTfd.Text := StampResponse.data.TFD;
+		txtIssueCfdi.Text := StampResponse.data.cfdi;
+	except
+		txtIssueMessage.Text := UTF8ToWideString(StampResponse.message);
+		txtIssueMessageDetail.Text := UTF8ToWideString(StampResponse.messageDetail);
+	end;
+end;
+
+procedure TForm1.Button6Click(Sender: TObject);
+var
+  url, token, xml: String;
+  StampResponse: TStampResponseV3;
+begin
+	cleanIssueStamp();
+  url := txtURL.Text;
+  token := txtToken.Text;
+	xml := txtIssue.Text;
+
+	StampResponse := Issue.IssueV3(url, token, xml);
+  try
+		txtIssueCfdi.Text := StampResponse.data.cfdi;
+  except
+		txtIssueMessage.Text := UTF8ToWideString(StampResponse.message);
+		txtIssueMessageDetail.Text := UTF8ToWideString(StampResponse.messageDetail);
+  end;
+end;
+
+procedure TForm1.Button7Click(Sender: TObject);
+var
+  url, token, xml: String;
+  StampResponse: TStampResponseV4;
+begin
+	cleanIssueStamp();
+  url := txtURL.Text;
+  token := txtToken.Text;
+	xml := stampXmlIn.Text;
+
+	StampResponse := Issue.IssueV4(url, token, xml);
+  try
+		txtIssueCfdi.Text := StampResponse.data.cfdi;
+		txtIssueCadOriSat.Text := StampResponse.data.cadenaOriginalSAT;
+		txtIssueNoCertSat.Text := StampResponse.data.noCertificadoSAT;
+		txtIssueNoCertCfdi.Text := StampResponse.data.noCertificadoSAT;
+		txtIssueUuid.Text := StampResponse.data.uuid;
+		txtIssueSelloSat.Text := StampResponse.data.selloSAT;
+		txtIssueSelloCfdi.Text := StampResponse.data.noCertificadoSAT;
+		txtIssueFechaTimbrado.Text := DateToStr(StampResponse.data.fechaTimbrado);
+		txtIssueQr.Text := StampResponse.data.qrCode;
+
+	except
+		txtIssueMessage.Text := UTF8ToWideString(StampResponse.message);
+		txtIssueMessageDetail.Text := UTF8ToWideString(StampResponse.messageDetail);
+  end;
 end;
 
 procedure TForm1.Button8Click(Sender: TObject);
@@ -880,19 +1386,51 @@ end;
 
 procedure TForm1.cleanStamp();
 begin
-  txtTfd.Text := '';
-  txtCfdi.Text := '';
-  txtNoCertificadoSat.Text := '';
-  txtCadenaOriginalSat.Text := '';
-  txtNoCertificadoSat.Text := '';
-  txtNoCertificadoCfdi.Text := '';
-  txtUuid.Text := '';
-  txtSelloSat.Text := '';
-  txtSelloCfdi.Text := '';
-  txtFechaTimbrado.Text := '';
-  txtQrCode.Text := '';
-  txtMessageStamp.Text := '';
-  txtMessageDetailStamp.Text := '';
+	txtTfd.Text := '';
+	txtCfdi.Text := '';
+	txtNoCertificadoSat.Text := '';
+	txtCadenaOriginalSat.Text := '';
+	txtNoCertificadoSat.Text := '';
+	txtNoCertificadoCfdi.Text := '';
+	txtUuid.Text := '';
+	txtSelloSat.Text := '';
+	txtSelloCfdi.Text := '';
+	txtFechaTimbrado.Text := '';
+	txtQrCode.Text := '';
+	txtMessageStamp.Text := '';
+	txtMessageDetailStamp.Text := '';
+end;
+
+procedure TForm1.cleanIssueStamp();
+begin
+	 txtIssueTFD.Text := '';
+	 txtIssueCFDI.Text := '';
+	 txtIssueCadOriSAT.Text := '';
+	 txtIssueNoCertSAT.Text := '';
+	 txtIssueNoCertCFDI.Text := '';
+	 txtIssueUUID.Text := '';
+	 txtIssueSelloSAT.Text := '';
+	 txtIssueSelloCFDI.Text := '';
+	 txtIssueFechaTimbrado.Text := '';
+	 txtIssueQr.Text := '';
+	 txtIssueMessageDetail.Text := '';
+end;
+
+procedure TForm1.cleanJsonStamp();
+begin
+	txtJsonTfd.Text := '';
+	txtJsonCfdi.Text := '';
+	txtJsonNoCertificadoSat.Text := '';
+	txtJsonCadenaOriginalSat.Text := '';
+	txtJsonNoCertificadoSat.Text := '';
+	txtJsonNoCertificadoCfdi.Text := '';
+	txtJsonUuid.Text := '';
+	txtJsonSelloSat.Text := '';
+	txtJsonSelloCfdi.Text := '';
+	txtJsonFechaDeTimbrado.Text := '';
+	txtJsonCodigoQr.Text := '';
+	txtJsonMessage.Text := '';
+	txtJsonMessageDetail.Text := '';
 end;
 
 end.

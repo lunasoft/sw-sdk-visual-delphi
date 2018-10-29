@@ -29,7 +29,10 @@ uses
   CancelationRelationsResponse in 'Cancelation\Relations\CancelationRelationsResponse.pas',
   CancelationAcceptRejectResponse in 'Cancelation\AcceptReject\CancelationAcceptRejectResponse.pas',
   CancelationPendings in 'Cancelation\Pendings\CancelationPendings.pas',
-  CancelationRelations in 'Cancelation\Relations\CancelationRelations.pas';
+  CancelationRelations in 'Cancelation\Relations\CancelationRelations.pas',
+  Balance in 'AccountBalance\Balance.pas',
+  BalanceRequest in 'AccountBalance\BalanceRequest.pas',
+  BalanceResponse in 'AccountBalance\BalanceResponse.pas';
 
 {$R *.res}
 

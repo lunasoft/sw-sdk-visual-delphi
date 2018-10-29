@@ -130,6 +130,9 @@
         <DCCReference Include="Cancelation\AcceptReject\CancelationAcceptRejectResponse.pas"/>
         <DCCReference Include="Cancelation\Pendings\CancelationPendings.pas"/>
         <DCCReference Include="Cancelation\Relations\CancelationRelations.pas"/>
+        <DCCReference Include="AccountBalance\Balance.pas"/>
+        <DCCReference Include="AccountBalance\BalanceRequest.pas"/>
+        <DCCReference Include="AccountBalance\BalanceResponse.pas"/>
         <None Include="ModelSupport_unitTestDelphiRest\default.txaPackage"/>
         <None Include="ModelSupport_unitTestDelphiRest\default.txvpck"/>
         <None Include="ModelSupport_unitTestDelphiRest\Authentication\default.txvpck"/>
