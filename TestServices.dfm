@@ -33,7 +33,7 @@
     Top = 0
     Width = 1121
     Height = 569
-    ActivePage = TabSheet1
+    ActivePage = TabSheet5
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Autenticaci'#243'n'
@@ -960,7 +960,7 @@
         Top = 0
         Width = 1113
         Height = 545
-        ActivePage = TabSheet13
+        ActivePage = TabSheet11
         TabOrder = 0
         object TabSheet10: TTabSheet
           Caption = 'Cancelaci'#243'n'
@@ -976,7 +976,7 @@
             Top = 3
             Width = 1105
             Height = 510
-            ActivePage = TabSheet14
+            ActivePage = TabSheet17
             TabOrder = 0
             object TabSheet14: TTabSheet
               Caption = 'Cancelaci'#243'n por CSD'
@@ -1337,7 +1337,6 @@
             object TabSheet16: TTabSheet
               Caption = 'Cancelaci'#243'n por XML'
               ImageIndex = 2
-              ExplicitLeft = 0
               object Label124: TLabel
                 Left = 154
                 Top = 371
@@ -1451,36 +1450,8 @@
             Height = 13
             Caption = 'Password Key'
           end
-          object Label78: TLabel
-            Left = 42
-            Top = 379
-            Width = 56
-            Height = 13
-            Caption = 'Padre UUID'
-          end
-          object Label79: TLabel
-            Left = 13
-            Top = 406
-            Width = 85
-            Height = 13
-            Caption = 'Padre RFC Emisor'
-          end
-          object Label80: TLabel
-            Left = 0
-            Top = 437
-            Width = 98
-            Height = 13
-            Caption = 'Padre RFC Receptor'
-          end
-          object Label81: TLabel
-            Left = 404
-            Top = 379
-            Width = 46
-            Height = 13
-            Caption = 'Hijo UUID'
-          end
           object Label82: TLabel
-            Left = 128
+            Left = 104
             Top = 352
             Width = 94
             Height = 13
@@ -1492,20 +1463,6 @@
             Width = 89
             Height = 13
             Caption = 'Relacionados Hijos'
-          end
-          object Label84: TLabel
-            Left = 375
-            Top = 406
-            Width = 75
-            Height = 13
-            Caption = 'Hijo RFC Emisor'
-          end
-          object Label85: TLabel
-            Left = 362
-            Top = 437
-            Width = 88
-            Height = 13
-            Caption = 'Hijo RFC Receptor'
           end
           object Label86: TLabel
             Left = 784
@@ -1573,68 +1530,26 @@
             Height = 21
             TabOrder = 4
           end
-          object txtRelationsPadreUuid: TEdit
-            Left = 104
-            Top = 376
-            Width = 225
-            Height = 21
-            TabOrder = 5
-          end
-          object txtRelationsPadreRfcEmisor: TEdit
-            Left = 104
-            Top = 407
-            Width = 225
-            Height = 21
-            TabOrder = 6
-          end
-          object txtRelationsPadreRfcReceptor: TEdit
-            Left = 104
-            Top = 434
-            Width = 225
-            Height = 21
-            TabOrder = 7
-          end
-          object txtRelationsHijosUuid: TEdit
-            Left = 456
-            Top = 376
-            Width = 225
-            Height = 21
-            TabOrder = 8
-          end
-          object txtRelationsHijosRfcEmisor: TEdit
-            Left = 456
-            Top = 403
-            Width = 225
-            Height = 21
-            TabOrder = 9
-          end
-          object txtRelationsHijosRfcReceptor: TEdit
-            Left = 456
-            Top = 430
-            Width = 225
-            Height = 21
-            TabOrder = 10
-          end
           object txtRelationsMessage: TEdit
             Left = 832
             Top = 376
             Width = 270
             Height = 21
-            TabOrder = 11
+            TabOrder = 5
           end
           object txtRelationsMessageDetail: TEdit
             Left = 832
             Top = 403
             Width = 270
             Height = 21
-            TabOrder = 12
+            TabOrder = 6
           end
           object txtRelationsRfcEmisor: TEdit
             Left = 424
             Top = 43
             Width = 257
             Height = 21
-            TabOrder = 13
+            TabOrder = 7
             Text = 'LAN7008173R5'
           end
           object txtRelationsPassword: TEdit
@@ -1642,7 +1557,7 @@
             Top = 70
             Width = 257
             Height = 21
-            TabOrder = 14
+            TabOrder = 8
             Text = '12345678a'
           end
           object txtRelationsB64Cer: TMemo
@@ -1650,21 +1565,21 @@
             Top = 43
             Width = 345
             Height = 81
-            TabOrder = 15
+            TabOrder = 9
           end
           object txtRelationsB64Key: TMemo
             Left = 757
             Top = 158
             Width = 345
             Height = 81
-            TabOrder = 16
+            TabOrder = 10
           end
           object txtRelationsB64Pfx: TMemo
             Left = 757
             Top = 274
             Width = 345
             Height = 73
-            TabOrder = 17
+            TabOrder = 11
           end
           object Button26: TButton
             Left = 16
@@ -1672,7 +1587,7 @@
             Width = 161
             Height = 42
             Caption = 'Consulta Relacionados PFX'
-            TabOrder = 18
+            TabOrder = 12
             OnClick = Button26Click
           end
           object txtRelationsStatus: TEdit
@@ -1680,7 +1595,7 @@
             Top = 430
             Width = 270
             Height = 21
-            TabOrder = 19
+            TabOrder = 13
           end
           object Button27: TButton
             Left = 16
@@ -1688,7 +1603,7 @@
             Width = 161
             Height = 41
             Caption = 'Consulta Relacionados XML'
-            TabOrder = 20
+            TabOrder = 14
             OnClick = Button27Click
           end
           object txtRelationsXml: TMemo
@@ -1696,7 +1611,7 @@
             Top = 112
             Width = 281
             Height = 205
-            TabOrder = 21
+            TabOrder = 15
           end
           object Button28: TButton
             Left = 329
@@ -1704,7 +1619,7 @@
             Width = 65
             Height = 41
             Caption = 'Cargar XML'
-            TabOrder = 22
+            TabOrder = 16
             OnClick = Button28Click
           end
           object Button29: TButton
@@ -1713,7 +1628,7 @@
             Width = 161
             Height = 41
             Caption = 'Consulta Relacionados UUID'
-            TabOrder = 23
+            TabOrder = 17
             OnClick = Button29Click
           end
           object Button30: TButton
@@ -1722,7 +1637,7 @@
             Width = 121
             Height = 23
             Caption = 'Cargar CSD en base64'
-            TabOrder = 24
+            TabOrder = 18
             OnClick = Button30Click
           end
           object Button31: TButton
@@ -1731,7 +1646,7 @@
             Width = 116
             Height = 23
             Caption = 'Cargar KEY en base64'
-            TabOrder = 25
+            TabOrder = 19
             OnClick = Button31Click
           end
           object Button32: TButton
@@ -1740,8 +1655,24 @@
             Width = 116
             Height = 23
             Caption = 'Cargar PFX en base64'
-            TabOrder = 26
+            TabOrder = 20
             OnClick = Button32Click
+          end
+          object RelacionadosPadre: TListBox
+            Left = 104
+            Top = 371
+            Width = 225
+            Height = 140
+            ItemHeight = 13
+            TabOrder = 21
+          end
+          object RelacionadosHijo: TListBox
+            Left = 440
+            Top = 371
+            Width = 225
+            Height = 140
+            ItemHeight = 13
+            TabOrder = 22
           end
         end
         object TabSheet12: TTabSheet
@@ -1846,8 +1777,6 @@
         object TabSheet13: TTabSheet
           Caption = 'Aceptar o Rechazar Cancelaci'#243'n'
           ImageIndex = 3
-          ExplicitLeft = -100
-          ExplicitTop = -64
           object Label96: TLabel
             Left = 151
             Top = 16

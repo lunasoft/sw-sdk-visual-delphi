@@ -179,7 +179,7 @@ Coordinates=641,282,60,58
 Coordinates=379,350,126,58
 
 []
-Coordinates=2158,1,170,58
+Coordinates=2158,232,182,58
 Visible=True
 ExplicitSubNodes=
 
@@ -203,9 +203,6 @@ Coordinates=543,557,44,58
 
 [Edit4]
 Coordinates=386,557,44,58
-
-[Memo1]
-Coordinates=435,559,64,58
 
 [Edit9]
 Coordinates=239,557,44,58
@@ -732,9 +729,6 @@ Coordinates=532,971,60,58
 [txtRelationsResultado]
 Coordinates=1916,463,140,58
 
-[Label78]
-Coordinates=1304,1133,60,58
-
 [txtRelationsB64Pfx]
 Coordinates=1410,971,124,58
 
@@ -771,9 +765,6 @@ Coordinates=0,1075,60,58
 [Button25]
 Coordinates=1442,1133,66,58
 
-[Label85]
-Coordinates=1235,1133,60,58
-
 [txtRelationsUuidConsultado]
 Coordinates=2158,78,174,58
 
@@ -798,17 +789,8 @@ Coordinates=118,971,60,58
 [Button27]
 Coordinates=1916,1002,66,58
 
-[txtRelationsHijosRfcReceptor]
-Coordinates=2158,232,182,58
-
 [Button30]
 Coordinates=1272,971,66,58
-
-[Label84]
-Coordinates=1916,848,60,58
-
-[Label80]
-Coordinates=316,1133,60,58
 
 [txtPendingsUuids]
 Coordinates=601,971,115,124
@@ -822,26 +804,14 @@ Coordinates=730,1133,109,58
 [txtAcceptRejectAccion]
 Coordinates=2158,155,143,58
 
-[txtRelationsHijosRfcEmisor]
-Coordinates=2158,463,170,58
-
 [Label75]
 Coordinates=134,875,60,58
-
-[txtRelationsPadreRfcEmisor]
-Coordinates=1916,78,176,58
-
-[txtRelationsHijosUuid]
-Coordinates=2158,617,138,58
 
 [Button26]
 Coordinates=2158,1079,66,58
 
 [Button40]
 Coordinates=1608,971,66,58
-
-[txtRelationsPadreRfcReceptor]
-Coordinates=2158,386,188,58
 
 [Button29]
 Coordinates=1134,971,66,58
@@ -860,9 +830,6 @@ Coordinates=858,971,60,58
 
 [Label99]
 Coordinates=1203,971,60,58
-
-[Label81]
-Coordinates=385,1133,60,58
 
 [txtPendingsRFC]
 Coordinates=1916,771,108,58
@@ -909,17 +876,11 @@ Coordinates=1539,971,66,58
 [Label87]
 Coordinates=454,1133,60,58
 
-[Label79]
-Coordinates=1916,925,60,58
-
 [txtPendingsMessage]
 Coordinates=2158,771,134,58
 
 [txtRelationsPassword]
 Coordinates=2158,848,138,58
-
-[txtRelationsPadreUuid]
-Coordinates=2158,694,143,58
 
 [Button41]
 Coordinates=1341,971,66,58
@@ -929,4 +890,193 @@ Coordinates=2158,925,167,58
 
 [Label92]
 Coordinates=720,971,60,58
+
+[Label132]
+Coordinates=1828,1295,67,58
+
+[Label109]
+Coordinates=354,155,67,58
+
+[Label105]
+Coordinates=1219,386,67,58
+
+[txtIssueMessageDetail]
+Coordinates=614,223,144,58
+
+[Label119]
+Coordinates=316,1133,67,58
+
+[txtIssueSelloSAT]
+Coordinates=2158,386,113,58
+
+[txtIssueCFDI]
+Coordinates=1464,309,89,58
+
+[txtIdClienteUsuario]
+Coordinates=1044,155,124,58
+
+[txtIssueQr]
+Coordinates=493,560,73,58
+
+[Label106]
+Coordinates=558,446,67,58
+
+[Label124]
+Coordinates=58,77,67,58
+
+[Label107]
+Coordinates=455,809,67,58
+
+[TabSheet18]
+Coordinates=650,514,84,36
+
+[txtIssueNoCertCFDI]
+Coordinates=2019,1133,130,58
+
+[txtAcceptRejectMessage]
+Coordinates=127,77,156,58
+
+[txtAcceptRejectFolios]
+Coordinates=1362,1133,139,124
+
+[txtAcceptRejectMessageDetail]
+Coordinates=1206,232,189,58
+
+[txtStatusBalance]
+Coordinates=1945,463,111,58
+
+[Label131]
+Coordinates=1759,1295,67,58
+
+[Label112]
+Coordinates=492,1,67,58
+
+[txtIssueMessage]
+Coordinates=1945,925,111,58
+
+[Label128]
+Coordinates=1219,540,67,58
+
+[Label111]
+Coordinates=737,1,67,58
+
+[Label116]
+Coordinates=492,223,67,58
+
+[Label115]
+Coordinates=952,463,67,58
+
+[txtIssueSelloCFDI]
+Coordinates=796,155,118,58
+
+[Status]
+Coordinates=641,560,51,58
+
+[Label130]
+Coordinates=952,155,67,58
+
+[Label117]
+Coordinates=74,174,67,58
+
+[Label104]
+Coordinates=1897,1295,67,58
+
+[Label121]
+Coordinates=41,809,67,58
+
+[txtIssueCadOriSAT]
+Coordinates=868,309,125,58
+
+[txtIssueTFD]
+Coordinates=492,78,84,58
+
+[Label103]
+Coordinates=1677,1021,67,58
+
+[txtAcceptRejectPfx]
+Coordinates=307,310,123,58
+
+[btnBalance]
+Coordinates=911,540,79,58
+
+[txtIssueNoCertSAT]
+Coordinates=749,78,124,58
+
+[txtIssue]
+Coordinates=489,446,64,58
+
+[txtAcceptRejectStatus]
+Coordinates=2158,1,141,58
+
+[txtIssueFechaTimbrado]
+Coordinates=2158,694,149,58
+
+[Label123]
+Coordinates=868,386,67,58
+
+[Label110]
+Coordinates=1690,1295,67,58
+
+[txtFechaExpiracion]
+Coordinates=1057,463,124,58
+
+[Label126]
+Coordinates=627,446,67,58
+
+[txtMessageBalance]
+Coordinates=196,963,127,58
+
+[txtUnlimited]
+Coordinates=321,78,82,58
+
+[Label120]
+Coordinates=909,779,67,58
+
+[txtIdSaldoCliente]
+Coordinates=1046,232,112,58
+
+[Label114]
+Coordinates=1916,1156,67,58
+
+[Label129]
+Coordinates=394,963,67,58
+
+[Label118]
+Coordinates=572,560,67,58
+
+[Label127]
+Coordinates=321,1,67,58
+
+[Label108]
+Coordinates=952,386,67,58
+
+[txtIssueUUID]
+Coordinates=172,446,90,58
+
+[txtAcceptRejectKey]
+Coordinates=1945,78,126,58
+
+[txtSaldoTimbres]
+Coordinates=0,0,108,58
+
+[txtAcceptRejectCer]
+Coordinates=2120,1295,125,58
+
+[txtTimbresAsignados]
+Coordinates=1206,78,135,58
+
+[Label125]
+Coordinates=1916,1233,67,58
+
+[txtMessageDetailBalance]
+Coordinates=1189,1,160,58
+
+[Label122]
+Coordinates=1065,963,67,58
+
+[Label113]
+Coordinates=366,587,67,58
+
+[txtTimbresUtilizados]
+Coordinates=1916,771,131,58
 
