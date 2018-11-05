@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet version="1.0">
+  <view uin="34jvoc8nr9l_v">
+    <property name="$defaultDiagram" value="true" />
+    <property name="$metaclass" value="Package Diagram" />
+    <property name="$name" value="default" />
+    <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Authentication.@unitclass">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="delphi:e_method:src:unitTestDelphiRest:Authentication.@unitclass.AuthenticationService(System.string,System.string,System.string)" />
+    </reference>
+    <reference referencedUin="delphi:e_class:src:unitTestDelphiRest:Authentication.TAuthentication">
+      <property name="$shortcutReference" value="true" />
+    </reference>
+  </view>
+</nodeSet>
