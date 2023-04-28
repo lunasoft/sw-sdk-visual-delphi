@@ -24,8 +24,7 @@ uses
   REST.Client,
   Data.Bind.Components,
   Data.Bind.ObjectScope,
-  REST.Types,
-  Datasnap.DSClientRest;
+  REST.Types;
 
 function RequestJson(URL, Token, body, path: String): String;
 function RequestUrl(URL, Token, RFCEmisor, UUID, PathReq: String): String;

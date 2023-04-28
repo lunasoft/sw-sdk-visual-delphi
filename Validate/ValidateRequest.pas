@@ -30,7 +30,6 @@ uses
   Data.Bind.Components,
   Data.Bind.ObjectScope,
   REST.Types,
-  Datasnap.DSClientRest,
   Vcl.ComCtrls;
 
 function ValidateCfdiRequest(Url, Token, XML: string): String;

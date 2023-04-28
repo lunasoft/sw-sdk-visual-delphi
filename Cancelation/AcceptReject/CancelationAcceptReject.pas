@@ -26,7 +26,6 @@ uses
   Data.Bind.Components,
   Data.Bind.ObjectScope,
   REST.Types,
-  Datasnap.DSClientRest,
   Vcl.ComCtrls,
   StampRequest,
   CancelationResponse,

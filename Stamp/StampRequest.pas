@@ -16,7 +16,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
   REST.Json,
-  Datasnap.DSClientRest, Vcl.ComCtrls, Helper, strUtils;
+  Vcl.ComCtrls, Helper, strUtils;
 
 function StampReq(URL, Token, XML, Path: String; b64 : Boolean = false): String;
 

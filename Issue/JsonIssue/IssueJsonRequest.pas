@@ -18,13 +18,13 @@ uses
   IdGlobalProtocols,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
-  Datasnap.DSClientRest, Vcl.ComCtrls, StampRequest, StampResponseV1,
+  Vcl.ComCtrls, StampRequest, StampResponseV1,
   StampResponseV2, StampResponseV3, StampResponseV4;
-  function IssueServiceJSON(URL, Token, json, Version: String): String;
+  function IssueServiceJSON(URL, Token, Json, Version: String): String;
 
 implementation
 
-function IssueServiceJSON(URL, Token, json, Version: String): String;
+function IssueServiceJSON(URL, Token, Json, Version: String): String;
  var
   HTTP: TIdHTTP;
   RequestBody: TStream;
@@ -37,7 +37,7 @@ end;
 
 try
    try
-       RequestBody := TStringStream.Create(json, TEncoding.UTF8);
+       RequestBody := TStringStream.Create(UTF8ToWideString(Json), TEncoding.UTF8);
      try
         HTTP.Request.Accept := 'application/json';
         HTTP.Request.ContentType := 'application/jsontoxml';
