@@ -24,8 +24,7 @@ uses
   REST.Client,
   Data.Bind.Components,
   Data.Bind.ObjectScope,
-  REST.Types,
-  Datasnap.DSClientRest;
+  REST.Types;
 
 function GetBalance(URL, Token: String): String;
 

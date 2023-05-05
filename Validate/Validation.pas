@@ -19,7 +19,7 @@ uses
   IdGlobalProtocols,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
-  Datasnap.DSClientRest, Vcl.ComCtrls, ValidateCfdiResponse, ValidateRequest,
+  Vcl.ComCtrls, ValidateCfdiResponse, ValidateRequest,
   ValidateLrfcResponse, ValidateLcoResponse;
 
 function ValidateCFDI(Url, Token, XML: String): TValidateCfdiResponse;

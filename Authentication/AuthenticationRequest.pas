@@ -17,7 +17,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
   REST.Json,
-  Datasnap.DSClientRest, Vcl.ComCtrls, Helper;
+  Vcl.ComCtrls, Helper;
 
 function AuthRequest(URL, User, Password: String): String;
 

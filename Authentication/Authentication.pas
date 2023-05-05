@@ -21,7 +21,7 @@ uses
   IdGlobalProtocols,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
-  Datasnap.DSClientRest, Vcl.ComCtrls, Helper, AuthenticationRequest,
+  Vcl.ComCtrls, Helper, AuthenticationRequest,
   AuthenticationResponse;
 
 function AuthenticationService(URL, User, Password: String): TResponse;

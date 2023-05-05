@@ -20,7 +20,7 @@ uses
   IdGlobalProtocols,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
-  Datasnap.DSClientRest, Vcl.ComCtrls, StampRequest, StampResponseV1,
+  Vcl.ComCtrls, StampRequest, StampResponseV1,
   StampResponseV2, StampResponseV3, StampResponseV4;
 
 function IssueV1(URL, Token, XML: String; Base64: Boolean = False): TStampResponseV1;
