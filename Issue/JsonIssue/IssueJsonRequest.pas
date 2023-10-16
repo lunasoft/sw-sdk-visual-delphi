@@ -25,45 +25,55 @@ uses
 implementation
 
 function IssueServiceJSON(URL, Token, Json, Version: String): String;
- var
+var
   HTTP: TIdHTTP;
   RequestBody: TStream;
+  IsUTF8: Boolean;
 begin
-try
-     HTTP := TIdHTTP.Create;
-finally
-
-end;
-
-try
-   try
-       RequestBody := TStringStream.Create(UTF8ToWideString(Json), TEncoding.UTF8);
-     try
-        HTTP.Request.Accept := 'application/json';
-        HTTP.Request.ContentType := 'application/jsontoxml';
-        HTTP.Request.CustomHeaders.FoldLines := False;
-        HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + Token);
-
-        URL := URL+'/v3/cfdi33/issue/json/'+Version;
-        Result := HTTP.Post(URL,RequestBody);
-        HTTP.responseCode;
-      finally
-        RequestBody.Free;
-      end;
-    except
-      on E: EIdHTTPProtocolException do
-      begin
-       Result := E.ErrorMessage;
-      end;
-      on E: Exception do
-      begin
-       Result := E.Message;
-      end;
-    end;
+  try
+    HTTP := TIdHTTP.Create;
   finally
-    HTTP.Free;
   end;
+
+  try
+    try
+      IsUTF8 := TEncoding.UTF8.GetString(TEncoding.UTF8.GetBytes(Json)) = Json;
+
+      if not IsUTF8 then
+      begin
+        RequestBody := TStringStream.Create(UTF8ToWideString(Json), TEncoding.UTF8);
+      end
+      else
+      begin
+        RequestBody := TStringStream.Create(Json, TEncoding.UTF8);
+      end;
+
+      HTTP.Request.Accept := 'application/json';
+      HTTP.Request.ContentType := 'application/jsontoxml';
+      HTTP.Request.CustomHeaders.FoldLines := False;
+      HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + Token);
+
+      URL := URL+'/v3/cfdi33/issue/json/'+Version;
+      Result := HTTP.Post(URL, RequestBody);
+      HTTP.responseCode;
+    finally
+      RequestBody.Free;
+    end;
+  except
+    on E: EIdHTTPProtocolException do
+    begin
+      Result := E.ErrorMessage;
+    end;
+    on E: Exception do
+    begin
+      Result := E.Message;
+    end;
+  end;
+
+  HTTP.Free;
   ReportMemoryLeaksOnShutdown := False;
 end;
+
+
 
 end.
