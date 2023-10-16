@@ -42,7 +42,7 @@ function fechaDeVencimiento(expiresIn: String): String;
 
 type
 	TForm1 = class(TForm)
-		Autenticación: TPageControl;
+		AutenticaciÃ³n: TPageControl;
 		TabSheet1: TTabSheet;
 		TabSheet2: TTabSheet;
 		TabSheet3: TTabSheet;
@@ -60,7 +60,7 @@ type
 		txtURL: TEdit;
 		Label1: TLabel;
 		txtToken: TEdit;
-		Expiración: TLabel;
+		ExpiraciÃ³n: TLabel;
 		txtCaducidad: TEdit;
 		Label2: TLabel;
 		txtTokenTipo: TEdit;
@@ -218,7 +218,7 @@ type
 		Label61: TLabel;
 		Label62: TLabel;
 		Label63: TLabel;
-		Cancelación: TPageControl;
+		CancelaciÃ³n: TPageControl;
 		TabSheet14: TTabSheet;
 		TabSheet15: TTabSheet;
 		TabSheet17: TTabSheet;
@@ -431,6 +431,7 @@ type
 		procedure Button20Click(Sender: TObject);
 		procedure Button21Click(Sender: TObject);
 		procedure Button10Click(Sender: TObject);
+    procedure memoJsonChange(Sender: TObject);
 	private
 		{ Private declarations }
 	public
@@ -624,19 +625,21 @@ begin
 end;
 
 procedure TForm1.Button16Click(Sender: TObject);
-var
-	stream: TMemoryStream;
 begin
-	memoJson.Text := '';
-	OpenDialog1.Filter := 'Archivos JSON (*.json)|*.json|';
-	stream := TMemoryStream.Create;
+  memoJson.Text := ''; // Borra cualquier contenido previo en el TMemo
+  OpenDialog1.Filter := 'Archivos JSON (*.json)|*.json|';
 
-	if OpenDialog1.Execute then
-		if FileExists(OpenDialog1.FileName) then
-			stream.LoadFromFile(OpenDialog1.FileName)
-		else
-			raise Exception.Create('File does not exist.');
-	memoJson.Lines.LoadFromFile(OpenDialog1.FileName);
+  if OpenDialog1.Execute then
+  begin
+    if FileExists(OpenDialog1.FileName) then
+    begin
+      memoJson.Lines.LoadFromFile(OpenDialog1.FileName, TEncoding.UTF8); // Carga el archivo utilizando UTF-8
+    end
+    else
+    begin
+      raise Exception.Create('File does not exist.');
+    end;
+  end;
 end;
 
 procedure TForm1.Button17Click(Sender: TObject);
@@ -1360,6 +1363,16 @@ begin
 	txtQrCode.Text := '';
 	txtMessageStamp.Text := '';
 	txtMessageDetailStamp.Text := '';
+end;
+procedure TForm1.memoJsonChange(Sender: TObject);
+var
+  TextToProcess: string;
+begin
+  TextToProcess := memoJson.Text;
+
+  TextToProcess := UTF8Encode(TextToProcess);
+
+  memoJson.Text := TextToProcess;
 end;
 
 procedure TForm1.cleanIssueStamp();
