@@ -33,7 +33,7 @@
     Top = 0
     Width = 1121
     Height = 569
-    ActivePage = TabSheet5
+    ActivePage = TabSheet18
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Autenticaci'#243'n'
