@@ -38,21 +38,21 @@
     object TabSheet1: TTabSheet
       Caption = 'Autenticaci'#243'n'
       object Label6: TLabel
-        Left = 3
+        Left = 10
         Top = 3
         Width = 36
         Height = 13
         Caption = 'Usuario'
       end
       object Label4: TLabel
-        Left = 3
+        Left = 9
         Top = 49
         Width = 56
         Height = 13
         Caption = 'Contrase'#241'a'
       end
       object Label5: TLabel
-        Left = 3
+        Left = 8
         Top = 95
         Width = 19
         Height = 13
@@ -101,23 +101,23 @@
         Caption = 'Status'
       end
       object txtUser: TEdit
-        Left = 3
+        Left = 8
         Top = 22
         Width = 169
         Height = 21
         TabOrder = 0
-        Text = 'demo'
+        Text = 'Usuario'
       end
       object txtPassword: TEdit
-        Left = 0
+        Left = 8
         Top = 68
         Width = 169
         Height = 21
         TabOrder = 1
-        Text = '123456789'
+        Text = 'Contrase'#241'a'
       end
       object txtURL: TEdit
-        Left = 3
+        Left = 8
         Top = 114
         Width = 169
         Height = 21
@@ -146,7 +146,7 @@
         TabOrder = 5
       end
       object Button1: TButton
-        Left = 3
+        Left = 7
         Top = 159
         Width = 166
         Height = 49
@@ -720,100 +720,8 @@
         Top = 104
         Width = 1097
         Height = 153
-        Lines.Strings = (
-          ' {'
-          '    "Version": "3.3",'
-          '    "Serie": "PAGOS",'
-          '    "Folio": "1",'
-          '    "Fecha": "2018-09-05T16:25:25",'
-          '    "NoCertificado": "",'
-          '    "SubTotal": "0",'
-          '    "Moneda": "XXX",'
-          '    "Total": "0",'
-          '    "TipoDeComprobante": "P",'
-          '    "LugarExpedicion": "32630",'
-          '    "Emisor": {'
-          '      "Rfc": "LAN7008173R5",'
-          '      "Nombre": "TestEmisor",'
-          '      "RegimenFiscal": "601"'
-          '    },'
-          '    "Receptor": {'
-          '      "Rfc": "XEXX010101000",'
-          '      "Nombre": "TestReceptor",'
-          '      "UsoCFDI": "P01"'
-          '    },'
-          '    "Conceptos": [{'
-          '        "ClaveProdServ": "84111506",'
-          '        "Cantidad": "1.000000",'
-          '        "ClaveUnidad": "ACT",'
-          '        "Descripcion": "Pago",'
-          '        "ValorUnitario": "0.000000",'
-          '        "Importe": "0.00"'
-          '    }],'
-          '    "Complemento": '
-          '['
-          '        {'
-          '            "HasElements": true,'
-          '            "Any": ['
-          '                {'
-          '                    "Pago10:Pagos": {'
-          '                        "Pago": [{'
-          '                           "FechaPago": "2018-09-01T01:00:00",'
-          '                            "FormaDePagoP": "03",'
-          '                            "MonedaP": "USD",'
-          '                            "TipoCambioP": "20.0000",'
-          '                            "Monto": "2100.00",'
-          '                            "NumOperacion": "125423",'
-          '                            "DoctoRelacionado": ['
-          '                              {'
-          
-            '              "IdDocumento": "65112e58-8cbc-46e3-8923-408b382933' +
-            'e7",'
-          '              "Serie": "FACTURA",'
-          '              "Folio": "201948000022000100",'
-          '              "MonedaDR": "MXN",'
-          '              "TipoCambioDR": "0.0500",'
-          '              "MetodoDePagoDR": "PPD",'
-          '              "NumParcialidad": "2",'
-          '              "ImpSaldoAnt": "10000.00",'
-          '              "ImpPagado": "10000.00",'
-          '              "ImpSaldoInsoluto": "0.00"'
-          '            },'
-          '            {'
-          
-            '              "IdDocumento": "65112e58-8cbc-46e3-8923-408b382933' +
-            'e9",'
-          '              "Serie": "FACTURA",'
-          '              "Folio": "5189891",'
-          '              "MonedaDR": "USD",'
-          '              "MetodoDePagoDR": "PPD",'
-          '              "NumParcialidad": "4",'
-          '              "ImpSaldoAnt": "1000.00",'
-          '              "ImpPagado": "500.00",'
-          '              "ImpSaldoInsoluto": "500.00"'
-          '            },'
-          '            {'
-          
-            '              "IdDocumento": "65112e58-8cbc-46e3-8923-408b382933' +
-            'e8",'
-          '              "Serie": "FACTURA",'
-          '              "Folio": "251781551",'
-          '              "MonedaDR": "EUR",'
-          '              "TipoCambioDR": "1.1000",'
-          '              "MetodoDePagoDR": "PPD",'
-          '              "NumParcialidad": "1",'
-          '              "ImpSaldoAnt": "20000.00",'
-          '              "ImpPagado": "1000.00",'
-          '              "ImpSaldoInsoluto": "19000.00"'
-          '            }]'
-          '                        }]'
-          '                     }'
-          '                }'
-          '            ]'
-          '        }'
-          '    ]'
-          '  }')
         TabOrder = 0
+        OnChange = memoJsonChange
       end
       object Button12: TButton
         Left = 24
@@ -960,7 +868,7 @@
         Top = 0
         Width = 1113
         Height = 545
-        ActivePage = TabSheet11
+        ActivePage = TabSheet13
         TabOrder = 0
         object TabSheet10: TTabSheet
           Caption = 'Cancelaci'#243'n'
@@ -1507,7 +1415,7 @@
             Width = 257
             Height = 21
             TabOrder = 1
-            Text = '51BADE4D-8285-4597-A092-7DB1D50E5EFD'
+            Text = ' '
           end
           object txtRelationsCodStatus: TEdit
             Left = 104
@@ -1550,7 +1458,6 @@
             Width = 257
             Height = 21
             TabOrder = 7
-            Text = 'LAN7008173R5'
           end
           object txtRelationsPassword: TEdit
             Left = 424
@@ -1558,7 +1465,6 @@
             Width = 257
             Height = 21
             TabOrder = 8
-            Text = '12345678a'
           end
           object txtRelationsB64Cer: TMemo
             Left = 757
@@ -1859,50 +1765,6 @@
             Top = 57
             Width = 337
             Height = 81
-            Lines.Strings = (
-              'MIIFxTCCA62gAwIBAgIUMjAwMDEwMDAwMDAzMDAwMjI4MTUwD'
-              'QYJKoZIhvcNAQELBQAwggFmMSAwHgYDVQQDDBdBLkMuIDIgZGU'
-              'gcHJ1ZWJhcyg0MDk2KTEvMC0GA1UECgwmU2VydmljaW8gZGUgQ'
-              'WRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0'
-              'FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3J'
-              'tYWNpw7NuMSkwJwYJKoZIhvcNAQkBFhphc2lzbmV0QHBydWViYXM'
-              'uc2F0LmdvYi5teDEmMCQGA1UECQwdQXYuIEhpZGFsZ28gNzcsIENv'
-              'bC4gR3VlcnJlcm8xDjAMBgNVBBEMBTA2MzAwMQswCQYDVQQGEwJ'
-              'NWDEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDESMBAGA1UEB'
-              'wwJQ295b2Fjw6FuMRUwEwYDVQQtEwxTQVQ5NzA3MDFOTjMxITA'
-              'fBgkqhkiG9w0BCQIMElJlc3BvbnNhYmxlOiBBQ0RNQTAeFw0xNjEwMj'
-              'UyMTUyMTFaFw0yMDEwMjUyMTUyMTFaMIGxMRowGAYDVQQDEx'
-              'FDSU5ERU1FWCBTQSBERSBDVjEaMBgGA1UEKRMRQ0lOREVNRVgg'
-              'U0EgREUgQ1YxGjAYBgNVBAoTEUNJTkRFTUVYIFNBIERFIENWMSU'
-              'wIwYDVQQtExxMQU43MDA4MTczUjUgLyBGVUFCNzcwMTE3QlhBMR'
-              '4wHAYDVQQFExUgLyBGVUFCNzcwMTE3TURGUk5OMDkxFDASBgNV'
-              'BAsUC1BydWViYV9DRkRJMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A'
-              'MIIBCgKCAQEAgvvCiCFDFVaYX7xdVRhp/38ULWto/LKDSZy1yrXKpa'
-              'qFXqERJWF78YHKf3N5GBoXgzwFPuDX'
-              '+5kvY5wtYNxx/Owu2shNZqFFh6EKsysQMeP5rz6kE1gFYenaPEUP9'
-              'zj'
-              '+h0bL3xR5aqoTsqGF24mKBLoiaK44pXBzGzgsxZishVJVM6XbzNJVon'
-              'EUNbI25DhgWAd86f2aU3BmOH2K1RZx41dtTT56UsszJls4tPFODr/c'
-              'aWuZEuUvLp1M3nj7Dyu88mhD2f'
-              '+1fA/g7kzcU/1tcpFXF/rIy93APvkU72jwvkrnprzs'
-              '+SnG81+/F16ahuGsb2EZ88dKHwqxEkwzhMyTbQIDAQABox0wGzA'
-              'MBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BA'
-              'QsFAAOCAgEAJ/xkL8I+fpilZP+9aO8n93+20XxVomLJjeSL'
-              '+Ng2ErL2GgatpLuN5JknFBkZAhxVIgMaTS23zzk1RLtRaYvH83lBH5E'
-              '+M'
-              '+kEjFGp14Fne1iV2Pm3vL4jeLmzHgY1Kf5HmeVrrp4PU7WQg16VpyH'
-              'aJ/eonPNiEBUjcyQ1iFfkzJmnSJvDGtfQK2TiEolDJApYv0OWdm4is9Bs'
-              'fi9j6lI9/T6MNZ'
-              '+/LM2L/t72Vau4r7m94JDEzaO3A0wHAtQ97fjBfBiO5M8AEISAV7eZi'
-              'dIl3iaJJHkQbBYiiW2gikreUZKPUX0HmlnIqqQcBJhWKRu6Nqk6aZBTET'
-              'LLpGrvF9OArV1JSsbdw/ZH+P88RAt5em5/gjwwtFlNHyiKG5w'
-              '+UFpaZOK3gZP0su0sa6dlPeQ9EL4JlFkGqQCgSQ'
-              '+NOsXqaOavgoP5VLykLwuGnwIUnuhBTVeDbzpgrg9LuF5dYp/zs'
-              '+Y9ScJqe5VMAagLSYTShNtN8luV7LvxF9pgWwZdcM7lUwqJmUddCi'
-              'Zqdngg3vzTactMToG16gZA4CWnMgbU4E'
-              '+r541+FNMpgAZNvs2CiW/eApfaaQojsZEAHDsDv4L5n3M1CC7fYjE/'
-              'd61aSng1LaO6T1mh+dEfPvLzp7zyzz'
-              '+UgWMhi5Cs4pcXx1eic5r7uxPoBwcCTt3YI1jKVVnV7/w=')
             TabOrder = 0
           end
           object txtAcceptRejectKey: TMemo
@@ -1910,46 +1772,6 @@
             Top = 183
             Width = 337
             Height = 81
-            Lines.Strings = (
-              'MIIFDjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQIAgEAA'
-              'oIBAQACAggAMBQGCCqGSIb3DQMHBAgwggS9AgEAMASCBMh4EHl'
-              '7aNSCaMDA1VlRoXCZ5UUmqErAbucRBAKNQXH8t1GNfLDIQejtcocS'
-              '39VvWnpNXjZJeCg65Y2wI36UGn78gvnU0NOmyUkXksPVrkz7hqNtA'
-              'VojPUtN65l+MVAsIRVD6OLJeKZ2bLx5z78zrx6Tp1zCGT/NpxL'
-              '+CJSy5iY6TKqbJcK/9198noOvT2p8rKVqUUF3wLRvD6R/b3BC5wCo'
-              'n/exp3BUTZeiWJqGRRgaW4rn49ZbJPVIcDmUO8mojPesFHjJDSnA0'
-              'nBnWaUvTYXi0srT'
-              '+dLZOewsBR8d5GdSWh9ZkM29wJbjYHCMsXkObZjaap3YM8fU29zR'
-              'yZ8KAqaCnBHCfYjbib56m+Lmnk+ScqMkQQ+S/'
-              '+2pzn2LzauvBI4p/OjQgBDeblo22X7sX9OA9YaqB3q6CCjQ5tkDNrz3'
-              'HOgTm'
-              '+amh/kI8TEn9rcKf4Ru7mC1T7VMaFgBqpIS8YJNbcgegF0IF1FpCS0'
-              '5wjdU5CktYAnPnvC+Pj+MFDeH'
-              '+184kIHBWqPNG6dAzALxRgtKTlGdJ1l5Do+4EWI'
-              '+0mvKojREnKoDczFnDeCFnM51u3I9Vce3rkf0djRQKFomPVUnPDqxl'
-              'R5lDAssYAYNcECAkvGxKcBDbjWi/6NHlwjS1r28+0Jhvfxjx9O6hi4AW'
-              '82Q2/kBE5P/eOwln/jKSbLgi7Iyim1FFHxkQH1FY5kcKhAzFcIq85rGFlz'
-              'HRfPF9OIQSmONI9kcWQCxkk8aG1u1zwbjZRYLTxlwmZvynOgaWR'
-              'pTN8Y4ReBDIG1klhva7nqqoM416oXBG71IKaCtjAwRlE6pgaqnIz/WQ'
-              'Ab2FR541pqynX6dB6DB1nIWnatsWZJZlu'
-              '+Bnhf9DBlUsO9ZSAf9Fa9nJAzwFCzaKIsvGJIeKSZ/h'
-              '+vInkjaO/rxswErVROTfZy1lO2CJ/xnAgzFGrpDxNJPliv3McO9TGwYy'
-              '/zHhE6Pdo8Xu6NsMisNU6TB8Bc26uLNv/7kWhNmNnBA1qt5akln6hO'
-              'HrPBXGBiTNUL0IoFVPNdCbS0834zAYXfgtZLDzVpeLqmeMpqXbIYK0/'
-              'NXe9etxuOcN40O'
-              '+B/fTHHmO7dMgBZ4vAApVQUPr7ilumVHsWSMRP/0p5R9q4qr1bDm'
-              '9S5YCPevdyYWTSceGSrXHmjYzJLBtpc/s77mynNqZEYjhnKk2XRNp6k'
-              'p/FYRu'
-              '+QdsX9vaDJbLKR2EnSC4fU6UOTO03IZU15j3wOsg30QrXoKntSJ/b'
-              'eF99cvFHuPrQPWxCtws0lLwkkHNVOm6XNO948Moy1w1pL4i68Cwm'
-              'ceYZaYrYhmHGdLuescFQrZQaULDWhpK2Stys8Vs/XwwxNi9MHAFSX'
-              'pdy/b+Aro5n87w'
-              '+0MHRcllF8ZKbtQ/ym4oG7aREuo7o71JXJQPjZKTOtVM1EQx/FLM/5'
-              'brnDSoyvLtoYtv9/tTnIC'
-              '+8gR6eErkzaGmn8pftPhGNuz6yzx8JeLFoMD7VWbGTefj46KS'
-              '+yMweFJnpReHEqwnukXpEYq19EWVyQa/Sb7navtKt80y/vRs0aNZp'
-              '3iL23AOs0u1kQ1CFNY2y12Gor1koaH2FUd5jAQnaSKmgarLy0H/QVv'
-              'R2g8B3+Fh49QhKYrd8N6LvvI80cwbEoqYWn5DWA=')
             TabOrder = 1
           end
           object txtAcceptRejectPfx: TMemo
@@ -1957,96 +1779,6 @@
             Top = 309
             Width = 337
             Height = 81
-            Lines.Strings = (
-              'MIIL9QIBAzCCC68GCSqGSIb3DQEHAaCCC6AEggucMIILmDCCBl8G'
-              'CSqGSIb3DQEHBqCCBlAwggZMAgEAMIIGRQYJKoZIhvcNAQcBMBw'
-              'GCiqGSIb3DQEMAQMwDgQIAJiax9IhjeACAgfQgIIGGOo46VyRkBXp'
-              '/SaC8u0FWBIQXI/UVYfXF4WavWWn77ncZkpaaBDRqmAttVowCBKD'
-              'Tb4iGvLvD65IqKJaPSO8lNesBis5gSDZ+tEChdHYS+jnPoGzkuC0T'
-              '+U1nhXwoPAJK'
-              '+2I/yGBwnCdjJyiQ6KIsp/BRAh7cRcKwT3fxhBi3Hhukub7kIavzAgY9'
-              'NZWdWVJ5tcG'
-              '+fAKRUJTzd1a5NXvgtTf/TDFpRACYVXeDMABrKgWgK/A83zHMlC7//'
-              'Jq7LQZrApmi6h4r6F8SNPTHskdBSFeuIF/ceI2y1e88qZ0U8MvpWvD'
-              '2GhKSAJD1jXY1HYfVMq61eYvZHxl1m8QJBb9Mw'
-              '+N8kbyGaS7ULE5neExo0YXiE9GVfRN7Xk3UYrbSWOeHJgHtt'
-              '+BrWVnBqF9C8vnwKxxNpcuGNO5Z//BVEuIwAJjhPc2uFadCqmNTxS'
-              '5PcC1DnQzdn2ubVLWFGN/dvOYdPLu7w22P6aFzflCGyKRqFZ5kX'
-              '+hpeNuvFVHHUMjbVUteys56AFSTGDbHZseSyQiT40W0YSb7hV'
-              '+gFZpPtQWFuNQKYwh4IwkhWsEhHp5vLI9wf983R9qEm8RGxRaua'
-              'CBz4Xs5ZlWi3rk5hkXryxqiv7c/vFItJFnyfkY7JSJ/LwzoEMg1liVN/4dpI'
-              'RRXzNm'
-              '+pTRqvIs8we3mwURITYNw/BOYBu1BOC3MNbK5U8v2+xS/2g72vb'
-              '5QYR4bQ4eqbzhdoG2bog3z3QMTcb1t46r6vzLjzqBV3/BQOW6mnLw'
-              'IBWtUDMhkJKllF2wnT82bUMfvQq2wQD0siloeuqMrKRoro1uyVrRafm'
-              'L9/wxPUoiJNn5PhdpEyLykhVRKP0qaox3Lind5czu5zqy'
-              '+MjvtIyVsReDEbd27xqz5SsyK6S/'
-              '+Ij3DniGFXcfuoXbh361Fe1fIPV8l0wXQ8sm4ZgwMCNOEWI6mQHj4'
-              'QDgd2rzuiIjApauW0MJ6SaaLktsutxO2Afzk/n'
-              '+PGIJ7ip4bp/m9FoaEPURD5Rx8vCQa6BQlrsBizYjCgLxYcTRwDJUm'
-              'AtADpBsO8yU4tpCuZToyc4J/QbGpgV2rlYkXStM/OOIAXcZRul0Uh0C'
-              'jvsbVxNu/DIB7NBaxnrN5xcfhuLkaLY18zyNCNtNGtYEcL7vONpqOCN'
-              'my7bEICpM7VggnkTmVEwQo+k'
-              '+nrEFCUx03XZPysP7keUonjrnAczEYxbwfvvpq'
-              '+WR4hUF5oGUouvmEFd/xd18uOBjfmRA6LDPQuE3Eq1wayzaEHUd'
-              'Hbw8S+X4MtQ9sOZhEeTK8+TT5ifz9GzGLyWMHSr6O08dVSqG'
-              '+HMKUF/oWGiyNMx7anZvzhkAywifWkPu9hhtZIypDA6Rei4u2SPBXS'
-              'MlhsB2I98tZhV6QWlKJduZFPDs5f2rYjXsFZkYju19MPeJZTEfXFL9Xav'
-              '0Ru1VALc7PiGgdI9vfPE6pk4/MDizuI3aJuiCdSJ489siWp1S3qKy8Sod'
-              'rTbBK0yRR5IXgh2nH6BKr5fmt5iLrljZE9R7PcZJ488LMOCRPyza30AW'
-              '6sDIkYdHOXRDztn34Nm52nNNM3Bof71LctRg5hIeA8vSItJ06B6oM8'
-              'dYm2EimNeHD9vM4nSMXBTDxqHm1behRX4OoDm8wkuOlVBq6UuRD'
-              'N6aDEa6MejFog0QKpCC7XpmluQqEp+v+X9DpUDxxek'
-              '+2vypkabHejQ7pzyDfSHtDdghnsPgMRv0b2AmfN3NZVv/KcJqtrcmv'
-              '5E1HfXIZegDb4yEww2fUmfAw3oU1ZDdFmLo/9ve2wNGJfvswh4CU'
-              'GTAdNbAxW4zHrZZ50IIzVPkEDS0Ipk1W/ScYC8NWz8JGUIzeSQ5RX'
-              '79RuoSueSHqI9lUTTqJcJnxoyWavSIIIBgcIlrvIAsPHjQ5almC51a5RO'
-              'ojeP9Wgrqn3BEyePAIXpX/zKQMgs1UsDYXXNm4BdJuNnEbPpL65Z1ji'
-              'IlPtciiEbkcn/YCn1rOUt1fS3uMY2YmUKdUJTsjt4MoG3l+ZgY31Frp'
-              '+HoJBjr4SIFbbsK9xZtVlDZ952bv5PakqrQRM24qaNyIB1K0/bXNBj48'
-              'Tz3JpSmlYjm27wK9rYZPDCCBTEGCSqGSIb3DQEHAaCCBSIEggUeMI'
-              'IFGjCCBRYGCyqGSIb3DQEMCgECoIIE7jCCBOowHAYKKoZIhvcNAQ'
-              'wBAzAOBAgzNxZtsW'
-              '+CqQICB9AEggTIeBa9BWcG9YKUAVQG/POAsoxXsrMegkSwcNyf5s'
-              'xz8hfvo3OyHsvZKYFaMIiiz8yy8lb'
-              '+gCJrxQxUaWpLpnKdGuEDJXCqV5XnaS3Txue2NWtnG9eE5/CTKzA'
-              'eBZFPfMAa43+nPziV/U/pWa0p8zXU9cU/hWwZ6Fbl0a1FAaX61lNYiZ'
-              '5qPiS2t38ENI80FHg/Kyt8Ql79c2CrUe1jtnkFumGWbSxA3YQJK1+N1'
-              'UWCEI3NsNW5aIZfrHtsvgJ6EX'
-              '+6ZLbsmxLRm/yWeYqbAsPTpcE6DKbRMRj1klzKSFQ2NTXFKJ2M/e1'
-              'G5I'
-              '+QO7VuZBnKn4hIaJmbszux68rjJgqPqyHOVHqi6U3JiFWR9mzf54w'
-              '+bzsIGoDzTUSveBFV4jm9atgT15MSxg1/+C+jtWlPMRHprmC'
-              '+SEIvpkF4CsHRUBZXjhRR4DDauEVwWM8Y1IQXDZeYMvk3LBZlUh5'
-              'Caei8D7OgO4D7huPkZWSSO/0cyAWjCW1lOFe2V3aCl6A'
-              '+6jbfdgkD7NlicjFSk9DpWa13sdgFnIFee9XjP'
-              '+E9xVOKqvHKc7FjSITYfSsLiXwkcwgnxi9tXYQ9XForyrPO6BW23qwO'
-              'bp1RcUohBZkcy1f4ULRpsPSn3M7+BSmrb5idSpJchmR/qIdE9jkHY12'
-              'AZS7YPouu3hhStt6TJqPBKodCnZq2d4yXeSR4EV3O1yAshJTD9eCop'
-              'zCDcv6O1/UXA7Gag3uucTQHduYjRMrh/pZ6H3vk8xCsdPX'
-              '+ZVXKLDZ9W3sbTqw4f7oezjIcVNoGuxJTAR36RtXib73usrpQp/grd/'
-              'Ab5Z06YtRu'
-              '+p5DLZc7ACf104Q5TqeCLUShifsgSFv/wU3iQIewbHcwp2+/A6CO2'
-              'QzEtMSGiueZv3sMJ0XPoLOt0+StHnEl'
-              '+c8vBWu3zxf0dvf2Eapu1K87BRjrNRMRyy4dsmKMPd+'
-              '+1R26nBQVcSGg2DMuawPnNFd8YtsS7MyzTuYvJ0SOZFGX82oVA1C'
-              'n+MlE3hi9sAJnnWF/i1ILu'
-              '+o2EtEAI4R8AQzOUGzNAE1KhD4WFolsz84SBJmr'
-              '+Zps7VEkz7eHczWYLdnVtaV6W3zdbPJzgFKl3Aic4TBEyBrwROJqkTX'
-              'UPiR1eS3cuKX9BZXNto1AIVQDC'
-              '+cSAd5/9+nPlorvE5fNAdXaLYt7RN8/EFP3/R/zx9jqXtK5yO9M'
-              '+PFz3cmUTYMhzoUM3/c1qZMeVUJ38oKlLPng'
-              '+avrYcjz5yBrYB6aQDUH7qxuXhPyTL3noipmluGr4dEAi0XbsU5zCvlJk'
-              'S7vMgmBoD+XRW+k9o+5NIz1GUCHWqm653wOxxGDm+se'
-              '+bL4rFQQAMthygJRxOH7FbZ/TOT8MqufxYqfdc5u66pGV4p4WvRK'
-              'M3EYw/Uyhf0pztF5m7oNWzfj5+fIqLPsrAXt6DCwvnJTLQakn1w3zvJ'
-              '7gt'
-              '+lWfYfWIxCkUhE6rw5/aYOgWk9MyFWKDLcQa55mCaXIql6RHDyDH'
-              'd35ZjV26r4m/kcmCYqmNZsJPyySQg6lkuUNTvA2VaclQWZlhK9D6B'
-              '+3kZPeQzsHcPuOzp/ECUVg9Fmq4FBzF6MrhTx9sV1ygY3TUcyYQASl'
-              'eUbuxqgxccmhxNi8RSohzqhL/E1PuXb7B9nMRUwEwYJKoZIhvcNAQ'
-              'kVMQYEBAEAAAAwPTAhMAkGBSsOAwIaBQAEFMU/TwflQv4jd8U5Ci'
-              'BRUpJAzqbqBBSnDNHQBP2HfzGmDHlUAjFiMcK5lQICB9A=')
             TabOrder = 2
           end
           object Button34: TButton
@@ -2117,111 +1849,6 @@
             Top = 55
             Width = 337
             Height = 207
-            Lines.Strings = (
-              '<?xml version="1.0" encoding="utf-8"?>'
-              '<SolicitudAceptacionRechazo '
-              'xmlns:xsd="http://www.w3.org/2001/XMLSchema" '
-              ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
-              'RfcReceptor="LAN7008173R5" '
-              'RfcPacEnviaSolicitud="DAL050601L35" Fecha="2018-08-'
-              '22T18:38:05" '
-              ' xmlns="http://cancelacfd.sat.gob.mx">'
-              ' <Folios>'
-              ' <UUID>06a46e4b-b154-4c12-bb77-f9a63ed55ff2</UUID>'
-              ' <Respuesta>Aceptacion</Respuesta>'
-              ' </Folios>'
-              ' <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">'
-              ' <SignedInfo>'
-              ' <CanonicalizationMethod '
-              'Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" '
-              '/>'
-              ' <SignatureMethod '
-              'Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />'
-              ' <Reference URI="">'
-              ' <Transforms>'
-              ' <Transform '
-              'Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-'
-              'signature" />'
-              ' </Transforms>'
-              ' <DigestMethod '
-              'Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />'
-              ' '
-              '<DigestValue>AQ36cbqKJKHy5vaS6GhDTWtwKE4=</DigestValue'
-              '>'
-              ' </Reference>'
-              ' </SignedInfo>'
-              ' <SignatureValue>HVlFUPmRLyxeztem827eaasDObRXi'
-              '+oqedCNNvDyMsRizqsS99cHt5mJCEE4vWgpDGPGLrph/yd+'
-              '+R4aN'
-              '+V562DPp9qreFkisFpEvJy5Z8o/KzG7vc5qqaD8z9ohPpRERPHvxFrI'
-              'm3ryEBqnSV6zqJG02PuxkWvYonVc'
-              '+B7RdsO5iAiDTMs9guUhOvHBK8BVXQHKCbUAPCp/4YepZ4LUkcdlo'
-              'CAMPsN0x9GaUty2RMtNJuwaRWy'
-              '+5IIBUCeXXZmQhoQfS0QfPpCByt0ago5v'
-              '+FocJQiYQrsUV/8mesmNw5JoOCmufQYliQFyZgsstV8+h76dU/rwLr6'
-              'R8YlFOkTxKg==</SignatureValue>'
-              ' <KeyInfo>'
-              ' <X509Data>'
-              ' <X509IssuerSerial>'
-              ' <X509IssuerName>OID.1.2.840.113549.1.9.2=Responsable: '
-              'ACDMA, OID.2.5.4.45=SAT970701NN3, L=Coyoac'#225'n, S=Distrito '
-              'Federal, C=MX, PostalCode=06300, STREET="Av. Hidalgo 77, Col. '
-              'Guerrero", E=asisnet@pruebas.sat.gob.mx, OU=Administraci'#243'n de '
-              'Seguridad de la Informaci'#243'n, O=Servicio de Administraci'#243'n '
-              'Tributaria, CN=A.C. 2 de pruebas(4096)</X509IssuerName>'
-              ' '
-              '<X509SerialNumber>3230303031303030303030333030303232383'
-              '135</X509SerialNumber>'
-              ' </X509IssuerSerial>'
-              ' '
-              '<X509Certificate>MIIFxTCCA62gAwIBAgIUMjAwMDEwMDAwMDAz'
-              'MDAwMjI4MTUwDQYJKoZIhvcNAQELBQAwggFmMSAwHgYDVQQDD'
-              'BdBLkMuIDIgZGUgcHJ1ZWJhcyg0MDk2KTEvMC0GA1UECgwmU2Vy'
-              'dmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExO'
-              'DA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZG'
-              'UgbGEgSW5mb3JtYWNpw7NuMSkwJwYJKoZIhvcNAQkBFhphc2lzbm'
-              'V0QHBydWViYXMuc2F0LmdvYi5teDEmMCQGA1UECQwdQXYuIEhpZ'
-              'GFsZ28gNzcsIENvbC4gR3VlcnJlcm8xDjAMBgNVBBEMBTA2MzAwMQ'
-              'swCQYDVQQGEwJNWDEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJ'
-              'hbDESMBAGA1UEBwwJQ295b2Fjw6FuMRUwEwYDVQQtEwxTQVQ5'
-              'NzA3MDFOTjMxITAfBgkqhkiG9w0BCQIMElJlc3BvbnNhYmxlOiBBQ0R'
-              'NQTAeFw0xNjEwMjUyMTUyMTFaFw0yMDEwMjUyMTUyMTFaMIGx'
-              'MRowGAYDVQQDExFDSU5ERU1FWCBTQSBERSBDVjEaMBgGA1UEK'
-              'RMRQ0lOREVNRVggU0EgREUgQ1YxGjAYBgNVBAoTEUNJTkRFTUVYI'
-              'FNBIERFIENWMSUwIwYDVQQtExxMQU43MDA4MTczUjUgLyBGVUF'
-              'CNzcwMTE3QlhBMR4wHAYDVQQFExUgLyBGVUFCNzcwMTE3TURGU'
-              'k5OMDkxFDASBgNVBAsUC1BydWViYV9DRkRJMIIBIjANBgkqhkiG9w0'
-              'BAQEFAAOCAQ8AMIIBCgKCAQEAgvvCiCFDFVaYX7xdVRhp/38ULW'
-              'to/LKDSZy1yrXKpaqFXqERJWF78YHKf3N5GBoXgzwFPuDX'
-              '+5kvY5wtYNxx/Owu2shNZqFFh6EKsysQMeP5rz6kE1gFYenaPEUP9'
-              'zj'
-              '+h0bL3xR5aqoTsqGF24mKBLoiaK44pXBzGzgsxZishVJVM6XbzNJVon'
-              'EUNbI25DhgWAd86f2aU3BmOH2K1RZx41dtTT56UsszJls4tPFODr/c'
-              'aWuZEuUvLp1M3nj7Dyu88mhD2f'
-              '+1fA/g7kzcU/1tcpFXF/rIy93APvkU72jwvkrnprzs'
-              '+SnG81+/F16ahuGsb2EZ88dKHwqxEkwzhMyTbQIDAQABox0wGzA'
-              'MBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BA'
-              'QsFAAOCAgEAJ/xkL8I+fpilZP+9aO8n93+20XxVomLJjeSL'
-              '+Ng2ErL2GgatpLuN5JknFBkZAhxVIgMaTS23zzk1RLtRaYvH83lBH5E'
-              '+M'
-              '+kEjFGp14Fne1iV2Pm3vL4jeLmzHgY1Kf5HmeVrrp4PU7WQg16VpyH'
-              'aJ/eonPNiEBUjcyQ1iFfkzJmnSJvDGtfQK2TiEolDJApYv0OWdm4is9Bs'
-              'fi9j6lI9/T6MNZ'
-              '+/LM2L/t72Vau4r7m94JDEzaO3A0wHAtQ97fjBfBiO5M8AEISAV7eZi'
-              'dIl3iaJJHkQbBYiiW2gikreUZKPUX0HmlnIqqQcBJhWKRu6Nqk6aZBTET'
-              'LLpGrvF9OArV1JSsbdw/ZH+P88RAt5em5/gjwwtFlNHyiKG5w'
-              '+UFpaZOK3gZP0su0sa6dlPeQ9EL4JlFkGqQCgSQ'
-              '+NOsXqaOavgoP5VLykLwuGnwIUnuhBTVeDbzpgrg9LuF5dYp/zs'
-              '+Y9ScJqe5VMAagLSYTShNtN8luV7LvxF9pgWwZdcM7lUwqJmUddCi'
-              'Zqdngg3vzTactMToG16gZA4CWnMgbU4E'
-              '+r541+FNMpgAZNvs2CiW/eApfaaQojsZEAHDsDv4L5n3M1CC7fYjE/'
-              'd61aSng1LaO6T1mh+dEfPvLzp7zyzz'
-              '+UgWMhi5Cs4pcXx1eic5r7uxPoBwcCTt3YI1jKVVnV7/w=</X509Cer'
-              'tificate>'
-              ' </X509Data>'
-              ' </KeyInfo>'
-              ' </Signature>'
-              '</SolicitudAceptacionRechazo>')
             TabOrder = 10
           end
           object Button41: TButton
@@ -2255,7 +1882,7 @@
             Width = 208
             Height = 21
             TabOrder = 14
-            Text = '703a8b88-0c4d-471f-b1eb-8185b0f2e1d9'
+            Text = ' '
           end
           object txtAcceptRejectAccion: TEdit
             Left = 208
@@ -2451,248 +2078,6 @@
         TabOrder = 10
         OnClick = Button11Click
       end
-    end
-    object TabSheet7: TTabSheet
-      Caption = 'Validaci'#243'n de LCO'
-      ImageIndex = 6
-      object Label23: TLabel
-        Left = 162
-        Top = 163
-        Width = 64
-        Height = 13
-        Caption = 'noCertificado'
-      end
-      object Label33: TLabel
-        Left = 210
-        Top = 203
-        Width = 16
-        Height = 13
-        Caption = 'Rfc'
-      end
-      object Label34: TLabel
-        Left = 130
-        Top = 243
-        Width = 96
-        Height = 13
-        Caption = 'Validez Obligaciones'
-      end
-      object Label35: TLabel
-        Left = 135
-        Top = 283
-        Width = 91
-        Height = 13
-        Caption = 'Estatus Certificado'
-      end
-      object Label37: TLabel
-        Left = 169
-        Top = 315
-        Width = 57
-        Height = 13
-        Caption = 'Fecha Inicio'
-      end
-      object Label36: TLabel
-        Left = 172
-        Top = 355
-        Width = 54
-        Height = 13
-        Caption = 'Fecha Final'
-      end
-      object Label38: TLabel
-        Left = 195
-        Top = 395
-        Width = 31
-        Height = 13
-        Caption = 'Status'
-      end
-      object Button8: TButton
-        Left = 56
-        Top = 30
-        Width = 121
-        Height = 33
-        Caption = 'Validar LCO'
-        TabOrder = 0
-        OnClick = Button8Click
-      end
-      object txtLcoAValidar: TEdit
-        Left = 232
-        Top = 30
-        Width = 145
-        Height = 21
-        TabOrder = 1
-        Text = '20001000000300022816'
-      end
-      object txtValidaLcoNoCertificado: TEdit
-        Left = 232
-        Top = 160
-        Width = 257
-        Height = 21
-        TabOrder = 2
-      end
-      object txtValidaLcoRfc: TEdit
-        Left = 232
-        Top = 200
-        Width = 257
-        Height = 21
-        TabOrder = 3
-      end
-      object txtValidacionLcoValidezObligaciones: TEdit
-        Left = 232
-        Top = 240
-        Width = 257
-        Height = 21
-        TabOrder = 4
-      end
-      object txtValidacionLcoEstatusCertificado: TEdit
-        Left = 232
-        Top = 280
-        Width = 257
-        Height = 21
-        TabOrder = 5
-      end
-      object txtValidacionLcoFechaInicio: TEdit
-        Left = 232
-        Top = 312
-        Width = 257
-        Height = 21
-        TabOrder = 6
-      end
-      object txtValidacionLcoFechaFinal: TEdit
-        Left = 232
-        Top = 352
-        Width = 257
-        Height = 21
-        TabOrder = 7
-      end
-      object txtValidaLcoStatus: TEdit
-        Left = 232
-        Top = 392
-        Width = 257
-        Height = 21
-        TabOrder = 8
-      end
-      object txtValidaLcoMessage: TEdit
-        Left = 712
-        Top = 152
-        Width = 217
-        Height = 21
-        TabOrder = 9
-      end
-      object txtValidaLcoMessageDetail: TEdit
-        Left = 712
-        Top = 192
-        Width = 217
-        Height = 21
-        TabOrder = 10
-      end
-    end
-    object TabSheet8: TTabSheet
-      Caption = 'Validaci'#243'n de LRFC'
-      ImageIndex = 7
-      object Label39: TLabel
-        Left = 90
-        Top = 197
-        Width = 88
-        Height = 13
-        Caption = 'Contribuyente Rfc'
-      end
-      object Label40: TLabel
-        Left = 157
-        Top = 224
-        Width = 21
-        Height = 13
-        Caption = 'Snfc'
-      end
-      object Label41: TLabel
-        Left = 100
-        Top = 251
-        Width = 78
-        Height = 13
-        Caption = 'Subcontrataci'#243'n'
-      end
-      object Label42: TLabel
-        Left = 147
-        Top = 278
-        Width = 31
-        Height = 13
-        Caption = 'Status'
-      end
-      object Label43: TLabel
-        Left = 136
-        Top = 305
-        Width = 42
-        Height = 13
-        Caption = 'Message'
-      end
-      object Label44: TLabel
-        Left = 109
-        Top = 332
-        Width = 69
-        Height = 13
-        Caption = 'MessageDetail'
-      end
-      object txtValidateLrfc: TEdit
-        Left = 184
-        Top = 98
-        Width = 233
-        Height = 21
-        TabOrder = 0
-        Text = 'LAN8507268IA'
-      end
-      object txtValidateContribuyenteRfc: TEdit
-        Left = 184
-        Top = 189
-        Width = 233
-        Height = 21
-        TabOrder = 1
-      end
-      object txtValidateSnfc: TEdit
-        Left = 184
-        Top = 216
-        Width = 233
-        Height = 21
-        TabOrder = 2
-      end
-      object txtValidateSubcontratacion: TEdit
-        Left = 184
-        Top = 243
-        Width = 233
-        Height = 21
-        TabOrder = 3
-      end
-      object txtValidateStatus: TEdit
-        Left = 184
-        Top = 270
-        Width = 233
-        Height = 21
-        TabOrder = 4
-      end
-      object txtValidateMessage: TEdit
-        Left = 184
-        Top = 297
-        Width = 233
-        Height = 21
-        TabOrder = 5
-      end
-      object txtValidateMessageDetail: TEdit
-        Left = 184
-        Top = 324
-        Width = 233
-        Height = 21
-        TabOrder = 6
-      end
-      object Button9: TButton
-        Left = 32
-        Top = 78
-        Width = 129
-        Height = 41
-        Caption = 'Validar Lrfc'
-        TabOrder = 7
-        OnClick = Button9Click
-      end
-    end
-    object TabSheet9: TTabSheet
-      Caption = 'Generaci'#243'n de PDF'
-      ImageIndex = 8
     end
     object TabSheet18: TTabSheet
       Caption = 'AccountBalance'
