@@ -18,8 +18,6 @@ uses
   CancelationRequest in 'Cancelation\CancelationRequest.pas',
   Issue in 'Issue\Issue.pas',
   Validation in 'Validate\Validation.pas',
-  ValidateLcoResponse in 'Validate\ValidateLcoResponse.pas',
-  ValidateLrfcResponse in 'Validate\ValidateLrfcResponse.pas',
   ValidateCfdiResponse in 'Validate\ValidateCfdiResponse.pas',
   ValidateRequest in 'Validate\ValidateRequest.pas',
   JsonIssue in 'Issue\JsonIssue\JsonIssue.pas',
