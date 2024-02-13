@@ -54,13 +54,14 @@ uses
 ```
 ---
 
-## Authentication ##
+## Autenticación ##
 El servicio de Autenticación es utilizado principalmente para obtener el **token** el cual será utilizado para poder timbrar nuestro CFDI (xml) ya emitido (sellado), para poder utilizar este servicio es necesario que cuente con un **usuario** y **contraseña**
 
 <details>
 <summary>
 Ejemplo de uso:
 </summary>
+
 ```pascal
 procedure TForm1.Button1Click(Sender: TObject);
 var
@@ -87,7 +88,7 @@ end;
 ```
 </details>
 
-# Account Balance #
+## Consulta de Saldos ##
 Método mediante el cual puedes realizar la consulta de tu saldo para consumir los servicios de SW.
 Este método recibe una URL y el Token de la cuenta a revisar.
 
@@ -95,6 +96,7 @@ Este método recibe una URL y el Token de la cuenta a revisar.
 <summary>
 Ejemplo de uso:
 </summary>
+
 ```pascal
 procedure TForm1.btnBalanceClick(Sender: TObject);
 var
@@ -121,7 +123,7 @@ end;
 ```
 </details>
 
-# Timbrado #
+## Timbrado ##
 
 <details>
 <summary>
@@ -133,6 +135,7 @@ Esta función recibe un XML sellado y lo envía a timbrar.
 **TimbrarV1** Recibe el contenido de un **XML** sellado en formato **String**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
 Ejemplo de uso:
+
 ```pascal
 procedure TForm1.btnTimbrarV1Click(Sender: TObject);
 var
@@ -191,7 +194,7 @@ end;
 Emisión Timbrado JSON V1
 </summary>
 
-# Emisión Timbrado JSON #
+## Emisión Timbrado JSON ##
 **Emisión Timbrado JSON** Realiza el sellado y timbrado de un. Recibe un **JSON** bajo un formato definido, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
 
@@ -224,7 +227,7 @@ end;
 
 Para mayor referencia de estas versiones de respuesta, favor de visitar el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
 
-# Cancelación #
+## Cancelación ##
 
 Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante varios métodos **Cancelación CSD**, **Cancelación PFX**, **Cancelacion por XML** y **Cancelación UUID**.
 
@@ -393,12 +396,13 @@ end;
 ```
 </details>
 
-# Consulta Solicitudes pendientes por Aceptar/Rechazar #
+## Consulta Solicitudes pendientes por Aceptar/Rechazar ##
 Método mediante el cual obtendremos una lista de UUID asociada a un RFC que nos dirá cuales facturas nos enviaron para que aceptemos o rechacemos.
 El método requiere de la URL, Token, y RFC.
 
 <details>
   <summary>Ejemplo</summary>
+
 ```pascal
 procedure TForm1.Button33Click(Sender: TObject);
 var
@@ -425,15 +429,17 @@ end;
 ```
 </details>
 
-# Aceptar/Rechazar Cancelación #
+## Aceptar/Rechazar Cancelación ##
 Método mediante el cual responderemos aquellos UUID que teníamos pendientes. El servicio soporta la aceptación o rechazo de las facturas.
 Los parámetros necesarios para el consumo, son dependientes de la forma.
 <details>
 <summary>
 Aceptar / Rechazar por CSD
 </summary>
+
 Necesitaremos URL, Token, RFC Receptor, UUID, Acción, Key b64, CSD b64 y password del CSD.
 Ejemplo de uso
+
 ```pascal
 procedure TForm1.Button37Click(Sender: TObject);
  var
@@ -529,6 +535,7 @@ Necesitaremos URL, Token y el XML para aceptar/rechazar.
 ```
 
 Ejemplo de uso
+
 ```pascal
 procedure TForm1.Button39Click(Sender: TObject);
 var
@@ -559,7 +566,9 @@ Aceptar / Rechazar por UUID
 
 Necesitaremos URL, Token, RFC Receptor, UUID, Acción. 
 **Importante:** El Servicio requiere los CSD y KEY en el administrador de timbres para funcionar.
+
 Ejemplo de uso
+
 ```pascal
 procedure TForm1.Button40Click(Sender: TObject);
  var
@@ -584,7 +593,7 @@ end;
 ```
 </details>
 
-# Consulta de Documentos Relacionados #
+## Consulta de Documentos Relacionados ##
 Método mediante el cual consultamos las facturas que se encuentras relacionadas a otra factura (UUID).
 Los parámetros necesarios para el consumo, son dependientes de la forma.
 <details>
@@ -592,7 +601,9 @@ Los parámetros necesarios para el consumo, son dependientes de la forma.
 Relacionados por CSD
 </summary>
 Necesitaremos URL, Token, RFC Receptor, UUID, Key b64, CSD b64 y password del CSD.
+
 Ejemplo de uso
+
 ```pascal
 procedure TForm1.Button25Click(Sender: TObject);
 var
@@ -624,7 +635,9 @@ end;
 Relacionados por PFX
 </summary>
 Necesitaremos URL, Token, RFC Receptor, UUID, PFX b64 y password del PFX.
+
 Ejemplo de uso
+
 ```pascal
 procedure TForm1.Button26Click(Sender: TObject);
 var
@@ -655,8 +668,10 @@ end;
 <summary>
 Relacionados por XML
 </summary>
+
 Necesitaremos URL, Token y el XML para consulta de Relacionados.
 **Ejemplo de XML**
+
 ```xml
 <PeticionConsultaRelacionados RfcPacEnviaSolicitud="DAL050601L35" RfcReceptor="LAN7008173R5" Uuid="A618EA43-28A8-48B6-8F2A-6C8C6702445C" xmlns="http://cancelacfd.sat.gob.mx" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
@@ -744,7 +759,7 @@ end;
 ```
 </details>
 
-# Validación #
+## Validación ##
 Métodos mediante los cuales se verifican datos o documentos.
 
 Este servicio recibe un comprobante CFDI en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida que exista en el SAT, así como el estatus en el SAT.
