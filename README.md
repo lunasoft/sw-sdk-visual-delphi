@@ -143,7 +143,7 @@ begin
   token := txtToken.Text;
   xml := stampXmlIn.Text;
 
-  StampResponse := Stamp.StampVa(url, token, xml);
+  StampResponse := Stamp.StampV4(url, token, xml);
   try
     txtCfdi.Text := StampResponse.data.tfd;
   except
