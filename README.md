@@ -1,12 +1,18 @@
-![](https://camo.githubusercontent.com/e29b06fe1da0a7b612145240053c218c882cef71/687474703a2f2f737a696e74657a69732d6e65742e68752f77702d636f6e74656e742f75706c6f6164732f323031362f30382f64656c7068692e6a7067)
+# SDK Visual Delphi 
+[![SW sapien](https://dka575ofm4ao0.cloudfront.net/pages-transactional_logos/retina/68712/SW_smarter-Servicios_web.png)](http://sw.com.mx/)
 
+Librería Visual delphi para el consumo de los servicios de SW sapien®.
+
+
+
+### Compatibilidad
+- Embarcadero® Delphi
+- RAD Studio
+---
+### Instalación
 Para utilizar los servicios de SW con Delphi se debe tener importados en el proyecto todos los archivos **.PAS**.
 
-## IDE Compatible ##
 
--   Para poder correr el ejemplo necesitas tener instalado Embarcadero® Delphi 10.2
-
-## Incorporación del archivo .pas
 La incorporación del archivo se realizará a través del menú superior "Project" y seleccionando "Add to Proyect". Buscamos nuestros archivos que nos sean necesarios y lo agregamos.
 
 Antes de la utilización del mismo, debemos declararlo en los "uses" de nuestro programa, quedando algo así como lo siguiente.
@@ -32,8 +38,6 @@ uses
   StampResponseV4,
   Issue,
   Validation,
-  ValidateLcoResponse,
-  ValidateLrfcResponse,
   ValidateCfdiResponse,
   JsonIssue,
   Cancelation,
@@ -48,11 +52,15 @@ uses
   Balance,
   BalanceRequest;
 ```
+---
 
-#  Authentication #
-Este método recibirá una URL, Usuario y Password para la generación de un token.
+## Authentication ##
+El servicio de Autenticación es utilizado principalmente para obtener el **token** el cual será utilizado para poder timbrar nuestro CFDI (xml) ya emitido (sellado), para poder utilizar este servicio es necesario que cuente con un **usuario** y **contraseña**
 
+<details>
+<summary>
 Ejemplo de uso:
+</summary>
 ```pascal
 procedure TForm1.Button1Click(Sender: TObject);
 var
@@ -77,11 +85,16 @@ begin
   end;
 end;
 ```
+</details>
 
 # Account Balance #
+Método mediante el cual puedes realizar la consulta de tu saldo para consumir los servicios de SW.
 Este método recibe una URL y el Token de la cuenta a revisar.
 
-Ejemplo uso:
+<details>
+<summary>
+Ejemplo de uso:
+</summary>
 ```pascal
 procedure TForm1.btnBalanceClick(Sender: TObject);
 var
@@ -106,80 +119,64 @@ begin
   end;
 end;
 ```
+</details>
 
 # Timbrado #
+
+<details>
+<summary>
+Timbrado CFDI V1
+</summary>
+
 Esta función recibe un XML sellado y lo envía a timbrar.
 
-Existen 4 versiones de timbrado en nuestros servicios. Cada versión regresa distintos datos, los cuales son los siguientes:
-
- - v1 : regresa → TFD.
- - v2 : regresa → TFD y el CFDI.
- - v3 : regresa → CFDI y el TFD ya unidos.
- - v4 : regresa → CFDI, TFD, CadenaOriginal, noCertificadoSat, noCertificadoCFDI, UUID, selloSAT, selloCFDI, fechaTimbrado y QR.
+**TimbrarV1** Recibe el contenido de un **XML** sellado en formato **String**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
 Ejemplo de uso:
 ```pascal
-procedure TForm1.btnTimbrarV4Click(Sender: TObject);
+procedure TForm1.btnTimbrarV1Click(Sender: TObject);
 var
   url, token, xml: String;
-  StampResponse: TStampResponseV4;
+  StampResponse: TStampResponseV1;
 begin
   url := txtURL.Text;
   token := txtToken.Text;
   xml := stampXmlIn.Text;
 
-  StampResponse := Stamp.StampV4(url, token, xml);
+  StampResponse := Stamp.StampVa(url, token, xml);
   try
-    txtCfdi.Text := StampResponse.data.cfdi;
-    txtCadenaOriginalSat.Text := StampResponse.data.cadenaOriginalSAT;
-    txtNoCertificadoSat.Text := StampResponse.data.noCertificadoSAT;
-    txtNoCertificadoCfdi.Text := StampResponse.data.noCertificadoSAT;
-    txtUuid.Text := StampResponse.data.uuid;
-    txtSelloSat.Text := StampResponse.data.selloSAT;
-    txtSelloCfdi.Text := StampResponse.data.noCertificadoSAT;
-    txtFechaTimbrado.Text := DateToStr(StampResponse.data.fechaTimbrado);
-    txtQrCode.Text := StampResponse.data.qrCode;
-
+    txtCfdi.Text := StampResponse.data.tfd;
   except
     txtMessageStamp.Text := UTF8ToWideString(StampResponse.message);
     txtMessageDetailStamp.Text := UTF8ToWideString(StampResponse.messageDetail);
 	end;
 end;
 ```
+</details>
 
-# Emisión Timbrado #
+<details>
+<summary>
+Emisión Timbrado V1
+</summary>
 
-Esta función recibe un XML sin sellar y lo envía a sellar + timbrar.
 
-Existen 4 versiones de timbrado en nuestros servicios. Cada versión regresa distintos datos, los cuales son los siguientes:
+**Emisión Timbrado** Realiza el sellado y timbrado de un comprobante CFDI. Recibe el contenido de un **XML** en formato **String**, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
- - v1 : regresa → TFD.
- - v2 : regresa → TFD y el CFDI.
- - v3 : regresa → CFDI y el TFD ya unidos.
- - v4 : regresa → CFDI, TFD, CadenaOriginal, noCertificadoSat, noCertificadoCFDI, UUID, selloSAT, selloCFDI, fechaTimbrado y QR.
 
 Ejemplo de uso:
 ```pascal
 procedure TForm1.Button7Click(Sender: TObject);
 var
   url, token, xml: String;
-  StampResponse: TStampResponseV4;
+  StampResponse: TStampResponseV1;
 begin
   url := txtURL.Text;
   token := txtToken.Text;
   xml := stampXmlIn.Text;
 
-	StampResponse := Issue.IssueV4(url, token, xml);
+	StampResponse := Issue.IssueV1(url, token, xml);
   try
-		txtIssueCfdi.Text := StampResponse.data.cfdi;
-		txtIssueCadOriSat.Text := StampResponse.data.cadenaOriginalSAT;
-		txtIssueNoCertSat.Text := StampResponse.data.noCertificadoSAT;
-		txtIssueNoCertCfdi.Text := StampResponse.data.noCertificadoSAT;
-		txtIssueUuid.Text := StampResponse.data.uuid;
-		txtIssueSelloSat.Text := StampResponse.data.selloSAT;
-		txtIssueSelloCfdi.Text := StampResponse.data.noCertificadoSAT;
-		txtIssueFechaTimbrado.Text := DateToStr(StampResponse.data.fechaTimbrado);
-		txtIssueQr.Text := StampResponse.data.qrCode;
+		txtIssueCfdi.Text := StampResponse.data.tfd;
 
 	except
 		txtIssueMessage.Text := UTF8ToWideString(StampResponse.message);
@@ -187,50 +184,64 @@ begin
   end;
 end;
 ```
+</details>
+
+<details>
+<summary>
+Emisión Timbrado JSON V1
+</summary>
 
 # Emisión Timbrado JSON #
-Esta función recibe un JSON bajo un formato definido, y lo envía a timbrar.
+**Emisión Timbrado JSON** Realiza el sellado y timbrado de un. Recibe un **JSON** bajo un formato definido, posteriormente si la factura y el token son correctos devuelve el complemento timbre en un string (**TFD**), en caso contrario lanza una excepción.
 
-Existen 4 versiones de timbrado en nuestros servicios. Cada versión regresa distintos datos, los cuales son los siguientes:
-
- - v1 : regresa → TFD.
- - v2 : regresa → TFD y el CFDI.
- - v3 : regresa → CFDI y el TFD ya unidos.
- - v4 : regresa → CFDI, TFD, CadenaOriginal, noCertificadoSat, noCertificadoCFDI, UUID, selloSAT, selloCFDI, fechaTimbrado y QR.
 
 Ejemplo de uso:
 ```pascal
 procedure TForm1.Button15Click(Sender: TObject);
 var
-  jsonEmision: TStampResponseV4;
+  jsonEmision: TStampResponseV1;
 begin
-  jsonEmision := JsonIssue.IssueJsonV4(txtURL.Text, txtToken.Text,
+  jsonEmision := JsonIssue.IssueJsonV1(txtURL.Text, txtToken.Text,
     memoJson.Text);
   try
-
-    txtJsonCadenaOriginalSAT.Text := jsonEmision.data.cadenaOriginalSAT;
-    txtJsonNoCertificadoSAT.Text := jsonEmision.data.noCertificadoSAT;
-    txtJsonNoCertificadoCFDI.Text := jsonEmision.data.noCertificadoCFDI;
-    txtJsonUUID.Text := jsonEmision.data.uuid;
-    txtJsonSelloSAT.Text := jsonEmision.data.selloSAT;
-    txtJsonSelloCFDI.Text := jsonEmision.data.selloCFDI;
-    txtJsonFechaDeTimbrado.Text := DateToStr(jsonEmision.data.fechaTimbrado);
-    txtJsonCodigoQr.Text := jsonEmision.data.qrCode;
-    txtJsonCfdi.Text := jsonEmision.data.cfdi;
+    txtJsonCfdi.Text := jsonEmision.data.tfd;
   except
     txtJsonMessage.Text := jsonEmision.message;
     txtJsonMessageDetail.Text := jsonEmision.messageDetail;
   end;
 end;
 ```
+</details>
+
+:pushpin: ***NOTA:*** Existen varias versiones de respuesta, las cuales son las siguientes:
+
+| Version |                         Respuesta                             | 
+|---------|---------------------------------------------------------------|
+|  V1     | Devuelve el timbre fiscal digital                             | 
+|  V2     | Devuelve el timbre fiscal digital y el CFDI timbrado          | 
+|  V3     | Devuelve el CFDI timbrado                                     | 
+|  V4     | Devuelve todos los datos del timbrado                         |
+
+Para mayor referencia de estas versiones de respuesta, favor de visitar el siguiente [link](https://developers.sw.com.mx/knowledge-base/versiones-de-respuesta-timbrado/).
 
 # Cancelación #
 
-Depende del método que se utilice, se cancela un CFDI.
+Este servicio se utiliza para cancelar documentos xml y se puede hacer mediante varios métodos **Cancelación CSD**, **Cancelación PFX**, **Cancelacion por XML** y **Cancelación UUID**.
 
-## Cancelación por CSD ##
+<details>
+<summary>
+Cancelación por CSD
+</summary>
 
-Mediante esta cancelación será necesario enviar la **URL**, el **Token**, el **UUID** de la factura, **RFC** emisor, **Certificado** en Base64, **Llave** en Base64 y **Password** del certificado.
+Este método recibe los siguientes parámetros:
+* Usuario y contraseña o token
+* Url Servicios SW
+* Certificado (.cer) en **Base64**
+* Key (.key) en **Base64**
+* RFC emisor
+* Password del archivo key
+* UUID
+* Motivo
 
 Ejemplo de uso:
 ```pascal
@@ -252,10 +263,21 @@ begin
 
 end;
 ```
+</details>
 
-## Cancelación por PFX ##
+<details>
+<summary>
+Cancelación por PFX
+</summary>
 
-Mediante esta cancelación será necesario enviar la **URL**, el **Token**, el **UUID** de la factura, **RFC** emisor, **PFX** en Base64 y **Password** del certificado.
+Este método recibe los siguientes parámetros:
+* Usuario y contraseña o token
+* Url Servicios SW
+* Archivo PFX en **Base64**
+* RFC emisor
+* Password (CSD)
+* UUID
+* Motivo
 
 Ejemplo de uso:
 ```pascal
@@ -275,42 +297,51 @@ begin
   end;
 end;
 ```
-## Cancelación por XML ##
+</details>
 
-Mediante esta cancelación será necesario enviar la **URL**, el **Token** y el **XML** de cancelación.
+<details>
+<summary>
+Cancelación por XML
+</summary>
+
+Este método recibe los siguientes parámetros:
+* Usuario y contraseña o token
+* Url Servicios SW
+* XML sellado con los UUID a cancelar.
 
 Ejemplo de XML
 ```xml
-<Cancelacion Fecha="2018-11-05T12:39:36" RfcEmisor="LAN7008173R5" xmlns="http://cancelacfd.sat.gob.mx" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<Folios>
-		<UUID>3741DE37-E4F0-4FCB-85B1-5C8BAD995B84</UUID>
-	</Folios>
-	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
-		<SignedInfo>
-			<CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
-			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
-			<Reference URI="">
-				<Transforms>
-					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
-				</Transforms>
-				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
-				<DigestValue>m42rt4ZsSZ/IOFdiMiYSnkO6kZo=</DigestValue>
-			</Reference>
-		</SignedInfo>
-		<SignatureValue>aSf9fKJakK8j2e73vlw2UGKI/WSrQp5hXzPR4pI5D5G6ropIwLpVSNpkzqY0GPehvtNpXn/Ib3Dzsh2D7qulkIcD1EPl5omvR5vl2+MWJxv7X52LL55bbaHOS9J+evC7JkfY/6wqzMSNWc4JsTRZfqp6A7V8qnfErpAnaeF4cMoN1Nl7vaauCLImRo3/nKM2JG1XQy1qJU5y0MpdB3VVtsx/I8VKlNCsSjiX7xloRLDLNZ+oRYIkKFsmA9retF9SHQl1O50mjwXOV/G11yuNCG5naxVOtQPOGtqeTjexeJ9e6dA3/uOD2OxOIcbTgm32LxGNvGjyesF0HTZQnl9cVw==</SignatureValue>
-		<KeyInfo>
-			<X509Data>
-				<X509IssuerSerial>
-					<X509IssuerName>OID.1.2.840.113549.1.9.2=Responsable: ACDMA, OID.2.5.4.45=SAT970701NN3, L=Coyoacán, S=Distrito Federal, C=MX, PostalCode=06300, STREET=&quot;Av. Hidalgo 77, Col. Guerrero&quot;, E=asisnet@pruebas.sat.gob.mx, OU=Administración de Seguridad de la Información, O=Servicio de Administración Tributaria, CN=A.C. 2 de pruebas(4096)</X509IssuerName>
-					<X509SerialNumber>286524172099382162235533054548081509963388170549</X509SerialNumber>
-				</X509IssuerSerial>
-				<X509Certificate>MIIFxTCCA62gAwIBAgIUMjAwMDEwMDAwMDAzMDAwMjI4MTUwDQYJKoZIhvcNAQELBQAwggFmMSAwHgYDVQQDDBdBLkMuIDIgZGUgcHJ1ZWJhcyg0MDk2KTEvMC0GA1UECgwmU2VydmljaW8gZGUgQWRtaW5pc3RyYWNpw7NuIFRyaWJ1dGFyaWExODA2BgNVBAsML0FkbWluaXN0cmFjacOzbiBkZSBTZWd1cmlkYWQgZGUgbGEgSW5mb3JtYWNpw7NuMSkwJwYJKoZIhvcNAQkBFhphc2lzbmV0QHBydWViYXMuc2F0LmdvYi5teDEmMCQGA1UECQwdQXYuIEhpZGFsZ28gNzcsIENvbC4gR3VlcnJlcm8xDjAMBgNVBBEMBTA2MzAwMQswCQYDVQQGEwJNWDEZMBcGA1UECAwQRGlzdHJpdG8gRmVkZXJhbDESMBAGA1UEBwwJQ295b2Fjw6FuMRUwEwYDVQQtEwxTQVQ5NzA3MDFOTjMxITAfBgkqhkiG9w0BCQIMElJlc3BvbnNhYmxlOiBBQ0RNQTAeFw0xNjEwMjUyMTUyMTFaFw0yMDEwMjUyMTUyMTFaMIGxMRowGAYDVQQDExFDSU5ERU1FWCBTQSBERSBDVjEaMBgGA1UEKRMRQ0lOREVNRVggU0EgREUgQ1YxGjAYBgNVBAoTEUNJTkRFTUVYIFNBIERFIENWMSUwIwYDVQQtExxMQU43MDA4MTczUjUgLyBGVUFCNzcwMTE3QlhBMR4wHAYDVQQFExUgLyBGVUFCNzcwMTE3TURGUk5OMDkxFDASBgNVBAsUC1BydWViYV9DRkRJMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgvvCiCFDFVaYX7xdVRhp/38ULWto/LKDSZy1yrXKpaqFXqERJWF78YHKf3N5GBoXgzwFPuDX+5kvY5wtYNxx/Owu2shNZqFFh6EKsysQMeP5rz6kE1gFYenaPEUP9zj+h0bL3xR5aqoTsqGF24mKBLoiaK44pXBzGzgsxZishVJVM6XbzNJVonEUNbI25DhgWAd86f2aU3BmOH2K1RZx41dtTT56UsszJls4tPFODr/caWuZEuUvLp1M3nj7Dyu88mhD2f+1fA/g7kzcU/1tcpFXF/rIy93APvkU72jwvkrnprzs+SnG81+/F16ahuGsb2EZ88dKHwqxEkwzhMyTbQIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQsFAAOCAgEAJ/xkL8I+fpilZP+9aO8n93+20XxVomLJjeSL+Ng2ErL2GgatpLuN5JknFBkZAhxVIgMaTS23zzk1RLtRaYvH83lBH5E+M+kEjFGp14Fne1iV2Pm3vL4jeLmzHgY1Kf5HmeVrrp4PU7WQg16VpyHaJ/eonPNiEBUjcyQ1iFfkzJmnSJvDGtfQK2TiEolDJApYv0OWdm4is9Bsfi9j6lI9/T6MNZ+/LM2L/t72Vau4r7m94JDEzaO3A0wHAtQ97fjBfBiO5M8AEISAV7eZidIl3iaJJHkQbBYiiW2gikreUZKPUX0HmlnIqqQcBJhWKRu6Nqk6aZBTETLLpGrvF9OArV1JSsbdw/ZH+P88RAt5em5/gjwwtFlNHyiKG5w+UFpaZOK3gZP0su0sa6dlPeQ9EL4JlFkGqQCgSQ+NOsXqaOavgoP5VLykLwuGnwIUnuhBTVeDbzpgrg9LuF5dYp/zs+Y9ScJqe5VMAagLSYTShNtN8luV7LvxF9pgWwZdcM7lUwqJmUddCiZqdngg3vzTactMToG16gZA4CWnMgbU4E+r541+FNMpgAZNvs2CiW/eApfaaQojsZEAHDsDv4L5n3M1CC7fYjE/d61aSng1LaO6T1mh+dEfPvLzp7zyzz+UgWMhi5Cs4pcXx1eic5r7uxPoBwcCTt3YI1jKVVnV7/w=</X509Certificate>
-			</X509Data>
-		</KeyInfo>
-	</Signature>
+<Cancelacion xmlns="http://cancelacfd.sat.gob.mx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" Fecha="2021-12-26T18:15:28" RfcEmisor="EKU9003173C9">
+    <Folios>
+        <Folio UUID="fe4e71b0-8959-4fb9-8091-f5ac4fb0fef8" Motivo="02" FolioSustitucion=""/>
+    </Folios>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+            <Reference URI="">
+                <Transforms>
+                    <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <DigestValue>XEdUtCptjdlz9DsYAP7nnU6MytU=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue>ZnWh91e5tUc4/t1ZWnb3yOgB8zuCXNPioND+rv6aLOEwIw26/8sYYb+GT4wgyqlc09wOs32XTUwWoGQwtWMG8Euqq+4xJyobWvPCsX6CiURvD/Pd33xgkH92A0AGQxEMYGVT7wK+GFS2gDTYEYAXvZqzCe6+rXnlQvHML0TOOmhVu/wc8YrCbGt4z/F5sRxhjpa0eqwFEq4RmB4nkWjcD3Pnudn3XAI5NHIiOd8KVGVcDR+LvYvKj7h+18WxZgujpggYjbFN79i1jEsAEPDfgryUdTvjDw+KC7Mg+/ge6pssH42buEMIwVE4VX9Y3NtWSGTwdIK/8pxXk+Y5wyR6Gg==</SignatureValue>
+        <KeyInfo>
+            <X509Data>
+                <X509IssuerSerial>
+                    <X509IssuerName>OID.1.2.840.113549.1.9.2=responsable: ACDMA-SAT, OID.2.5.4.45=2.5.4.45, L=COYOACAN, S=CIUDAD DE MEXICO, C=MX, PostalCode=06370, STREET=3ra cerrada de cadiz, E=oscar.martinez@sat.gob.mx, OU=SAT-IES Authority, O=SERVICIO DE ADMINISTRACION TRIBUTARIA, CN=AC UAT</X509IssuerName>
+                    <X509SerialNumber>292233162870206001759766198444326234574038512436</X509SerialNumber>
+                </X509IssuerSerial>
+                <X509Certificate>MIIFuzCCA6OgAwIBAgIUMzAwMDEwMDAwMDA0MDAwMDI0MzQwDQYJKoZIhvcNAQELBQAwggErMQ8wDQYDVQQDDAZBQyBVQVQxLjAsBgNVBAoMJVNFUlZJQ0lPIERFIEFETUlOSVNUUkFDSU9OIFRSSUJVVEFSSUExGjAYBgNVBAsMEVNBVC1JRVMgQXV0aG9yaXR5MSgwJgYJKoZIhvcNAQkBFhlvc2Nhci5tYXJ0aW5lekBzYXQuZ29iLm14MR0wGwYDVQQJDBQzcmEgY2VycmFkYSBkZSBjYWRpejEOMAwGA1UEEQwFMDYzNzAxCzAJBgNVBAYTAk1YMRkwFwYDVQQIDBBDSVVEQUQgREUgTUVYSUNPMREwDwYDVQQHDAhDT1lPQUNBTjERMA8GA1UELRMIMi41LjQuNDUxJTAjBgkqhkiG9w0BCQITFnJlc3BvbnNhYmxlOiBBQ0RNQS1TQVQwHhcNMTkwNjE3MTk0NDE0WhcNMjMwNjE3MTk0NDE0WjCB4jEnMCUGA1UEAxMeRVNDVUVMQSBLRU1QRVIgVVJHQVRFIFNBIERFIENWMScwJQYDVQQpEx5FU0NVRUxBIEtFTVBFUiBVUkdBVEUgU0EgREUgQ1YxJzAlBgNVBAoTHkVTQ1VFTEEgS0VNUEVSIFVSR0FURSBTQSBERSBDVjElMCMGA1UELRMcRUtVOTAwMzE3M0M5IC8gWElRQjg5MTExNlFFNDEeMBwGA1UEBRMVIC8gWElRQjg5MTExNk1HUk1aUjA1MR4wHAYDVQQLExVFc2N1ZWxhIEtlbXBlciBVcmdhdGUwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCN0peKpgfOL75iYRv1fqq+oVYsLPVUR/GibYmGKc9InHFy5lYF6OTYjnIIvmkOdRobbGlCUxORX/tLsl8Ya9gm6Yo7hHnODRBIDup3GISFzB/96R9K/MzYQOcscMIoBDARaycnLvy7FlMvO7/rlVnsSARxZRO8Kz8Zkksj2zpeYpjZIya/369+oGqQk1cTRkHo59JvJ4Tfbk/3iIyf4H/Ini9nBe9cYWo0MnKob7DDt/vsdi5tA8mMtA953LapNyCZIDCRQQlUGNgDqY9/8F5mUvVgkcczsIgGdvf9vMQPSf3jjCiKj7j6ucxl1+FwJWmbvgNmiaUR/0q4m2rm78lFAgMBAAGjHTAbMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMA0GCSqGSIb3DQEBCwUAA4ICAQBcpj1TjT4jiinIujIdAlFzE6kRwYJCnDG08zSp4kSnShjxADGEXH2chehKMV0FY7c4njA5eDGdA/G2OCTPvF5rpeCZP5Dw504RZkYDl2suRz+wa1sNBVpbnBJEK0fQcN3IftBwsgNFdFhUtCyw3lus1SSJbPxjLHS6FcZZ51YSeIfcNXOAuTqdimusaXq15GrSrCOkM6n2jfj2sMJYM2HXaXJ6rGTEgYmhYdwxWtil6RfZB+fGQ/H9I9WLnl4KTZUS6C9+NLHh4FPDhSk19fpS2S/56aqgFoGAkXAYt9Fy5ECaPcULIfJ1DEbsXKyRdCv3JY89+0MNkOdaDnsemS2o5Gl08zI4iYtt3L40gAZ60NPh31kVLnYNsmvfNxYyKp+AeJtDHyW9w7ftM0Hoi+BuRmcAQSKFV3pk8j51la+jrRBrAUv8blbRcQ5BiZUwJzHFEKIwTsRGoRyEx96sNnB03n6GTwjIGz92SmLdNl95r9rkvp+2m4S6q1lPuXaFg7DGBrXWC8iyqeWE2iobdwIIuXPTMVqQb12m1dAkJVRO5NdHnP/MpqOvOgLqoZBNHGyBg4Gqm4sCJHCxA1c8Elfa2RQTCk0tAzllL4vOnI1GHkGJn65xokGsaU4B4D36xh7eWrfj4/pgWHmtoDAYa8wzSwo2GVCZOs+mtEgOQB91/g==</X509Certificate>
+            </X509Data>
+        </KeyInfo>
+    </Signature>
 </Cancelacion>
 ```
-
 
 Ejemplo de uso:
 ```pascal
@@ -329,9 +360,19 @@ begin
   end;
 end;
 ```
-## Cancelación por UUID ##
+</details>
 
-Mediante esta cancelación será necesario enviar la **URL**, el **Token** y el **UUID** de la factura.
+<details>
+<summary>
+Cancelación por UUID
+</summary>
+
+Este método recibe los siguientes parámetros:
+* Usuario y contraseña o token
+* Url Servicios SW
+* RFC emisor
+* UUID
+* Motivo
 
 Ejemplo de uso:
 ```pascal
@@ -350,101 +391,14 @@ begin
 	end;
 end;
 ```
-
-# Validación #
-Métodos mediante los cuales se verifican datos o documentos.
-
-## Validación XML ##
-Este método recibe un **XML**, una **URL**, y un **Token**.
-
-Ejemplo de uso:
-```pascal
-procedure TForm1.Button11Click(Sender: TObject);
-var
-  validaCfdi: TValidateCfdiResponse;
-  url, token, cfdi: String;
-begin
-  url := txtURL.Text;
-  token := txtToken.Text;
-  cfdi := validateCfdiMemo.Text;
-
-  validaCfdi := ValidateCFDI(url, token, cfdi);
-  try
-    txtValidaXmlStatus.Text := validaCfdi.status;
-    txtValidaXmlCadenaOriginalSAT.Text :=
-      UTF8ToWideString(validaCfdi.cadenaOriginalComprobante);
-    txtValidaXmlCadenaOriginalComprobante.Text :=
-      UTF8ToWideString(validaCfdi.cadenaOriginalComprobante);
-    txtValidaXmlUuid.Text := validaCfdi.uuid;
-    txtValidaXmlStatusSat.Text := UTF8ToWideString(validaCfdi.statusSat);
-    txtValidaXmlStatusCodeSAT.Text :=
-      UTF8ToWideString(validaCfdi.statusCodeSat);
-  except
-    txtValidaXmlMessage.Text := UTF8ToWideString(validaCfdi.message);
-    txtValidaXmlMessageDetail.Text :=
-      UTF8ToWideString(validaCfdi.messageDetail);
-  end;
-end;
-```
-
-## Validación de LRFC ##
-Este método recibe un **RFC**, una **URL**, y un **Token**. 
-
-Ejemplo de uso:
-```pascal
-procedure TForm1.Button9Click(Sender: TObject);
-var
-  validaLrfc: TValidateLrfcResponse;
-begin
-  validaLrfc := ValidateLrfc(txtURL.Text, txtToken.Text, txtValidateLrfc.Text);
-  try
-    txtValidateContribuyenteRfc.Text := validaLrfc.data.contribuyenteRFC;
-    txtValidateSnfc.Text := ifthen(validaLrfc.data.sncf, 'True', 'False');
-    txtValidateSubcontratacion.Text := ifthen(validaLrfc.data.subcontratacion,
-      'True', 'False');
-    txtValidateStatus.Text := validaLrfc.status;
-
-  except
-    txtValidateMessage.Text := validaLrfc.message;
-    txtValidateMessageDetail.Text := validaLrfc.messageDetail;
-    txtValidateStatus.Text := validaLrfc.status;
-  end;
-end;
-```
-
-## Validación de LCO ##
-Este método recibe un **Número de Certificado**, una **URL**, y un **Token**. 
-
-Ejemplo de uso:
-```pascal
-procedure TForm1.Button8Click(Sender: TObject);
-var
-  validaLco: TValidateLcoResponse;
-
-begin
-  validaLco := ValidateLco(txtURL.Text, txtToken.Text, txtLcoAValidar.Text);
-  try
-    txtValidaLcoNoCertificado.Text := validaLco.data.noCertificado;
-    txtValidaLcoRfc.Text := validaLco.data.rfc;
-    txtValidacionLcoValidezObligaciones.Text :=
-      validaLco.data.validezObligaciones;
-    txtValidacionLcoEstatusCertificado.Text :=
-      validaLco.data.estatusCertificado;
-    txtValidacionLcoFechaInicio.Text := DateToStr(validaLco.data.fechaInicio);
-    txtValidacionLcoFechaFinal.Text := DateToStr(validaLco.data.fechaFinal);
-    txtValidaLcoStatus.Text := validaLco.status;
-  except
-    txtValidaLcoMessage.Text := validaLco.message;
-    txtValidaLcoMessageDetail.Text := validaLco.messageDetail;
-  end;
-end;
-```
+</details>
 
 # Consulta Solicitudes pendientes por Aceptar/Rechazar #
 Método mediante el cual obtendremos una lista de UUID asociada a un RFC que nos dirá cuales facturas nos enviaron para que aceptemos o rechacemos.
 El método requiere de la URL, Token, y RFC.
 
-Ejemplo de consumo
+<details>
+  <summary>Ejemplo</summary>
 ```pascal
 procedure TForm1.Button33Click(Sender: TObject);
 var
@@ -469,10 +423,15 @@ begin
   end;
 end;
 ```
+</details>
+
 # Aceptar/Rechazar Cancelación #
 Método mediante el cual responderemos aquellos UUID que teníamos pendientes. El servicio soporta la aceptación o rechazo de las facturas.
 Los parámetros necesarios para el consumo, son dependientes de la forma.
-## Aceptar/Rechazar por CSD ##
+<details>
+<summary>
+Aceptar / Rechazar por CSD
+</summary>
 Necesitaremos URL, Token, RFC Receptor, UUID, Acción, Key b64, CSD b64 y password del CSD.
 Ejemplo de uso
 ```pascal
@@ -497,7 +456,13 @@ begin
 	end;
 end;
 ```
-## Aceptar/Rechazar por PFX ##
+</details>
+
+<details>
+<summary>
+Aceptar / Rechazar por PFX
+</summary>
+
 Necesitaremos URL, Token, RFC Receptor, UUID, Acción, PFX b64 y password del PFX.
 Ejemplo de uso
 ```pascal
@@ -522,8 +487,13 @@ begin
 	end;
 end;
 ```
+</details>
 
-## Aceptar/Rechazar por XML ##
+<details>
+<summary>
+Aceptar / Rechazar por XML
+</summary>
+
 Necesitaremos URL, Token y el XML para aceptar/rechazar.
 **Ejemplo de XML**
 ```xml
@@ -580,8 +550,13 @@ begin
 	end;
 end;
 ```
+</details>
 
-## Aceptar/Rechazar por UUID ##
+<details>
+<summary>
+Aceptar / Rechazar por UUID
+</summary>
+
 Necesitaremos URL, Token, RFC Receptor, UUID, Acción. 
 **Importante:** El Servicio requiere los CSD y KEY en el administrador de timbres para funcionar.
 Ejemplo de uso
@@ -607,11 +582,15 @@ begin
 	end;
 end;
 ```
+</details>
 
 # Consulta de Documentos Relacionados #
 Método mediante el cual consultamos las facturas que se encuentras relacionadas a otra factura (UUID).
 Los parámetros necesarios para el consumo, son dependientes de la forma.
-## Relacionados por CSD ##
+<details>
+<summary>
+Relacionados por CSD
+</summary>
 Necesitaremos URL, Token, RFC Receptor, UUID, Key b64, CSD b64 y password del CSD.
 Ejemplo de uso
 ```pascal
@@ -638,7 +617,12 @@ begin
 	end;
 end;
 ```
-## Relacionados por PFX ##
+</details>
+
+<details>
+<summary>
+Relacionados por PFX
+</summary>
 Necesitaremos URL, Token, RFC Receptor, UUID, PFX b64 y password del PFX.
 Ejemplo de uso
 ```pascal
@@ -665,8 +649,12 @@ begin
 	end;
 end;
 ```
+</details>
 
-## Relacionados por XML ##
+<details>
+<summary>
+Relacionados por XML
+</summary>
 Necesitaremos URL, Token y el XML para consulta de Relacionados.
 **Ejemplo de XML**
 ```xml
@@ -721,8 +709,13 @@ begin
 	end;
 end;
 ```
+</details>
 
-## Relacionados por UUID ##
+<details>
+<summary>
+Relacionados por UUID
+</summary>
+
 Necesitaremos URL, Token, RFC Receptor y UUID. 
 **Importante:** El Servicio requiere los CSD y KEY en el administrador de timbres para funcionar.
 Ejemplo de uso
@@ -747,5 +740,45 @@ begin
 		txtRelationsMessage.Text := relationsUuid.message;
 		txtRelationsMessageDetail.Text := relationsUuid.messageDetail;
 	end;
+end;
+```
+</details>
+
+# Validación #
+Métodos mediante los cuales se verifican datos o documentos.
+
+Este servicio recibe un comprobante CFDI en formato XML mediante el cual se valida integridad, sello, errores de estructura, matriz de errores del SAT incluyendo complementos, se valida que exista en el SAT, así como el estatus en el SAT.
+
+Este método recibe los siguientes parámetros:
+* Url Servicios SW
+* Usuario y contraseña o token
+* XML
+
+Ejemplo de uso:
+```pascal
+procedure TForm1.Button11Click(Sender: TObject);
+var
+  validaCfdi: TValidateCfdiResponse;
+  url, token, cfdi: String;
+begin
+  url := txtURL.Text;
+  token := txtToken.Text;
+  cfdi := validateCfdiMemo.Text;
+
+  validaCfdi := ValidateCFDI(url, token, cfdi);
+  try
+    txtValidaXmlStatus.Text := validaCfdi.status;
+    txtValidaXmlCadenaOriginalSAT.Text :=
+      UTF8ToWideString(validaCfdi.cadenaOriginalComprobante);
+    txtValidaXmlCadenaOriginalComprobante.Text :=
+      UTF8ToWideString(validaCfdi.cadenaOriginalComprobante);
+    txtValidaXmlUuid.Text := validaCfdi.uuid;
+    txtValidaXmlStatusSat.Text := UTF8ToWideString(validaCfdi.statusSat);
+    txtValidaXmlStatusCodeSAT.Text :=
+      UTF8ToWideString(validaCfdi.statusCodeSat);
+  except
+    txtValidaXmlMessage.Text := UTF8ToWideString(validaCfdi.message);
+    txtValidaXmlMessageDetail.Text :=
+      UTF8ToWideString(validaCfdi.messageDetail);
 end;
 ```
