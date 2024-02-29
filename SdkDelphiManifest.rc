@@ -1,6 +1,6 @@
 VS_VERSION_INFO VERSIONINFO
-    FILEVERSION    1.0.18.1
-    PRODUCTVERSION 1.0.18.1
+    FILEVERSION    0.1.0.1
+    PRODUCTVERSION 0.1.0.1
 {
     BLOCK "StringFileInfo"
     {
@@ -8,9 +8,9 @@ VS_VERSION_INFO VERSIONINFO
         {
             VALUE "CompanyName",      "SW Sapien"
             VALUE "FileDescription",  "File version"
-            VALUE "FileVersion",      "1.0.18.1" 
+            VALUE "FileVersion",      "0.1.0.1" 
             VALUE "ProductName",      "sw-sdk-delphi"
-            VALUE "ProductVersion",   "1.0.18.1"
+            VALUE "ProductVersion",   "0.1.0.1"
         }
     }
     BLOCK "VarFileInfo"
