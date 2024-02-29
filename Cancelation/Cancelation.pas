@@ -31,43 +31,43 @@ uses
   CancelationResponse,
   CancelationRequest;
 
-function CancelationByXml(URL, Token, XML: String): TCancelationResponse;
-function CancelationByCsd(URL, Token, RFCEmisor, Uuid, Motivo, FolioSustitucion,
- b64Cer, b64Key, PasswordKey: String): TCancelationResponse;
-function CancelationByPfx(URL, Token, RFCEmisor, Uuid, Motivo, FolioSustitucion, b64Pfx,
-  PasswordPfx: String): TCancelationResponse;
-function CancelationByUuid(URL, Token, RFCEmisor, Uuid, Motivo, Foliosustitucion: String)
+function CancelationByXml(url, token, xml: String): TCancelationResponse;
+function CancelationByCsd(url, token, rfcEmisor, uuid, motivo, folioSustitucion,
+ b64Cer, b64Key, passwordKey: String): TCancelationResponse;
+function CancelationByPfx(url, token, rfcEmisor, uuid, motivo, folioSustitucion, b64Pfx,
+  passwordPfx: String): TCancelationResponse;
+function CancelationByUuid(url, token, rfcEmisor, uuid, motivo, folioSustitucion: String)
   : TCancelationResponse;
 
 implementation
 
-function CancelationByXml(URL, Token, XML: String): TCancelationResponse;
+function CancelationByXml(url, token, xml: String): TCancelationResponse;
 begin
   Result := TCancelationResponse.FromJsonString
-    ((StampReq(URL, Token, XML, '/cfdi33/cancel/xml', False)));
+    ((StampReq(url, token, xml, '/cfdi33/cancel/xml', False)));
 end;
 
-function CancelationByCsd(URL, Token, RFCEmisor, Uuid, Motivo, FolioSustitucion,
- b64Cer, b64Key, PasswordKey: String): TCancelationResponse;
+function CancelationByCsd(url, token, rfcEmisor, uuid, motivo, folioSustitucion,
+ b64Cer, b64Key, passwordKey: String): TCancelationResponse;
 begin
   Result := TCancelationResponse.FromJsonString
-    ((RequestJson(URL, Token, csdBody(Uuid, PasswordKey, RFCEmisor, Motivo,
-    FolioSustitucion, b64Cer, b64Key), '/cfdi33/cancel/csd')));
+    ((RequestJson(url, token, csdBody(uuid, passwordKey, rfcEmisor, motivo,
+    folioSustitucion, b64Cer, b64Key), '/cfdi33/cancel/csd')));
 end;
 
-function CancelationByPfx(URL, Token, RFCEmisor, Uuid, Motivo, FolioSustitucion,
-  b64Pfx, PasswordPfx: String): TCancelationResponse;
+function CancelationByPfx(url, token, rfcEmisor, uuid, motivo, folioSustitucion,
+  b64Pfx, passwordPfx: String): TCancelationResponse;
 begin
   Result := TCancelationResponse.FromJsonString
-    ((RequestJson(URL, Token, pfxBody(Uuid, PasswordPfx, RFCEmisor, Motivo,
-    FolioSustitucion, b64Pfx), '/cfdi33/cancel/pfx')));
+    ((RequestJson(url, token, pfxBody(uuid, passwordPfx, rfcEmisor, motivo,
+    folioSustitucion, b64Pfx), '/cfdi33/cancel/pfx')));
 end;
 
-function CancelationByUuid(URL, Token, RFCEmisor, Uuid, Motivo, FolioSustitucion: String)
+function CancelationByUuid(url, token, rfcEmisor, uuid, motivo, folioSustitucion: String)
   : TCancelationResponse;
 begin
   Result := TCancelationResponse.FromJsonString
-    ((RequestURL(URL, Token, RFCEmisor, Uuid, Motivo, FolioSustitucion, '/cfdi33/cancel/')));
+    ((RequestURL(url, token, rfcEmisor, uuid, motivo, folioSustitucion, '/cfdi33/cancel/')));
 end;
 
 end.

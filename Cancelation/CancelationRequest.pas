@@ -26,22 +26,22 @@ uses
   Data.Bind.ObjectScope,
   REST.Types;
 
-function RequestJson(URL, Token, body, path: String): String;
-function RequestUrl(URL, Token, RFCEmisor, UUID, PathReq: String): String;  overload;
-function RequestUrl(URL, Token, RFCEmisor, UUID, Motivo, FolioSustitucion, PathReq: String): String; overload;
-function RequestUrlGet(URL, Token, RFCEmisor, PathReq: String): String;
-function csdBody(UUID, Password, RFCEmisor, Motivo, FolioSustitucion, b64Cer, b64Key: String): String; overload;
-function csdBody(UUID, Password, RFCEmisor, b64Cer, b64Key: String): String;  overload; overload;
-function pfxBody(UUID, Password, RFCEmisor, Motivo, FolioSustitucion, b64Pfx: String): string;
-function pfxBodyRelations(UUID, Password, RFCEmisor, b64Pfx: String): string; overload;
-function csdsBody(UUID, Accion, Password, RFCEmisor, b64Cer,
+function RequestJson(url, token, body, path: String): String;
+function RequestUrl(url, token, rfCEmisor, uuid, pathReq: String): String;  overload;
+function RequestUrl(url, token, rfCEmisor, uuid, motivo, folioSustitucion, pathReq: String): String; overload;
+function RequestUrlGet(url, token, rfCEmisor, pathReq: String): String;
+function CsdBody(uuid, password, rfCEmisor, motivo, folioSustitucion, b64Cer, b64Key: String): String; overload;
+function CsdBody(uuid, password, rfCEmisor, b64Cer, b64Key: String): String;  overload; overload;
+function PfxBody(uuid, password, rfCEmisor, motivo, folioSustitucion, b64Pfx: String): string;
+function PfxBodyRelations(uuid, password, rfCEmisor, b64Pfx: String): string; overload;
+function CsdsBody(uuid, accion, password, rfCEmisor, b64Cer,
   b64Key: String): String;
-function pfxsBody(UUID, Accion, Password, RFCEmisor, b64Pfx: String): string;
+function PfxsBody(uuid, accion, password, rfCEmisor, b64Pfx: String): string;
 function RemoveCrLf(const S: string): string;
 
 implementation
 
-function RequestJson(URL, Token, body, path: String): String;
+function RequestJson(url, token, body, path: String): String;
 var
   HTTP: TIdHTTP;
   RequestBody: TStream;
@@ -57,9 +57,9 @@ begin
         HTTP.Request.Accept := 'application/json';
         HTTP.Request.ContentType := 'application/json';
         HTTP.Request.CustomHeaders.FoldLines := false;
-        HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + Token);
-        URL := URL + path;
-        ResponseBody := HTTP.Post(URL, RequestBody);
+        HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + token);
+        url := url + path;
+        ResponseBody := HTTP.Post(url, RequestBody);
         Result := String(ResponseBody);
       finally
         RequestBody.Free;
@@ -80,7 +80,7 @@ begin
   ReportMemoryLeaksOnShutdown := false;
 end;
 
-function RequestUrl(URL, Token, RFCEmisor, UUID, PathReq: String): String;
+function RequestUrl(url, token, rfCEmisor, uuid, pathReq: String): String;
 var
   HTTP: TIdHTTP;
   RequestBody: TStream;
@@ -94,9 +94,9 @@ begin
         HTTP.Request.Accept := 'application/json';
         HTTP.Request.ContentType := 'application/json';
         HTTP.Request.CustomHeaders.FoldLines := false;
-        HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + Token);
-        URL := URL + PathReq + RFCEmisor + '/' + UUID + '/';
-        ResponseBody := HTTP.Post(URL, RequestBody);
+        HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + token);
+        url := url + pathReq + rfCEmisor + '/' + uuid + '/';
+        ResponseBody := HTTP.Post(url, RequestBody);
         Result := String(ResponseBody);
       finally
         RequestBody.Free;
@@ -117,7 +117,7 @@ begin
   ReportMemoryLeaksOnShutdown := false;
 end;
 
-function RequestUrl(URL, Token, RFCEmisor, UUID, Motivo, FolioSustitucion, PathReq: String): String; overload;
+function RequestUrl(url, token, rfCEmisor, uuid, motivo, folioSustitucion, pathReq: String): String; overload; overload;
 var
   HTTP: TIdHTTP;
   RequestBody: TStream;
@@ -131,9 +131,9 @@ begin
         HTTP.Request.Accept := 'application/json';
         HTTP.Request.ContentType := 'application/json';
         HTTP.Request.CustomHeaders.FoldLines := false;
-        HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + Token);
-        URL := URL + PathReq + RFCEmisor + '/' + UUID + '/' + Motivo + '/' + FolioSustitucion;
-        ResponseBody := HTTP.Post(URL, RequestBody);
+        HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + token);
+        url := url + pathReq + rfCEmisor + '/' + uuid + '/' + motivo + '/' + folioSustitucion;
+        ResponseBody := HTTP.Post(url, RequestBody);
         Result := String(ResponseBody);
       finally
         RequestBody.Free;
@@ -154,7 +154,7 @@ begin
   ReportMemoryLeaksOnShutdown := false;
 end;
 
-function RequestUrlGet(URL, Token, RFCEmisor, PathReq: String): String;
+function RequestUrlGet(url, token, rfCEmisor, pathReq: String): String;
 var
   HTTP: TIdHTTP;
   RequestBody: TStream;
@@ -168,9 +168,9 @@ begin
         HTTP.Request.Accept := 'application/json';
         HTTP.Request.ContentType := 'application/json';
         HTTP.Request.CustomHeaders.FoldLines := false;
-        HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + Token);
-        URL := URL + PathReq + RFCEmisor;
-        ResponseBody := HTTP.Get(URL);
+        HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + token);
+        url := url + pathReq + rfCEmisor;
+        ResponseBody := HTTP.Get(url);
         Result := String(ResponseBody);
       finally
         RequestBody.Free;
@@ -191,53 +191,52 @@ begin
   ReportMemoryLeaksOnShutdown := false;
 end;
 
-function csdBody(UUID, Password, RFCEmisor, Motivo, FolioSustitucion, b64Cer, b64Key: String): String;
+function CsdBody(uuid, password, rfCEmisor, motivo, folioSustitucion, b64Cer, b64Key: String): String;
 begin
   b64Cer := RemoveCrLf(b64Cer);
   b64Key := RemoveCrLf(b64Key);
-  Result := '{"uuid":"' + UUID + '", ' +
-            '"password":"' + Password + '", ' +
-            '"rfc":"' + RFCEmisor + '", ' +
-            '"motivo":"' + Motivo + '", ' +
-            '"foliosustitucion":"' + FolioSustitucion + '", ' +
+  Result := '{"uuid":"' + uuid + '", ' +
+            '"password":"' + password + '", ' +
+            '"rfc":"' + rfCEmisor + '", ' +
+            '"motivo":"' + motivo + '", ' +
+            '"foliosustitucion":"' + folioSustitucion + '", ' +
             '"b64Cer":"' + b64Cer + '", ' +
             '"b64Key":"' + b64Key + '"}';
 end;
 
-function csdBody(UUID, Password, RFCEmisor, b64Cer, b64Key: String): String;  overload;
+function CsdBody(uuid, password, rfCEmisor, b64Cer, b64Key: String): String;  overload;
 begin
 
-  Result := '{"uuid":"' + UUID + '", ' + '"password": "' + Password + '", ' +
-    '"rfc": "' + RFCEmisor + '", ' + '"b64Cer": "' + b64Cer + '", ' +
+  Result := '{"uuid":"' + uuid + '", ' + '"password": "' + password + '", ' +
+    '"rfc": "' + rfCEmisor + '", ' + '"b64Cer": "' + b64Cer + '", ' +
     '"b64Key": "' + b64Key + '"}'
 end;
 
-function pfxBody(UUID, Password, RFCEmisor, Motivo, FolioSustitucion, b64Pfx: String): string;
+function PfxBody(uuid, password, rfCEmisor, motivo, folioSustitucion, b64Pfx: String): string;
 begin
-  Result := '{"uuid":"' + UUID + '", "password": "' + Password + '", "rfc": "' +
-  RFCEmisor + '", "motivo":"' + Motivo + '", "foliosustitucion":"' +
-  FolioSustitucion + '", "b64Pfx": "' + b64Pfx + '"}';
+  Result := '{"uuid":"' + uuid + '", "password": "' + password + '", "rfc": "' +
+  rfCEmisor + '", "motivo":"' + motivo + '", "foliosustitucion":"' +
+  folioSustitucion + '", "b64Pfx": "' + b64Pfx + '"}';
 end;
 
-function pfxBodyRelations(UUID, Password, RFCEmisor, b64Pfx: String): string; overload;
+function PfxBodyRelations(uuid, password, rfCEmisor, b64Pfx: String): string; overload;
 begin
-  Result := '{"uuid":"' + UUID + '", "password": "' + Password + '", "rfc": "' +
-    RFCEmisor + '", "b64Pfx": "' + b64Pfx + '"}'
+  Result := '{"uuid":"' + uuid + '", "password": "' + password + '", "rfc": "' +
+    rfCEmisor + '", "b64Pfx": "' + b64Pfx + '"}'
 end;
 
-function csdsBody(UUID, Accion, Password, RFCEmisor, b64Cer,
-  b64Key: String): String;
+function CsdsBody(uUID, accion, password, rfCEmisor, b64Cer, b64Key: String): String;
 begin
 
-  Result := '{ "uuids": [ {"uuid":"' + UUID + '", "action":"' + Accion +
-    '"} ], "password": "' + Password + '", "rfc": "' + RFCEmisor +
+  Result := '{ "uuids": [ {"uuid":"' + uuid + '", "action":"' + accion +
+    '"} ], "password": "' + password + '", "rfc": "' + rfCEmisor +
     '","b64Cer": "' + b64Cer + '","b64Key": "' + b64Key + '"}';
 end;
 
-function pfxsBody(UUID, Accion, Password, RFCEmisor, b64Pfx: String): string;
+function PfxsBody(uUID, accion, password, rfCEmisor, b64Pfx: String): string;
 begin
-  Result := '{ "uuids": [ {"uuid":"' + UUID + '", "action":"' + Accion +
-    '"} ], "password": "' + Password + '", "rfc": "' + RFCEmisor +
+  Result := '{ "uuids": [ {"uuid":"' + uuid + '", "action":"' + accion +
+    '"} ], "password": "' + password + '", "rfc": "' + rfCEmisor +
     '","b64Pfx": "' + b64Pfx + '" } ';
 end;
 
