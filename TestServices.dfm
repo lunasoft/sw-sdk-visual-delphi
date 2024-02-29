@@ -106,7 +106,7 @@
         Width = 169
         Height = 21
         TabOrder = 0
-        Text = 'Usuario'
+        Text = 'usuario'
       end
       object txtPassword: TEdit
         Left = 8
@@ -114,7 +114,7 @@
         Width = 169
         Height = 21
         TabOrder = 1
-        Text = 'Contrase'#241'a'
+        Text = 'contrase'#241'a'
       end
       object txtURL: TEdit
         Left = 8
@@ -868,7 +868,7 @@
         Top = 0
         Width = 1113
         Height = 545
-        ActivePage = TabSheet13
+        ActivePage = TabSheet10
         TabOrder = 0
         object TabSheet10: TTabSheet
           Caption = 'Cancelaci'#243'n'
@@ -884,7 +884,7 @@
             Top = 3
             Width = 1105
             Height = 510
-            ActivePage = TabSheet17
+            ActivePage = TabSheet15
             TabOrder = 0
             object TabSheet14: TTabSheet
               Caption = 'Cancelaci'#243'n por CSD'
@@ -938,6 +938,20 @@
                 Width = 69
                 Height = 13
                 Caption = 'messageDetail'
+              end
+              object Label33: TLabel
+                Left = 108
+                Top = 105
+                Width = 77
+                Height = 13
+                Caption = 'Folio Sustituci'#243'n'
+              end
+              object Label34: TLabel
+                Left = 337
+                Top = 78
+                Width = 32
+                Height = 13
+                Caption = 'Motivo'
               end
               object Button17: TButton
                 Left = 0
@@ -999,7 +1013,7 @@
               object txtCsdPassword: TEdit
                 Left = 191
                 Top = 75
-                Width = 273
+                Width = 130
                 Height = 21
                 TabOrder = 7
               end
@@ -1030,6 +1044,20 @@
                 Width = 273
                 Height = 21
                 TabOrder = 11
+              end
+              object txtCsdFolioSust: TEdit
+                Left = 191
+                Top = 102
+                Width = 273
+                Height = 21
+                TabOrder = 12
+              end
+              object txtCsdMotivo: TEdit
+                Left = 375
+                Top = 75
+                Width = 50
+                Height = 21
+                TabOrder = 13
               end
             end
             object TabSheet15: TTabSheet
@@ -1076,6 +1104,20 @@
                 Width = 69
                 Height = 13
                 Caption = 'messageDetail'
+              end
+              object Label35: TLabel
+                Left = 169
+                Top = 153
+                Width = 77
+                Height = 13
+                Caption = 'Folio Sustituci'#243'n'
+              end
+              object Label36: TLabel
+                Left = 348
+                Top = 107
+                Width = 32
+                Height = 13
+                Caption = 'Motivo'
               end
               object txtPfxAcuse: TMemo
                 Left = 16
@@ -1138,7 +1180,7 @@
               object txtPfxPassword: TEdit
                 Left = 248
                 Top = 104
-                Width = 177
+                Width = 89
                 Height = 21
                 TabOrder = 8
               end
@@ -1150,6 +1192,20 @@
                 Caption = 'Abrir PFX'
                 TabOrder = 9
                 OnClick = Button21Click
+              end
+              object txtPfxFolioSust: TEdit
+                Left = 252
+                Top = 150
+                Width = 173
+                Height = 21
+                TabOrder = 10
+              end
+              object txtPfxMotivo: TEdit
+                Left = 384
+                Top = 104
+                Width = 41
+                Height = 21
+                TabOrder = 11
               end
             end
             object TabSheet17: TTabSheet
@@ -1190,6 +1246,27 @@
                 Height = 13
                 Caption = 'messageDetail'
               end
+              object Label23: TLabel
+                Left = 400
+                Top = 43
+                Width = 32
+                Height = 13
+                Caption = 'Motivo'
+              end
+              object Folio: TLabel
+                Left = 199
+                Top = 112
+                Width = 22
+                Height = 13
+                Caption = 'Folio'
+              end
+              object Sustitución: TLabel
+                Left = 184
+                Top = 124
+                Width = 52
+                Height = 13
+                Caption = 'Sustituci'#243'n'
+              end
               object Button24: TButton
                 Left = 8
                 Top = 32
@@ -1202,7 +1279,7 @@
               object txtUuidRfc: TEdit
                 Left = 256
                 Top = 40
-                Width = 241
+                Width = 129
                 Height = 21
                 TabOrder = 1
               end
@@ -1240,6 +1317,20 @@
                 Width = 281
                 Height = 21
                 TabOrder = 6
+              end
+              object txtUuidMotivo: TEdit
+                Left = 448
+                Top = 40
+                Width = 49
+                Height = 21
+                TabOrder = 7
+              end
+              object txtUuidFolioSust: TEdit
+                Left = 256
+                Top = 121
+                Width = 241
+                Height = 21
+                TabOrder = 8
               end
             end
             object TabSheet16: TTabSheet

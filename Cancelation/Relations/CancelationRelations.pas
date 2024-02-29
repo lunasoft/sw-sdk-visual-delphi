@@ -37,7 +37,7 @@ function CancelationRelationsByXml(URL, Token, XML: String)
 function CancelationRelationsByPfx(URL, Token, RFCEmisor, Uuid, b64Pfx,
   PasswordKey: String): TCancelationRelationsResponse;
 function CancelationRelationsByCsd(URL, Token, RFCEmisor, Uuid, b64Key, b64Cer,
-  PasswordKey: String): TCancelationRelationsResponse;
+  PasswordKey: String): TCancelationRelationsResponse; overload;
 function CancelationRelationsByUuid(URL, Token, RFCEmisor, Uuid: String)
   : TCancelationRelationsResponse;
 
@@ -62,7 +62,7 @@ function CancelationRelationsByPfx(URL, Token, RFCEmisor, Uuid, b64Pfx,
   PasswordKey: String): TCancelationRelationsResponse;
 begin
   Result := TCancelationRelationsResponse.FromJsonString
-    (RequestJson(URL, Token, pfxBody(Uuid, PasswordKey, RFCEmisor, b64Pfx),
+    (RequestJson(URL, Token, pfxBodyRelations(Uuid, PasswordKey, RFCEmisor, b64Pfx),
     '/relations/pfx'));
 end;
 
