@@ -225,7 +225,7 @@ begin
     rfCEmisor + '", "b64Pfx": "' + b64Pfx + '"}'
 end;
 
-function CsdsBody(uUID, accion, password, rfCEmisor, b64Cer, b64Key: String): String;
+function CsdsBody(uuid, accion, password, rfCEmisor, b64Cer, b64Key: String): String;
 begin
 
   Result := '{ "uuids": [ {"uuid":"' + uuid + '", "action":"' + accion +
@@ -233,7 +233,7 @@ begin
     '","b64Cer": "' + b64Cer + '","b64Key": "' + b64Key + '"}';
 end;
 
-function PfxsBody(uUID, accion, password, rfCEmisor, b64Pfx: String): string;
+function PfxsBody(uuid, accion, password, rfCEmisor, b64Pfx: String): string;
 begin
   Result := '{ "uuids": [ {"uuid":"' + uuid + '", "action":"' + accion +
     '"} ], "password": "' + password + '", "rfc": "' + rfCEmisor +
