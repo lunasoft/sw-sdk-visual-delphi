@@ -62,7 +62,7 @@ function CancelationRelationsByPfx(URL, Token, RFCEmisor, Uuid, b64Pfx,
   PasswordKey: String): TCancelationRelationsResponse;
 begin
   Result := TCancelationRelationsResponse.FromJsonString
-    (RequestJson(URL, Token, pfxBodyRelations(Uuid, PasswordKey, RFCEmisor, b64Pfx),
+    (RequestJson(URL, Token, PfxBodyRelations(uuid, passwordKey, rfcEmisor, b64Pfx),
     '/relations/pfx'));
 end;
 

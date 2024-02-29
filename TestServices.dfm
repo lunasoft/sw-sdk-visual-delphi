@@ -33,7 +33,7 @@
     Top = 0
     Width = 1121
     Height = 569
-    ActivePage = TabSheet5
+    ActivePage = TabSheet1
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Autenticaci'#243'n'
@@ -106,7 +106,7 @@
         Width = 169
         Height = 21
         TabOrder = 0
-        Text = 'usuario'
+        Text = 'Usuario'
       end
       object txtPassword: TEdit
         Left = 8
@@ -114,7 +114,7 @@
         Width = 169
         Height = 21
         TabOrder = 1
-        Text = 'contrase'#241'a'
+        Text = 'Contrase'#241'a'
       end
       object txtURL: TEdit
         Left = 8
