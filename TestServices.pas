@@ -349,6 +349,19 @@ type
     txtStatusBalance: TEdit;
     txtMessageBalance: TEdit;
     txtMessageDetailBalance: TEdit;
+    Label23: TLabel;
+    txtUuidMotivo: TEdit;
+    Folio: TLabel;
+    Sustitución: TLabel;
+    txtUuidFolioSust: TEdit;
+    Label33: TLabel;
+    txtCsdFolioSust: TEdit;
+    Label34: TLabel;
+    txtCsdMotivo: TEdit;
+    Label35: TLabel;
+    txtPfxFolioSust: TEdit;
+    Label36: TLabel;
+    txtPfxMotivo: TEdit;
 		procedure Button1Click(Sender: TObject);
 		procedure Button3Click(Sender: TObject);
 		procedure btnTimbrarV1Click(Sender: TObject);
@@ -608,8 +621,8 @@ var
 	cancelationCsd: TCancelationResponse;
 begin
 	cancelationCsd := CancelationByCsd(txtURL.Text, txtToken.Text,
-		txtCsdRfcEmisor.Text, txtUuidUuid.Text, txtCsdCer.Text, txtCsdKey.Text,
-		txtCsdPassword.Text);
+		txtCsdRfcEmisor.Text, txtCsdUuid.Text, txtCsdMotivo.Text, txtCsdFolioSust.Text,
+    txtCsdCer.Text, txtCsdKey.Text, txtCsdPassword.Text);
 	try
 		txtCsdAcuse.Text := cancelationCsd.data.acuse;
 		txtCsdStatus.Text := cancelationCsd.status;
@@ -644,7 +657,7 @@ var
 	cancelarPorPfx: TCancelationResponse;
 begin
 	cancelarPorPfx := CancelationByPfx(txtURL.Text, txtToken.Text,
-		txtPfxRfcEmisor.Text, txtPfxUuid.Text, txtPfxPfx.Text, txtPfxPassword.Text);
+		txtPfxRfcEmisor.Text, txtPfxUuid.Text,txtPfxMotivo.Text, txtPfxFolioSust.Text, txtPfxPfx.Text, txtPfxPassword.Text);
 	try
 		txtPfxAcuse.Text := cancelarPorPfx.data.acuse;
 		txtPfxStatus.Text := cancelarPorPfx.status;
@@ -735,7 +748,7 @@ var
 	cancelacionUuid: TCancelationResponse;
 begin
 	cancelacionUuid := CancelationByUuid(txtURL.Text, txtToken.Text,
-		txtUuidRfc.Text, txtUuidUuid.Text);
+		txtUuidRfc.Text, txtUuidUuid.Text, txtUuidMotivo.Text, txtUuidFolioSust.Text);
 	try
 		txtUuidAcuse.Text := cancelacionUuid.data.acuse;
 		txtUuidStatus.Text := cancelacionUuid.status;
