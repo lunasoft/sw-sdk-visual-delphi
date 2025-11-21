@@ -1,4 +1,4 @@
-unit StampRequest;
+﻿unit StampRequest;
 
 interface
 
@@ -30,9 +30,7 @@ begin
     try
       Stream := TStringStream.Create('', TEncoding.UTF8);
 
-      // No es necesario escribir el XML a un archivo, y menos si es un archivo en el directorio actual.
-      // Así leemos el XML en un stream y se pasa ese stream a los parámetros del request
-      XMLStream := TStringStream.Create(XML, TUTF8Encoding.Create(False));
+     XMLStream := TStringStream.Create(XML, TUTF8Encoding.Create(False));
       XMLStream.Position := 0;
 
       Params := TIdMultipartFormDataStream.Create;
