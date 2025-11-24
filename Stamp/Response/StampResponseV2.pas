@@ -2,8 +2,6 @@ unit StampResponseV2;
 
 interface
 
-uses Generics.Collections, Rest.Json;
-
 type
 
 TDataClass = class
@@ -36,8 +34,9 @@ end;
 
 implementation
 
-{TDataClass}
+uses Generics.Collections, Rest.Json;
 
+{TDataClass}
 
 function TDataClass.ToJsonString: string;
 begin

@@ -2,8 +2,6 @@ unit ValidateCfdiResponse;
 
 interface
 
-uses Generics.Collections, Rest.Json;
-
 type
 
   TDetailClass_001 = class
@@ -57,6 +55,10 @@ type
   end;
 
 implementation
+
+uses
+	Generics.Collections,
+  Rest.Json;
 
 { TDetailClass_001 }
 

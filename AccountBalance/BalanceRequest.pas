@@ -2,15 +2,15 @@
 
 interface
 
+function GetBalance(URL, Token: String): String;
+
+implementation
+
 uses
   System.SysUtils,
   System.Classes,
   System.JSON,
   SWHTTPClient;
-
-function GetBalance(URL, Token: String): String;
-
-implementation
 
 function GetBalance(URL, Token: String): String;
 var

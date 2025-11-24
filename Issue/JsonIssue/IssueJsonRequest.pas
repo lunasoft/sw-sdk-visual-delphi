@@ -1,23 +1,16 @@
 unit IssueJsonRequest;
 
 interface
-uses
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  System.JSON,
-  System.JSON.Builders,
-  System.JSON.Writers,
-  System.JSON.Readers,
-  System.JSON.BSON,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
-  Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
-  Vcl.ComCtrls, StampRequest, StampResponseV1,
-  StampResponseV2, StampResponseV3, StampResponseV4, SWHTTPClient, IdHTTP;
 
   function IssueServiceJSON(URL, Token, Json, Version: String): String;
 
 implementation
+
+uses
+	System.SysUtils,
+	System.Classes,
+	IdHTTP,
+	SWHTTPClient;
 
 function IssueServiceJSON(URL, Token, Json, Version: String): String;
 var

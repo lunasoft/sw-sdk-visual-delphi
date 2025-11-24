@@ -1,20 +1,19 @@
-unit StampRequest;
+﻿unit StampRequest;
 
 interface
-uses
-  Winapi.Windows,
-  Winapi.Messages,
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
-  Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
-  REST.Json,
-  Vcl.ComCtrls, Helper, strUtils, SWHTTPClient, IdMultipartFormData, IdHTTP;
 
 function StampReq(URL, Token, XML, Path: String; b64 : Boolean = false): String;
 
 implementation
+
+uses
+  System.SysUtils,
+  System.Classes,
+  Helper,
+  strUtils,
+  SWHTTPClient,
+  IdMultipartFormData,
+  IdHTTP;
 
 function StampReq(URL, Token, XML, Path: String; b64: Boolean): String;
 var
@@ -22,7 +21,7 @@ var
   base64: string;
   Params: TIdMultipartFormDataStream;
   Stream: TStringStream;
-  StrList: TStreamWriter;
+  XMLStream: TStringStream;
 begin
   base64 := IfThen(b64, 'b64', '');
 
@@ -30,13 +29,13 @@ begin
   try
     try
       Stream := TStringStream.Create('', TEncoding.UTF8);
-      StrList := TStreamWriter.Create('xml.xml', false, TUTF8Encoding.Create(False));
-      StrList.WriteLine(XML);
-      StrList.Free();
+
+     XMLStream := TStringStream.Create(XML, TUTF8Encoding.Create(False));
+      XMLStream.Position := 0;
 
       Params := TIdMultipartFormDataStream.Create;
       try
-        Params.AddFile('XML', 'xml.xml', 'multipart/form-data');
+        Params.AddFormField('XML', 'multipart/form-data', '', XMLStream, 'cfdi.xml');
         URL := URL + Path + base64;
         HTTPClient.HTTP.Request.CustomHeaders.FoldLines := False;
         HTTPClient.HTTP.Request.CustomHeaders.Add('Authorization:Bearer ' + Token);
@@ -45,6 +44,7 @@ begin
       finally
         Params.Free;
         Stream.Free;
+        XMLStream.Free;
       end;
     except
       on E: EIdHTTPProtocolException do

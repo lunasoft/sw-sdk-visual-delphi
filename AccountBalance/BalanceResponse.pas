@@ -2,8 +2,6 @@ unit BalanceResponse;
 
 interface
 
-uses Generics.Collections, Rest.Json;
-
 type
 
 	TDataClass = class
@@ -51,6 +49,10 @@ type
   end;
 
 implementation
+
+uses
+	Generics.Collections,
+  Rest.Json;
 
 { TDataClass }
 

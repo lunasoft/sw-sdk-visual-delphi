@@ -2,8 +2,6 @@ unit CancelationAcceptRejectResponse;
 
 interface
 
-uses Generics.Collections, Rest.Json;
-
 type
 
 TFoliosClass = class
@@ -52,8 +50,10 @@ end;
 
 implementation
 
-{TFoliosClass}
+uses
+	Generics.Collections, Rest.Json;
 
+{TFoliosClass}
 
 function TFoliosClass.ToJsonString: string;
 begin

@@ -2,24 +2,6 @@ unit CancelationRequest;
 
 interface
 
-uses
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  Vcl.Graphics,
-  StrUtils,
-  System.JSON,
-  System.JSON.Builders,
-  System.JSON.Writers,
-  System.JSON.Readers,
-  System.JSON.BSON,
-  IPPeerClient,
-  REST.Client,
-  Data.Bind.Components,
-  Data.Bind.ObjectScope,
-  REST.Types,
-  SWHTTPClient, IdHTTP;
-
 function RequestJson(url, token, body, path: String): String;
 function RequestUrl(url, token, rfcEmisor, uuid, pathReq: String): String;  overload;
 function RequestUrl(url, token, rfcEmisor, uuid, motivo, folioSustitucion, pathReq: String): String; overload;
@@ -34,6 +16,17 @@ function PfxsBody(uuid, accion, password, rfcEmisor, b64Pfx: String): string;
 function RemoveCrLf(const S: string): string;
 
 implementation
+
+uses
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  StrUtils,
+  System.JSON,
+  Data.Bind.Components,
+  REST.Types,
+  SWHTTPClient,
+  IdHTTP;
 
 function RequestJson(url, token, body, path: String): String;
 var

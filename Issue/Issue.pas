@@ -4,24 +4,10 @@ unit Issue;
 interface
 
 uses
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  System.JSON,
-  System.JSON.Builders,
-  System.JSON.Writers,
-  System.JSON.Readers,
-  System.JSON.BSON,
-  IdHTTP, IdGlobal,
-  IdCoder,
-  IdCoder3to4,
-  IdCoderMIME,
-  IdMultipartFormData,
-  IdGlobalProtocols,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
-  Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
-  Vcl.ComCtrls, StampRequest, StampResponseV1,
-  StampResponseV2, StampResponseV3, StampResponseV4;
+	StampResponseV1,
+  StampResponseV2,
+  StampResponseV3,
+  StampResponseV4;
 
 function IssueV1(URL, Token, XML: String; Base64: Boolean = False): TStampResponseV1;
 function IssueV2(URL, Token, XML: String; Base64: Boolean = False): TStampResponseV2;
@@ -29,6 +15,9 @@ function IssueV3(URL, Token, XML: String; Base64: Boolean = False): TStampRespon
 function IssueV4(URL, Token, XML: String; Base64: Boolean = False): TStampResponseV4;
 
 implementation
+
+uses
+	StampRequest;
 
 function IssueV1(URL, Token, XML: String; Base64 : Boolean): TStampResponseV1;
 begin

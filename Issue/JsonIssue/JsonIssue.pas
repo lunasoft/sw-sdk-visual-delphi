@@ -3,32 +3,6 @@ unit JsonIssue;
 interface
 
 uses
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  System.JSON,
-  System.JSON.Builders,
-  System.JSON.Writers,
-  System.JSON.Readers,
-  System.JSON.BSON,
-  IdHTTP,
-  IdGlobal,
-  IdCoder,
-  IdCoder3to4,
-  IdCoderMIME,
-  IdMultipartFormData,
-  IdGlobalProtocols,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  IPPeerClient,
-  Vcl.StdCtrls,
-  REST.Client,
-  Data.Bind.Components,
-  Data.Bind.ObjectScope,
-  REST.Types,
-  Vcl.ComCtrls,
-  IssueJsonRequest,
   StampResponseV1,
   StampResponseV2,
   StampResponseV3,
@@ -40,6 +14,9 @@ function IssueJsonV3(Url, Token, JSON: String): TStampResponseV3;
 function IssueJsonV4(Url, Token, JSON: String): TStampResponseV4;
 
 implementation
+
+uses
+  IssueJsonRequest;
 
 function IssueJsonV1(Url, Token, JSON: String): TStampResponseV1;
 begin

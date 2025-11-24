@@ -363,6 +363,22 @@ type
     txtPfxMotivo: TEdit;
     Label37: TLabel;
     txtURLApi: TEdit;
+    Label38: TLabel;
+    Label39: TLabel;
+    txtCsdSU: TEdit;
+    txtCsdD: TEdit;
+    Label40: TLabel;
+    Label41: TLabel;
+    txtPfxSU: TEdit;
+    txtPfxD: TEdit;
+    Label42: TLabel;
+    txtUuidSU: TEdit;
+    Label43: TLabel;
+    txtUuidD: TEdit;
+    Label44: TLabel;
+    Label78: TLabel;
+    txtXmlSU: TEdit;
+    txtXmlD: TEdit;
 		procedure Button1Click(Sender: TObject);
 		procedure Button3Click(Sender: TObject);
 		procedure btnTimbrarV1Click(Sender: TObject);
@@ -626,7 +642,9 @@ begin
     txtCsdCer.Text, txtCsdKey.Text, txtCsdPassword.Text);
 	try
 		txtCsdAcuse.Text := cancelationCsd.data.acuse;
-		txtCsdStatus.Text := cancelationCsd.status;
+    txtCsdSU.Text := cancelationCsd.GetStatusUuid;
+    txtCsdD.Text := cancelationCsd.data.ToJsonString;
+    txtCsdStatus.Text := cancelationCsd.status;
 	except
 		txtCsdStatus.Text := cancelationCsd.status;
 		txtCsdMessageDetail.Text := cancelationCsd.messageDetail;
@@ -662,6 +680,8 @@ begin
 	try
 		txtPfxAcuse.Text := cancelarPorPfx.data.acuse;
 		txtPfxStatus.Text := cancelarPorPfx.status;
+    txtPfxSU.Text := cancelarPorPfx.GetStatusUuid;
+    txtPfxD.Text := cancelarPorPfx.data.ToJsonString;
 	except
 		txtPfxStatus.Text := cancelarPorPfx.status;
 		txtPfxMessageDetail.Text := cancelarPorPfx.messageDetail;
@@ -734,13 +754,16 @@ var
 	cancelacionXML: TCancelationResponse;
 begin
 	cancelacionXML := CancelationByXml(txtURL.Text, txtToken.Text,
-		txtXmlXml.Text);
+    txtXmlXml.Text);
 	try
 		txtXmlAcuse.Text := cancelacionXML.data.acuse;
 		txtXmlStatus.Text := cancelacionXML.status;
+    txtXmlSU.Text := cancelacionXML.GetStatusUuid;
+    txtXmlD.Text := cancelacionXML.data.ToJsonString;
 	except
 		txtXmlMessage.Text := cancelacionXML.message;
-		txtXmlMessageDetail.Text := cancelacionXML.messageDetail
+		txtXmlMessageDetail.Text := cancelacionXML.messageDetail;
+    txtXmlStatus.Text := cancelacionXML.status;
 	end;
 end;
 
@@ -753,9 +776,12 @@ begin
 	try
 		txtUuidAcuse.Text := cancelacionUuid.data.acuse;
 		txtUuidStatus.Text := cancelacionUuid.status;
+    txtUuidD.Text := cancelacionUuid.data.ToJsonString;
+    txtUuidSU.Text := cancelacionUuid.GetStatusUuid;
 	except
 		txtUuidMessage.Text := cancelacionUuid.message;
-		txtUuidMessageDetail.Text := cancelacionUuid.messageDetail
+		txtUuidMessageDetail.Text := cancelacionUuid.messageDetail;
+    txtUuidStatus.Text := cancelacionUuid.status;
 	end;
 
 end;

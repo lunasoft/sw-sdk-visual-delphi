@@ -2,8 +2,6 @@ unit CancelationRelationsResponse;
 
 interface
 
-uses Generics.Collections, Rest.Json;
-
 type
 
 TUuidsRelacionadosHijosClass = class
@@ -70,6 +68,9 @@ public
 end;
 
 implementation
+
+uses
+	Generics.Collections, Rest.Json;
 
 {TUuidsRelacionadosHijosClass}
 

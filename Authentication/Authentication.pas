@@ -3,11 +3,18 @@ unit Authentication;
 interface
 
 uses
+	System.Classes,
+  AuthenticationResponse;
+
+function AuthenticationService(URL, User, Password: String): TResponse;
+
+implementation
+
+uses
   Winapi.Windows,
   Winapi.Messages,
   System.SysUtils,
   System.Variants,
-  System.Classes,
   System.JSON,
   System.JSON.Builders,
   System.JSON.Writers,
@@ -19,14 +26,9 @@ uses
   IdCoderMIME,
   IdMultipartFormData,
   IdGlobalProtocols,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, IPPeerClient, Vcl.StdCtrls, REST.Client,
+  IPPeerClient, REST.Client,
   Data.Bind.Components, Data.Bind.ObjectScope, REST.Types,
-  Vcl.ComCtrls, Helper, AuthenticationRequest,
-  AuthenticationResponse;
-
-function AuthenticationService(URL, User, Password: String): TResponse;
-
-implementation
+  Vcl.ComCtrls, Helper, AuthenticationRequest;
 
 function AuthenticationService(URL, User, Password: String): TResponse;
 begin

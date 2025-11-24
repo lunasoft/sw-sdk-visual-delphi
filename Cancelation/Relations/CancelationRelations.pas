@@ -3,33 +3,6 @@ unit CancelationRelations;
 interface
 
 uses
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  System.JSON,
-  System.JSON.Builders,
-  System.JSON.Writers,
-  System.JSON.Readers,
-  System.JSON.BSON,
-  IdHTTP, IdGlobal,
-  IdCoder,
-  IdCoder3to4,
-  IdCoderMIME,
-  IdMultipartFormData,
-  IdGlobalProtocols,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  IPPeerClient,
-  Vcl.StdCtrls,
-  REST.Client,
-  Data.Bind.Components,
-  Data.Bind.ObjectScope,
-  REST.Types,
-  Vcl.ComCtrls,
-  StampRequest,
-  CancelationResponse,
-  CancelationRequest,
   CancelationRelationsResponse;
 
 function CancelationRelationsByXml(URL, Token, XML: String)
@@ -42,6 +15,10 @@ function CancelationRelationsByUuid(URL, Token, RFCEmisor, Uuid: String)
   : TCancelationRelationsResponse;
 
 implementation
+
+uses
+  StampRequest,
+  CancelationRequest;
 
 function CancelationRelationsByCsd(URL, Token, RFCEmisor, Uuid, b64Key, b64Cer,
   PasswordKey: String): TCancelationRelationsResponse;

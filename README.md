@@ -9,6 +9,7 @@ Librería Visual delphi para el consumo de los servicios de SW sapien®.
 - Embarcadero® Delphi
 - RAD Studio
 ---
+
 ### Instalación
 Para utilizar los servicios de SW con Delphi se debe tener importados en el proyecto todos los archivos **.PAS**.
 
@@ -52,6 +53,23 @@ uses
   Balance,
   BalanceRequest;
 ```
+
+### Configuración de Librerías TLS 1.2
+
+Para mantener la compatibilidad con TLS 1.2, este proyecto requiere los siguientes archivos DLL:
+
+- `libeay32.dll`
+- `ssleay32.dll`
+
+#### Pasos para configurar:
+
+1. Dentro del proyecto, se incluye la carpeta `Lib` que contiene estas librerías.
+2. Para que Delphi pueda compilar y ejecutar correctamente, copia los archivos desde la carpeta `Lib` hacia la siguiente ubicación de salida de compilación: Win32/Debug
+
+
+> **Nota:** Esta ubicación corresponde al directorio de `Debug` del proyecto en Win32. Asegúrate de mantener estos archivos en ese directorio cada vez que compiles en modo Debug.
+
+
 ---
 
 ## Autenticación ##
@@ -250,19 +268,21 @@ Ejemplo de uso:
 ```pascal
 procedure TForm1.Button17Click(Sender: TObject);
 var
-  cancelationCsd: TCancelationResponse;
+	cancelationCsd: TCancelationResponse;
 begin
-  cancelationCsd := CancelationByCsd(txtURL.Text, txtToken.Text,
-    txtCsdRfcEmisor.Text, txtUuidUuid.Text, txtCsdCer.Text, txtCsdKey.Text,
-    txtCsdPassword.Text);
-  try
-    txtCsdAcuse.Text := cancelationCsd.data.acuse;
+	cancelationCsd := CancelationByCsd(txtURL.Text, txtToken.Text,
+		txtCsdRfcEmisor.Text, txtCsdUuid.Text, txtCsdMotivo.Text, txtCsdFolioSust.Text,
+    txtCsdCer.Text, txtCsdKey.Text, txtCsdPassword.Text);
+	try
+		txtCsdAcuse.Text := cancelationCsd.data.acuse;
+    txtCsdSU.Text := cancelationCsd.GetStatusUuid;
+    txtCsdD.Text := cancelationCsd.data.ToJsonString;
     txtCsdStatus.Text := cancelationCsd.status;
-  except
-    txtCsdStatus.Text := cancelationCsd.status;
-    txtCsdMessageDetail.Text := cancelationCsd.messageDetail;
-    txtCsdMessage.Text := cancelationCsd.message;
-  end;
+	except
+		txtCsdStatus.Text := cancelationCsd.status;
+		txtCsdMessageDetail.Text := cancelationCsd.messageDetail;
+		txtCsdMessage.Text := cancelationCsd.message;
+	end;
 
 end;
 ```
@@ -286,18 +306,21 @@ Ejemplo de uso:
 ```pascal
 procedure TForm1.Button19Click(Sender: TObject);
 var
-  cancelarPorPfx: TCancelationResponse;
+	cancelarPorPfx: TCancelationResponse;
 begin
-  cancelarPorPfx := CancelationByPfx(txtURL.Text, txtToken.Text,
-    txtPfxRfcEmisor.Text, txtPfxUuid.Text, txtPfxPfx.Text, txtPfxPassword.Text);
-  try
-    txtPfxAcuse.Text := cancelarPorPfx.data.acuse;
-    txtPfxStatus.Text := cancelarPorPfx.status;
-  except
-    txtPfxStatus.Text := cancelarPorPfx.status;
-    txtPfxMessageDetail.Text := cancelarPorPfx.messageDetail;
-    txtPfxMessage.Text := cancelarPorPfx.message;
-  end;
+	cancelarPorPfx := CancelationByPfx(txtURL.Text, txtToken.Text,
+		txtPfxRfcEmisor.Text, txtPfxUuid.Text,txtPfxMotivo.Text, txtPfxFolioSust.Text, txtPfxPfx.Text, txtPfxPassword.Text);
+	try
+		txtPfxAcuse.Text := cancelarPorPfx.data.acuse;
+		txtPfxStatus.Text := cancelarPorPfx.status;
+    txtPfxSU.Text := cancelarPorPfx.GetStatusUuid;
+    txtPfxD.Text := cancelarPorPfx.data.ToJsonString;
+	except
+		txtPfxStatus.Text := cancelarPorPfx.status;
+		txtPfxMessageDetail.Text := cancelarPorPfx.messageDetail;
+		txtPfxMessage.Text := cancelarPorPfx.message;
+	end;
+
 end;
 ```
 </details>
@@ -350,17 +373,20 @@ Ejemplo de uso:
 ```pascal
 procedure TForm1.Button22Click(Sender: TObject);
 var
-  cancelacionXML: TCancelationResponse;
+	cancelacionXML: TCancelationResponse;
 begin
-  cancelacionXML := CancelationByXml(txtURL.Text, txtToken.Text,
+	cancelacionXML := CancelationByXml(txtURL.Text, txtToken.Text,
     txtXmlXml.Text);
-  try
-    txtXmlAcuse.Text := cancelacionXML.data.acuse;
+	try
+		txtXmlAcuse.Text := cancelacionXML.data.acuse;
+		txtXmlStatus.Text := cancelacionXML.status;
+    txtXmlSU.Text := cancelacionXML.GetStatusUuid;
+    txtXmlD.Text := cancelacionXML.data.ToJsonString;
+	except
+		txtXmlMessage.Text := cancelacionXML.message;
+		txtXmlMessageDetail.Text := cancelacionXML.messageDetail;
     txtXmlStatus.Text := cancelacionXML.status;
-  except
-    txtXmlMessage.Text := cancelacionXML.message;
-    txtXmlMessageDetail.Text := cancelacionXML.messageDetail
-  end;
+	end;
 end;
 ```
 </details>
@@ -381,17 +407,21 @@ Ejemplo de uso:
 ```pascal
 procedure TForm1.Button24Click(Sender: TObject);
 var
-  cancelacionUuid: TCancelationResponse;
+	cancelacionUuid: TCancelationResponse;
 begin
-  cancelacionUuid := CancelationByUuid(txtURL.Text, txtToken.Text,
-    txtUuidRfc.Text, txtUuidUuid.Text);
-  try
-    txtUuidAcuse.Text := cancelacionUuid.data.acuse;
-    txtUuidStatus.Text := cancelacionUuid.status;
-  except
+	cancelacionUuid := CancelationByUuid(txtURL.Text, txtToken.Text,
+		txtUuidRfc.Text, txtUuidUuid.Text, txtUuidMotivo.Text, txtUuidFolioSust.Text);
+	try
+		txtUuidAcuse.Text := cancelacionUuid.data.acuse;
+		txtUuidStatus.Text := cancelacionUuid.status;
+    txtUuidD.Text := cancelacionUuid.data.ToJsonString;
+    txtUuidSU.Text := cancelacionUuid.GetStatusUuid;
+	except
 		txtUuidMessage.Text := cancelacionUuid.message;
-    txtUuidMessageDetail.Text := cancelacionUuid.messageDetail
+		txtUuidMessageDetail.Text := cancelacionUuid.messageDetail;
+    txtUuidStatus.Text := cancelacionUuid.status;
 	end;
+
 end;
 ```
 </details>

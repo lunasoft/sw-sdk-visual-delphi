@@ -2,34 +2,16 @@ unit ValidateRequest;
 
 interface
 
-uses
-  Winapi.Windows,
-  Winapi.Messages,
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  Vcl.Graphics,
-  StrUtils,
-  System.JSON,
-  System.JSON.Builders,
-  System.JSON.Writers,
-  System.JSON.Readers,
-  System.JSON.BSON,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  IPPeerClient,
-  Vcl.StdCtrls,
-  REST.Client,
-  Data.Bind.Components,
-  Data.Bind.ObjectScope,
-  REST.Types,
-  Vcl.ComCtrls,
-  SWHTTPClient, IdMultipartFormData, IdHTTP;
-
 function ValidateCfdiRequest(Url, Token, XML: string): String;
 
 implementation
+
+uses
+	System.Classes,
+  System.SysUtils,
+  SWHTTPClient,
+  IdMultipartFormData,
+  IdHTTP;
 
 function ValidateCfdiRequest(Url, Token, XML: string): String;
 var

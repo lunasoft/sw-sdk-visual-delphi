@@ -3,24 +3,25 @@
 interface
 
 uses
-  Winapi.Windows,
-  Winapi.Messages,
-  System.SysUtils,
-  System.Classes,
-  System.JSON,
-  SWHTTPClient,
-  IdHTTP;
+  System.Classes;
 
 function AuthRequest(URL, User, Password: String): String;
 
 implementation
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.JSON,
+  SWHTTPClient,
+  IdHTTP;
 
 function AuthRequest(URL, User, Password: String): String;
 var
   HTTPClient: TSWHTTPClient;
   RequestBody: TStream;
   JSONBody: TJSONObject;
-  ErrorResponse: TJSONObject;
 begin
   HTTPClient := TSWHTTPClient.Create;
   try

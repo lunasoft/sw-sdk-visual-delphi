@@ -1,17 +1,18 @@
 unit Helper;
 
 interface
-  uses
-    Winapi.Windows,
-    Winapi.Messages,
-    System.SysUtils,
-    System.Variants,
-    System.Classes;
 
-    function getStringValue(valor : string): string;
-    function fechaDeVencimiento(expiresIn: String): tdatetime;
-   
+function getStringValue(valor : string): string;
+function fechaDeVencimiento(expiresIn: String): tdatetime;
+
 implementation
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes;
 
 function getStringValue(valor : string): string;
 begin

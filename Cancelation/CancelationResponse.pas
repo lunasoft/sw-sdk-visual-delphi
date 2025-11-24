@@ -1,111 +1,146 @@
-unit CancelationResponse;
+﻿unit CancelationResponse;
 
 interface
 
-uses Generics.Collections, Rest.Json;
+uses
+  System.SysUtils, System.Classes, System.JSON, REST.JSON,
+  System.Generics.Collections;
 
 type
-
-  TUuidClass = class
-  private
-    FLista: String;
-  public
-    property uuid: String read FLista write FLista;
-    function ToJsonString: String;
-    class function FromJsonString(AJsonString: string): TUuidClass;
-  end;
-
+  // Clase de data
   TDataClass = class
   private
-    FAcuse: String;
-    FUuid: TUuidClass;
+    FAcuse: string;
+    FUuidList: TDictionary<string, string>;
   public
-    property acuse: String read FAcuse write FAcuse;
-    property uuid: TUuidClass read FUuid write FUuid;
+    property acuse: string read FAcuse write FAcuse;
+    property uuidList: TDictionary<string, string> read FUuidList;
+
     constructor Create;
     destructor Destroy; override;
+
     function ToJsonString: string;
-    class function FromJsonString(AJsonString: string): TDataClass;
   end;
 
+  // Clase principal
   TCancelationResponse = class
   private
     FData: TDataClass;
-    FMessage: String;
-    FMessageDetail: String;
-    FStatus: String;
+    FMessage: string;
+    FMessageDetail: string;
+    FStatus: string;
   public
     property data: TDataClass read FData write FData;
-    property message: String read FMessage write FMessage;
-    property messageDetail: String read FMessageDetail write FMessageDetail;
-    property status: String read FStatus write FStatus;
+    property message: string read FMessage write FMessage;
+    property messageDetail: string read FMessageDetail write FMessageDetail;
+    property status: string read FStatus write FStatus;
+
     constructor Create;
     destructor Destroy; override;
+
     function ToJsonString: string;
-    class function FromJsonString(AJsonString: string): TCancelationResponse;
+
+    class function FromJsonString(const AJsonString: string)
+      : TCancelationResponse;
+    function GetStatusUuid: string;
+
   end;
 
 implementation
-
-{ TUuidClass }
-
-function TUuidClass.ToJsonString: string;
-begin
-  result := TJson.ObjectToJsonString(self);
-end;
-
-class function TUuidClass.FromJsonString(AJsonString: string): TUuidClass;
-begin
-  result := TJson.JsonToObject<TUuidClass>(AJsonString)
-end;
 
 { TDataClass }
 
 constructor TDataClass.Create;
 begin
   inherited;
-  FUuid := TUuidClass.Create();
+  FUuidList := TDictionary<string, string>.Create;
 end;
 
 destructor TDataClass.Destroy;
 begin
-  FUuid.free;
+  FUuidList.Free;
   inherited;
 end;
 
 function TDataClass.ToJsonString: string;
+var
+  Obj, UuidObj: TJSONObject;
+  Pair: TPair<string, string>;
 begin
-  result := TJson.ObjectToJsonString(self);
-end;
+  Obj := TJSONObject.Create;
+  try
+    Obj.AddPair('acuse', FAcuse);
 
-class function TDataClass.FromJsonString(AJsonString: string): TDataClass;
-begin
-  result := TJson.JsonToObject<TDataClass>(AJsonString)
+    UuidObj := TJSONObject.Create;
+    for Pair in FUuidList do
+      UuidObj.AddPair(Pair.Key, Pair.Value);
+
+    Obj.AddPair('uuid', UuidObj);
+    Result := Obj.ToJSON;
+  finally
+    Obj.Free;
+  end;
 end;
 
 { TCancelationResponse }
-
 constructor TCancelationResponse.Create;
 begin
   inherited;
-  FData := TDataClass.Create();
+  FData := TDataClass.Create;
 end;
 
 destructor TCancelationResponse.Destroy;
 begin
-  FData.free;
+  FData.Free;
   inherited;
 end;
 
 function TCancelationResponse.ToJsonString: string;
 begin
-  result := TJson.ObjectToJsonString(self);
+  Result := TJson.ObjectToJsonString(Self);
 end;
 
-class function TCancelationResponse.FromJsonString(AJsonString: string)
+class function TCancelationResponse.FromJsonString(const AJsonString: string)
   : TCancelationResponse;
+var
+  Root, DataObj, UuidObj: TJSONObject;
+  Pair: TJSONPair;
+  JsonValue: TJSONValue;
 begin
-  result := TJson.JsonToObject<TCancelationResponse>(AJsonString)
+  Result := TJson.JsonToObject<TCancelationResponse>(AJsonString);
+
+  Root := TJSONObject.ParseJSONValue(AJsonString) as TJSONObject;
+  try
+    if Assigned(Root) and Root.TryGetValue('data', DataObj) and
+      (DataObj is TJSONObject) then
+    begin
+      if DataObj.TryGetValue('uuid', JsonValue) and (JsonValue is TJSONObject)
+      then
+      begin
+        UuidObj := JsonValue as TJSONObject;
+        for Pair in UuidObj do
+          Result.FData.FUuidList.Add(Pair.JsonString.Value,
+            Pair.JsonValue.Value);
+      end;
+    end;
+  finally
+    Root.Free;
+  end;
+end;
+
+function TCancelationResponse.GetStatusUuid: string;
+var
+  Obj: TJSONObject;
+  Pair: TPair<string, string>;
+begin
+  Obj := TJSONObject.Create;
+  try
+    for Pair in FData.FUuidList do
+      Obj.AddPair(Pair.Key, Pair.Value);
+    Result := Obj.ToJSON;
+  finally
+    Obj.Free;
+  end;
 end;
 
 end.

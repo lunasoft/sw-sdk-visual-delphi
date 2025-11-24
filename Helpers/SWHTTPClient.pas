@@ -9,10 +9,6 @@ uses
   IdSSLOpenSSL,
   IdGlobal,
   IdGlobalProtocols,
-  IdIOHandler,
-  IdIOHandlerSocket,
-  IdIOHandlerStack,
-  IdSSL,
   IdMultipartFormData;
 
 type
@@ -32,6 +28,12 @@ type
   end;
 
 implementation
+
+uses
+  IdIOHandler,
+  IdIOHandlerSocket,
+  IdIOHandlerStack,
+  IdSSL;
 
 constructor TSWHTTPClient.Create;
 begin

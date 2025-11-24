@@ -31,7 +31,7 @@
     Top = 0
     Width = 1121
     Height = 569
-    ActivePage = TabSheet2
+    ActivePage = TabSheet5
     TabOrder = 0
     object TabSheet1: TTabSheet
       Caption = 'Autenticaci'#243'n'
@@ -897,7 +897,7 @@
             Top = 3
             Width = 1105
             Height = 510
-            ActivePage = TabSheet14
+            ActivePage = TabSheet17
             TabOrder = 0
             object TabSheet14: TTabSheet
               Caption = 'Cancelaci'#243'n por CSD'
@@ -965,6 +965,20 @@
                 Width = 32
                 Height = 13
                 Caption = 'Motivo'
+              end
+              object Label38: TLabel
+                Left = 456
+                Top = 370
+                Width = 81
+                Height = 13
+                Caption = 'EstatusUuid_Csd'
+              end
+              object Label39: TLabel
+                Left = 470
+                Top = 405
+                Width = 47
+                Height = 13
+                Caption = 'Data_Csd'
               end
               object Button17: TButton
                 Left = 0
@@ -1072,6 +1086,20 @@
                 Height = 21
                 TabOrder = 13
               end
+              object txtCsdSU: TEdit
+                Left = 560
+                Top = 367
+                Width = 121
+                Height = 21
+                TabOrder = 14
+              end
+              object txtCsdD: TEdit
+                Left = 560
+                Top = 405
+                Width = 121
+                Height = 21
+                TabOrder = 15
+              end
             end
             object TabSheet15: TTabSheet
               Caption = 'Cancelaci'#243'n por PFX'
@@ -1131,6 +1159,20 @@
                 Width = 32
                 Height = 13
                 Caption = 'Motivo'
+              end
+              object Label40: TLabel
+                Left = 520
+                Top = 359
+                Width = 79
+                Height = 13
+                Caption = 'EstatusUuid_Pfx'
+              end
+              object Label41: TLabel
+                Left = 520
+                Top = 402
+                Width = 45
+                Height = 13
+                Caption = 'Data_Pfx'
               end
               object txtPfxAcuse: TMemo
                 Left = 16
@@ -1220,6 +1262,20 @@
                 Height = 21
                 TabOrder = 11
               end
+              object txtPfxSU: TEdit
+                Left = 624
+                Top = 359
+                Width = 158
+                Height = 21
+                TabOrder = 12
+              end
+              object txtPfxD: TEdit
+                Left = 624
+                Top = 402
+                Width = 353
+                Height = 63
+                TabOrder = 13
+              end
             end
             object TabSheet17: TTabSheet
               Caption = 'Cancelaci'#243'n por UUID'
@@ -1279,6 +1335,20 @@
                 Width = 52
                 Height = 13
                 Caption = 'Sustituci'#243'n'
+              end
+              object Label42: TLabel
+                Left = 672
+                Top = 331
+                Width = 91
+                Height = 13
+                Caption = 'EstatusUUid_Uuuid'
+              end
+              object Label43: TLabel
+                Left = 680
+                Top = 376
+                Width = 50
+                Height = 13
+                Caption = 'Data_Uuid'
               end
               object Button24: TButton
                 Left = 8
@@ -1345,6 +1415,22 @@
                 Height = 21
                 TabOrder = 8
               end
+              object txtUuidSU: TEdit
+                Left = 796
+                Top = 328
+                Width = 285
+                Height = 26
+                TabOrder = 9
+                Text = 'txtUuidSU'
+              end
+              object txtUuidD: TEdit
+                Left = 752
+                Top = 370
+                Width = 329
+                Height = 79
+                TabOrder = 10
+                Text = 'txtUuidD'
+              end
             end
             object TabSheet16: TTabSheet
               Caption = 'Cancelaci'#243'n por XML'
@@ -1369,6 +1455,20 @@
                 Width = 69
                 Height = 13
                 Caption = 'messageDetail'
+              end
+              object Label44: TLabel
+                Left = 560
+                Top = 376
+                Width = 79
+                Height = 13
+                Caption = 'EstatusUuid_xml'
+              end
+              object Label78: TLabel
+                Left = 560
+                Top = 416
+                Width = 45
+                Height = 13
+                Caption = 'Data_xml'
               end
               object txtXmlXml: TMemo
                 Left = 240
@@ -1413,6 +1513,20 @@
                 Caption = 'Cancelar por XML'
                 TabOrder = 5
                 OnClick = Button22Click
+              end
+              object txtXmlSU: TEdit
+                Left = 672
+                Top = 368
+                Width = 281
+                Height = 23
+                TabOrder = 6
+              end
+              object txtXmlD: TEdit
+                Left = 656
+                Top = 416
+                Width = 297
+                Height = 49
+                TabOrder = 7
               end
             end
           end

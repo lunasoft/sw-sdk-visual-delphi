@@ -2,7 +2,6 @@ unit AuthenticationResponse;
 
 interface
 
-uses Generics.Collections, Rest.Json;
 
 type
 
@@ -37,6 +36,8 @@ public
 end;
 
 implementation
+
+uses Generics.Collections, Rest.Json;
 
 {TData}
 

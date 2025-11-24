@@ -2,8 +2,6 @@ unit CancelationPendingsResponse;
 
 interface
 
-uses Generics.Collections, Rest.Json;
-
 type
 
 TDataClass = class
@@ -35,6 +33,9 @@ public
 end;
 
 implementation
+
+uses
+	Generics.Collections, Rest.Json;
 
 {TDataClass}
 

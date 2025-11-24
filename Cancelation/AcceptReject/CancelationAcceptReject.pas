@@ -3,33 +3,6 @@ unit CancelationAcceptReject;
 interface
 
 uses
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  System.JSON,
-  System.JSON.Builders,
-  System.JSON.Writers,
-  System.JSON.Readers,
-  System.JSON.BSON,
-  IdHTTP, IdGlobal,
-  IdCoder,
-  IdCoder3to4,
-  IdCoderMIME,
-  IdMultipartFormData,
-  IdGlobalProtocols,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  IPPeerClient,
-  Vcl.StdCtrls,
-  REST.Client,
-  Data.Bind.Components,
-  Data.Bind.ObjectScope,
-  REST.Types,
-  Vcl.ComCtrls,
-  StampRequest,
-  CancelationResponse,
-  CancelationRequest,
   CancelationRelationsResponse,
   CancelationAcceptRejectResponse;
 
@@ -41,6 +14,11 @@ function CancelationAcceptRejectByXml(URL, Token, XML: String): TCancelationAcce
 function CancelationAcceptRejectByUuid(URL, Token, RFCEmisor, Uuid, Accion: String): TCancelationAcceptRejectResponse;
 
 implementation
+
+uses
+  StampRequest,
+  CancelationResponse,
+  CancelationRequest;
 
 function CancelationAcceptRejectByCsd(URL, Token, RFCEmisor, Uuid, Accion,
   b64Key, b64Cer, PasswordKey: String): TCancelationAcceptRejectResponse;
